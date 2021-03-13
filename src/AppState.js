@@ -13,7 +13,7 @@ export const AppState = reactive({
   fruits: {},
   cattle: {},
   money: {},
-  season: {},
+  season: 'spring',
   ownedLand: [],
   otb: {},
   farmerFate: {},

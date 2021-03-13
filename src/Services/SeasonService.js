@@ -8,6 +8,18 @@ class SeasonService {
   }
 
   changeSeason() {
+    let season = AppState.season
+    if (season === 'spring') {
+      season = 'summer'
+    } else if (season === 'summer') {
+      season = 'fall'
+    } else if (season === 'fall') {
+      season = 'winter'
+    } else {
+      season = 'spring'
+    }
+    AppState.season = season
+    saveState()
     // spring {march/ April/ May}
     // summer {june/ july/ august}
     // fall {september/ october / November}

@@ -17,7 +17,9 @@ export const AppState = reactive({
   },
   event: {
     title: '',
-    Text: '',
+    greeting: '',
+    text: '',
+    closing: '',
     closeDesc: ''
   },
   hay: 0,

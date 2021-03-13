@@ -1,9 +1,6 @@
 <template>
   <div class="event-modal">
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#eventModal">
-      EventTest
-    </button>
 
     <!-- Modal -->
     <div class="modal fade"
@@ -17,11 +14,17 @@
         <div class="modal-content">
           <div class="modal-body">
             <div class="container-fluid">
-              <div class="row pb-3 border-bottom">
-                {{ eventTitle }}
+              <div class="row d-flex justify-content-center pb-3 border-bottom">
+                {{ event.title }}
               </div>
-              <div class="row">
-                {{ eventText }}
+              <div class="row pb-3">
+                {{ event.greeting }}
+              </div>
+              <div class="row d-flex justify-content-center">
+                {{ event.text }}
+              </div>
+              <div class="row pt-3">
+                {{ event.closing }}
               </div>
             </div>
           </div>

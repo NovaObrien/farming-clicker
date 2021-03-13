@@ -10,5 +10,9 @@ class EventService {
     AppState.event.closeDesc = 'He\'s in a better place now'
     $('#eventModal').modal('show')
   }
+
+  bankruptcyEvent() {
+    // occurs when the player runs out of assets
+  }
 }
 export const eventService = new EventService()

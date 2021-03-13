@@ -17,21 +17,42 @@ class TurnService {
     this.payBills()
   }
 
-  drawEvent() {
-    const min = Math.ceil(1)
-    const max = Math.floor(3)
-    const draw = Math.floor(Math.random() * (max - min + 1) + min)
-
-    logger.log('draw is ' + draw)
-  }
-
   payBills() {
+    // TODO add dynamic bills
     const bills = 400
     AppState.character.currency -= bills
   }
 
   updateOTBs() {
     logger.log()
+  }
+
+  drawEvent() {
+    const min = Math.ceil(1)
+    const max = Math.floor(3)
+    const draw = Math.floor(Math.random() * (max - min + 1) + min)
+
+    logger.log('draw is ' + draw)
+    if (draw === 1) {
+      this.devilsOwnLuck()
+    } else if (draw === 2) {
+      this.uneventfull()
+    } else {
+      this.goodFortune()
+    }
+  }
+
+  // Card Draws Below
+  devilsOwnLuck() {
+    logger.log('DOL')
+  }
+
+  uneventfull() {
+    logger.log('uneventfull')
+  }
+
+  goodFortune() {
+    logger.log('Good Fortune')
   }
 }
 export const turnService = new TurnService()

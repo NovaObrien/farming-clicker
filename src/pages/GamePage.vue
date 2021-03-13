@@ -2,42 +2,29 @@
   <div class="game flex-grow-1 d-flex flex-column align-items-center justify-content-center">
     <hay />
     <h1>
-      {{ season }}
+      {{ time.month }}, {{ time.season }} {{ time.year }}
     </h1>
     <character />
-    <button @click="incAge">
-      Age Up
-    </button>
-
-    <button @click="incSeason">
-      Change Season
-    </button>
+    <turn />
   </div>
 </template>
 
 <script>
 import { computed, onMounted } from 'vue'
-import Character from '../components/Character.vue'
 import { loadState } from '../utils/LocalStorage'
-import { seasonService } from '../Services/SeasonService'
+import { timeService } from '../Services/TimeService'
 import { AppState } from '../AppState'
-import { logger } from '../utils/Logger'
 
 export default {
-  components: { Character },
   name: 'Game',
   setup() {
     onMounted(() => {
       loadState()
     })
     return {
-      season: computed(() => AppState.season),
-      incAge() {
-        seasonService.increaseAge()
-      },
+      time: computed(() => AppState.time),
       incSeason() {
-        seasonService.changeSeason()
-        logger.log(AppState.season)
+        timeService.changeSeason()
       }
     }
   }

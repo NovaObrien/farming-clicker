@@ -2,7 +2,7 @@
 import { AppState } from '../AppState'
 
 export function saveState() {
-  localStorage.setItem('farming-clicker', JSON.stringify({ character: AppState.character, season: AppState.season }))
+  localStorage.setItem('farming-clicker', JSON.stringify({ character: AppState.character, time: AppState.time }))
 }
 
 export function loadState() {
@@ -10,5 +10,6 @@ export function loadState() {
   if (data) {
     // debugger
     AppState.character = data.character
+    AppState.time = data.time
   }
 }

@@ -8,12 +8,17 @@ export const AppState = reactive({
     children: 0
 
   },
+  time: {
+    turn: 3,
+    year: 1984,
+    month: 'March',
+    season: 'Spring'
+  },
   hay: 0,
   vegtables: {},
   fruits: {},
   cattle: {},
   money: {},
-  season: 'spring',
   ownedLand: [],
   otb: {},
   farmerFate: {},

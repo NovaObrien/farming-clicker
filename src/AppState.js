@@ -5,20 +5,25 @@ export const AppState = reactive({
   character: {
     name: '',
     age: 28,
-    children: 0
+    children: 0,
+    currency: 9000
 
   },
   time: {
     turn: 3,
-    year: 1984,
+    year: 1980,
     month: 'March',
     season: 'Spring'
+  },
+  event: {
+    title: '',
+    Text: '',
+    closeDesc: ''
   },
   hay: 0,
   vegtables: {},
   fruits: {},
   cattle: {},
-  money: {},
   ownedLand: [],
   otb: {},
   farmerFate: {},

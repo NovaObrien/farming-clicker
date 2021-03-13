@@ -6,6 +6,7 @@
     </h1>
     <character />
     <turn />
+    <event-modal />
   </div>
 </template>
 
@@ -14,12 +15,17 @@ import { computed, onMounted } from 'vue'
 import { loadState } from '../utils/LocalStorage'
 import { timeService } from '../Services/TimeService'
 import { AppState } from '../AppState'
+import { charactersService } from '../Services/CharactersService'
 
-export default {
+export default
+{
   name: 'Game',
   setup() {
     onMounted(() => {
       loadState()
+      if (AppState.character.name === '') {
+        charactersService.genName()
+      }
     })
     return {
       time: computed(() => AppState.time),

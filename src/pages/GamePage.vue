@@ -7,19 +7,14 @@
     <character />
     <turn />
     <event-modal />
-    <button @click="showModal">
-      MODAL TEST
-    </button>
   </div>
 </template>
 
 <script>
 import { computed, onMounted } from 'vue'
 import { loadState } from '../utils/LocalStorage'
-import { timeService } from '../Services/TimeService'
 import { AppState } from '../AppState'
 import { charactersService } from '../Services/CharactersService'
-import $ from 'jquery'
 
 export default
 {
@@ -32,13 +27,7 @@ export default
       }
     })
     return {
-      time: computed(() => AppState.time),
-      incSeason() {
-        timeService.changeSeason()
-      },
-      showModal() {
-        $('#eventModal').modal('show')
-      }
+      time: computed(() => AppState.time)
     }
   }
 }

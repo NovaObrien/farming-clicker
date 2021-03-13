@@ -7,6 +7,7 @@ class CharactersService {
     const index = Math.floor(Math.random() * AppState.names.length)
     AppState.character.name = AppState.names[index]
     saveState()
+    // this assumes new game and calls inheritence event
     eventService.inherEvent()
   }
 }

@@ -8,12 +8,14 @@
 
 <script>
 import { timeService } from '../Services/TimeService'
+import { turnService } from '../Services/TurnService'
 export default {
   name: 'Turn',
   setup() {
     return {
       endTurn() {
         timeService.endTurn()
+        turnService.endTurn()
       }
     }
   },

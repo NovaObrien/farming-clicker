@@ -1,6 +1,5 @@
 import { AppState } from '../AppState'
 import { saveState } from '../utils/LocalStorage'
-import { logger } from '../utils/Logger'
 
 class TimeService {
   endTurn() {
@@ -9,16 +8,12 @@ class TimeService {
     AppState.time.turn++
     const turn = AppState.time.turn
     if (turn < 4) {
-      logger.log(turn)
       this.firstQuarter(turn)
     } else if (turn < 7 && turn > 3) {
-      logger.log(turn)
       this.secondQuarter(turn)
     } else if (turn < 10 && turn > 6) {
-      logger.log(turn)
       this.thirdQuarter(turn)
     } else {
-      logger.log(turn)
       this.fourthQuarter(turn)
     }
   }

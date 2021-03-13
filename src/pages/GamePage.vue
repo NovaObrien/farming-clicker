@@ -2,6 +2,9 @@
   <div class="game flex-grow-1 d-flex flex-column align-items-center justify-content-center">
     <hay />
     <character />
+    <button @click="incAge">
+      Increase Age
+    </button>
   </div>
 </template>
 
@@ -9,6 +12,7 @@
 import { onMounted } from 'vue'
 import Character from '../components/Character.vue'
 import { loadState } from '../utils/LocalStorage'
+import { seasonService } from '../Services/SeasonService'
 export default {
   components: { Character },
   name: 'Game',
@@ -16,7 +20,11 @@ export default {
     onMounted(() => {
       loadState()
     })
-    return {}
+    return {
+      incAge() {
+        seasonService.increaseAge()
+      }
+    }
   }
 }
 </script>

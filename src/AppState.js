@@ -18,5 +18,5 @@ export const AppState = reactive({
   otb: {},
   farmerFate: {},
   tractors: {},
-  names: ['Lexi', 'Gwenda', 'Charly', 'Leianna', 'Jonie', 'Modesty', 'Kenzie', 'Marita', 'Lauren', 'Mitch', 'Ansel', 'Mike', 'Yale', 'Mason', 'Joe', 'Alan', 'Tom']
+  names: ['Lexi', 'Gwenda', 'Charly', 'Leianna', 'Jonie', 'Kreig', 'Kenzie', 'Marita', 'Lauren', 'Mitch', 'Ansel', 'Mike', 'Yale', 'Mason', 'Joe', 'Alan', 'Tom', 'Boby']
 })

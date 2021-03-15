@@ -6,17 +6,17 @@
       </h5>
     </div>
     <div class="row">
-      <div class="col-3 rounded-top bg-info ml-3 mt-2" @click="showAccount">
-        <h6>
+      <div class="col-3 rounded-top ml-3 mt-2" :class="state.hideAccount.truthy == true ? 'not-selected' : 'selected'" @click="showAccount">
+        <h6 class="mt-2">
           Account
         </h6>
       </div>
-      <div class="col-3 rounded-top bg-info ml-3 mt-2" @click="showManage">
-        <h6>
+      <div class="col-3 rounded-top ml-3 mt-2" :class="state.hideManage.truthy == true ? 'not-selected' : 'selected'" @click="showManage">
+        <h6 class="mt-2">
           Manage
         </h6>
       </div>
-      <div class="col-3 rounded-top bg-info ml-3 mt-2" @click="showRealEstate">
+      <div class="col-3 rounded-top ml-3 mt-2" :class="state.hideRealEstate.truthy == true ? 'not-selected' : 'selected'" @click="showRealEstate">
         <h6>
           Real Estate
         </h6>
@@ -97,6 +97,12 @@ export default
 }
 .show-content{
   display: inherit;
+}
+.not-selected{
+ background-color: rgb(170, 166, 166);
+}
+.selected{
+  background-color: rgb(187, 157, 157);
 }
 
 </style>

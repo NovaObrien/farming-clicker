@@ -11,6 +11,7 @@ class OptionToBuyService {
     // replace will randomly replace one of the slots
     // and remove will remove a random one as well
     // when a new otb is added it must be removed from the smallFarm/MedFarm/LargeFarms as in order to not duplicate any farms
+    // on how to decide the type of farm I think it will be a chance thing where large farms will be lower percentage small will be higher.. Making large farm purchases more valuable when they appear
 
   }
 

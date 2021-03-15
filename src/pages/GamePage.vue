@@ -1,7 +1,8 @@
 <template>
   <div class="game container-fluid">
     <land-market class="mt-3" />
-    <hay />
+    <owned-land-menu />
+    <!-- <hay /> -->
     <h1>
       {{ time.month }}, {{ time.season }} {{ time.year }}
     </h1>

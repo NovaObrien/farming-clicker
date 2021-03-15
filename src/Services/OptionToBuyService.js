@@ -1,12 +1,28 @@
 import { AppState } from '../AppState'
+import { saveState } from '../utils/LocalStorage'
 import { logger } from '../utils/Logger'
 
 class OptionToBuyService {
+  checkMarketSlots() {
+    // the general idea for the next three functions is to add or replace a otb depending on how many objects are in an array
+    // my thought process on this is to have it happen randomly after a turn to a maxium of 3-4.
+    // so this function will count the total than randomly decide to either add or replace a otb or even remove an otb.
+    // addNewOtb will fail when the slots are too full
+    // replace will randomly replace one of the slots
+    // and remove will remove a random one as well
+    // when a new otb is added it must be removed from the smallFarm/MedFarm/LargeFarms as in order to not duplicate any farms
+
+  }
+
   addNewOtb() {
 
   }
 
   replaceOtb() {
+
+  }
+
+  removeOtb() {
 
   }
 
@@ -18,6 +34,11 @@ class OptionToBuyService {
       logger.log('not enough money')
     } else {
       AppState.character.currency -= cost
+      // removes property and adds to owned list
+      const index = AppState.optionsToBuy.findIndex(o => o.id === option.id)
+      AppState.optionsToBuy.splice(index, 1)
+      AppState.ownedLands.unshift(option)
+      saveState()
     }
   }
 }

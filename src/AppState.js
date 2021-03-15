@@ -5,7 +5,7 @@ export const AppState = reactive({
     name: '',
     age: 28,
     children: 0,
-    currency: 90000
+    currency: 9000
 
   },
   time: {

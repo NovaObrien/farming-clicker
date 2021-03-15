@@ -18,9 +18,18 @@ class TurnService {
   }
 
   payBills() {
-    // TODO add dynamic bills
-    const bills = 400
-    AppState.character.currency -= bills
+    const ownedLands = AppState.ownedLands
+    let cost = 0
+    for (let i = 0; i < ownedLands.length; i++) {
+      cost = cost + ownedLands[i].acers * 25 + ownedLands[i].beds * 100
+    }
+    logger.log(cost)
+    const bills = 400 + cost
+    if (bills > AppState.character.currency) {
+      logger.log('cant afford')
+    } else {
+      AppState.character.currency -= bills
+    }
   }
 
   updateOTBs() {

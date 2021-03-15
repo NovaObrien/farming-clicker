@@ -1,12 +1,31 @@
 <template>
   <div class="options-to-buy">
-    {{ option.name }} Beds {{ option.beds }} {{ option.type }} Acers {{ option.acers }} cost {{ (option.acers * currentYearCost + option.beds * 2000).toLocaleString('en-US', {
-      style: 'currency',
-      currency: 'USD'
-    }) }}
-    <button class="btn btn-sm btn-warning d-flex" @click="purchaseLand(option)">
-      Purchase
-    </button>
+    <div class="row p-1">
+      <div class="col">
+        <div class="row">
+          <h6>
+            {{ option.name }}
+          </h6>
+        </div>
+        <div class="row ml-2">
+          {{ option.beds }} Beds
+        </div>
+        <div class="row ml-2">
+          {{ option.type }}, {{ option.acers }} Acers
+        </div>
+        <div class="row ml-2">
+          cost {{ (option.acers * currentYearCost + option.beds * 2000).toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD'
+          }) }}
+        </div>
+      </div>
+      <div class="col">
+        <button class="btn btn-sm btn-warning ml-auto" @click="purchaseLand(option)">
+          Purchase
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 

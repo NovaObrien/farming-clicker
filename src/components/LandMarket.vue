@@ -1,10 +1,12 @@
 <template>
   <div class="land-market">
-    <div class="card">
-      <h3 class="ml-3">
-        FarmerRealty.com
-      </h3>
-      <options-to-buy class="m-3 p-2 bg-info" v-for="o in otbs" :options-to-buy-prop="o" :key="o.id" />
+    <div class="row">
+      <div class="col bg-light shadow">
+        <h3 class="ml-3">
+          FarmerRealty.com
+        </h3>
+        <options-to-buy class="m-3" v-for="o in otbs" :options-to-buy-prop="o" :key="o.id" />
+      </div>
     </div>
   </div>
 </template>

@@ -1,11 +1,13 @@
 <template>
   <div class="game container-fluid">
-    <land-market class="mt-3" />
+    <div class="row d-flex justify-content-end pr-2 py-1 bg-secondary">
+      <h6>
+        {{ time.month }}, {{ time.season }} {{ time.year }}
+      </h6>
+    </div>
+    <land-market class="m-3" />
     <owned-land-menu />
     <!-- <hay /> -->
-    <h1>
-      {{ time.month }}, {{ time.season }} {{ time.year }}
-    </h1>
     <character />
     <turn />
     <event-modal />

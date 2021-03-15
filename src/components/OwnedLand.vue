@@ -1,6 +1,11 @@
 <template>
   <div class="owned-land">
-    {{ owned.name }}
+    <div class="row">
+      <div class="col bg-light shadow">
+        <h5>Manage</h5>
+        {{ owned.name }}
+      </div>
+    </div>
   </div>
 </template>
 

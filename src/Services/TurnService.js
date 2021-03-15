@@ -29,13 +29,16 @@ class TurnService {
 
   drawEvent() {
     const min = Math.ceil(1)
-    const max = Math.floor(3)
+    const max = Math.floor(100)
     const draw = Math.floor(Math.random() * (max - min + 1) + min)
 
     logger.log('draw is ' + draw)
-    if (draw === 1) {
+    // 20 % chance of DOL..
+    // 40 % chance of uneventfull
+    // 40 % chance of goodFortune
+    if (draw <= 20) {
       this.devilsOwnLuck()
-    } else if (draw === 2) {
+    } else if (draw <= 60) {
       this.uneventfull()
     } else {
       this.goodFortune()

@@ -1,5 +1,6 @@
 import { AppState } from '../AppState'
 import { saveState } from '../utils/LocalStorage'
+import { eventService } from './EventService'
 
 class TimeService {
   endTurn() {
@@ -28,6 +29,7 @@ class TimeService {
       AppState.time.month = 'March'
       AppState.time.season = 'Spring'
       AppState.character.age++
+      eventService.birthdayEvent()
     }
 
     saveState()

@@ -2,7 +2,7 @@
 import { AppState } from '../AppState'
 
 export function saveState() {
-  localStorage.setItem('farming-clicker', JSON.stringify({ character: AppState.character, time: AppState.time }))
+  localStorage.setItem('farming-clicker', JSON.stringify({ character: AppState.character, time: AppState.time, optionsToBuy: AppState.optionsToBuy, ownedLands: AppState.ownedLands }))
 }
 
 export function loadState() {
@@ -11,5 +11,7 @@ export function loadState() {
     // debugger
     AppState.character = data.character
     AppState.time = data.time
+    AppState.optionsToBuy = data.optionsToBuy
+    AppState.ownedLands = data.ownedLands
   }
 }

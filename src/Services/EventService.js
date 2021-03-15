@@ -14,5 +14,14 @@ class EventService {
   bankruptcyEvent() {
     // occurs when the player runs out of assets
   }
+
+  birthdayEvent() {
+    AppState.event.title = 'It\'s Your Birthday!!!'
+    AppState.event.greeting = ''
+    AppState.event.text = 'From everyone here at Management Co. we wish you another wonderfull year!'
+    AppState.event.closing = ''
+    AppState.event.closeDesc = 'Another year older...'
+    $('#eventModal').modal('show')
+  }
 }
 export const eventService = new EventService()

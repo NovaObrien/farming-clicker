@@ -1,6 +1,5 @@
 import { AppState } from '../AppState'
 import { saveState } from '../utils/LocalStorage'
-import { logger } from '../utils/Logger'
 
 class OptionToBuyService {
   checkMarketSlots() {
@@ -29,11 +28,9 @@ class OptionToBuyService {
 
   purchaseLand(option) {
     const money = AppState.character.currency
-    const yearCost = AppState.currentyearCost
+    const yearCost = AppState.currentYearCost
     const cost = option.acers * yearCost + option.beds * 2000
-    if (money < cost) {
-      logger.log('not enough money')
-    } else {
+    if (money >= cost) {
       AppState.character.currency -= cost
       // removes property and adds to owned list
       const index = AppState.optionsToBuy.findIndex(o => o.id === option.id)

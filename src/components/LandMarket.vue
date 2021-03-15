@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col bg-light shadow">
         <h3 class="ml-3">
-          FarmerRealty.com
+          Current Market
         </h3>
         <options-to-buy class="m-3" v-for="o in otbs" :options-to-buy-prop="o" :key="o.id" />
       </div>

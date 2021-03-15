@@ -30,7 +30,7 @@ export const AppState = reactive({
 
   // farm cost: year cost * acer + beds * 2000
   // bills is 5% of cost lets say... 500 *12 =6000 so lets say 20k for a year survival rate
-  currentyearCost: 196,
+  currentYearCost: 196,
 
   ownedLands: [],
 
@@ -44,5 +44,5 @@ export const AppState = reactive({
   mediumFarms: [{ id: 7, name: 'Rocky Creek Cottage', acers: 10, type: 'Hay', beds: 2 }, { id: 8, name: 'Rustic Homestead', acers: 10, type: 'Hay', beds: 2 }, { id: 9, name: 'Whispering Pines', acers: 10, type: 'Hay', beds: 2 }, { id: 10, name: 'Old Grove', acers: 10, type: 'Hay', beds: 2 }, { id: 11, name: 'Ridge Farms', acers: 10, type: 'Hay', beds: 2 }],
 
   largeFarms: [{ id: 13, name: 'Old North Ranch', acers: 10, type: 'Hay', beds: 2 }, { id: 14, name: 'Oakdale Ranch', acers: 10, type: 'Hay', beds: 2 }, { id: 15, name: 'Sunrise Cottage', acers: 10, type: 'Hay', beds: 2 }, { id: 16, name: 'Lunar Creek Homestead', acers: 10, type: 'Hay', beds: 2 }]
-
+// houses?
 })

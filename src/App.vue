@@ -9,6 +9,9 @@
     </router-view>
   </main>
   <footer>
+    <div class="row bg-dark d-flex justify-content-center">
+      <turn class="p-2" />
+    </div>
   </footer>
 </template>
 

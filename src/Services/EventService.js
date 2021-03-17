@@ -50,5 +50,9 @@ class EventService {
       AppState.tractors--
     }
   }
+
+  wonLottery() {
+
+  }
 }
 export const eventService = new EventService()

@@ -13,6 +13,12 @@ class EventService {
 
   bankruptcyEvent() {
     // occurs when the player runs out of assets
+    AppState.event.title = 'Bankruptcy'
+    AppState.event.greeting = ''
+    AppState.event.text = ''
+    AppState.event.closing = ''
+    AppState.event.closeDesc = 'It was fun while it lasted'
+    $('#eventModal').modal('show')
   }
 
   birthdayEvent() {
@@ -22,6 +28,27 @@ class EventService {
     AppState.event.closing = ''
     AppState.event.closeDesc = 'Another year older...'
     $('#eventModal').modal('show')
+  }
+
+  // Devils Own Luck Cards
+
+  tractorBroke() {
+    if (AppState.tractors === 0) {
+      AppState.event.title = 'Strange Feeling'
+      AppState.event.greeting = ''
+      AppState.event.text = 'You have an odd feeling that something wrong should\'ve happpened but didn\'t'
+      AppState.event.closing = ''
+      AppState.event.closeDesc = 'Strange'
+      $('#eventModal').modal('show')
+    } else {
+      AppState.event.title = 'Devil\'s Own Luck'
+      AppState.event.greeting = ''
+      AppState.event.text = 'Looks like a tractor broke down this month..'
+      AppState.event.closing = ''
+      AppState.event.closeDesc = 'Darn shame'
+      $('#eventModal').modal('show')
+      AppState.tractors--
+    }
   }
 }
 export const eventService = new EventService()

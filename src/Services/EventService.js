@@ -52,7 +52,12 @@ class EventService {
   }
 
   wonLottery() {
-
+    AppState.event.title = 'Lottery Ticket Winner'
+    AppState.event.greeting = ''
+    AppState.event.text = 'Looks like one of your lottery tickets paid off. $100 has been transfered into your account'
+    AppState.event.closing = ''
+    AppState.event.closeDesc = 'Nice'
+    $('#eventModal').modal('show')
   }
 }
 export const eventService = new EventService()

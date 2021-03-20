@@ -1,5 +1,6 @@
 import { AppState } from '../AppState'
 import $ from 'jquery'
+import { logger } from '../utils/Logger'
 
 class EventService {
   inherEvent() {
@@ -30,7 +31,7 @@ class EventService {
     $('#eventModal').modal('show')
   }
 
-  // Uneventfull
+  // Uneventfull  20-60
   uneventfull() {
     AppState.event.title = 'Just another month'
     AppState.event.greeting = ''
@@ -40,7 +41,7 @@ class EventService {
     $('#eventModal').modal('show')
   }
 
-  // Devils Own Luck Cards
+  // Devils Own Luck Cards 1-20
 
   // decent chance
   tractorBroke() {
@@ -63,23 +64,42 @@ class EventService {
   }
 
   brokenArm() {
-
+    logger.log('brokenArm')
   }
 
   sick() {
-
-  }
-
-  childPassing() {
-
+    logger.log('sick')
   }
 
   childSick() {
+    logger.log('childSick')
+  }
 
+  childPassing() {
+    logger.log('childPassing')
   }
 
   killPlayer() {
+    logger.log('killPlayer')
     // math.random based on age
+  }
+
+  miscarriage() {
+    logger.log('misscarriage')
+  }
+
+  wifePassing() {
+    logger.log('wifePassing')
+  }
+
+  cropFailure() {
+
+  }
+
+  // GoodFortunes 60-100
+
+  foundMoney() {
+    logger.log('foundMoney')
   }
 
   wonLottery() {
@@ -100,6 +120,10 @@ class EventService {
     AppState.event.closeDesc = 'Nice!'
     $('#eventModal').modal('show')
     AppState.character.currency += AppState.currentYearCost * 100
+  }
+
+  childBorn() {
+    logger.log('childBorn')
   }
 }
 export const eventService = new EventService()

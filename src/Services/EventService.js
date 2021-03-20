@@ -1,6 +1,5 @@
 import { AppState } from '../AppState'
 import $ from 'jquery'
-import { logger } from '../utils/Logger'
 
 class EventService {
   inherEvent() {
@@ -39,91 +38,6 @@ class EventService {
     AppState.event.closing = ''
     AppState.event.closeDesc = 'Okay'
     $('#eventModal').modal('show')
-  }
-
-  // Devils Own Luck Cards 1-20
-
-  // decent chance
-  tractorBroke() {
-    if (AppState.tractors === 0) {
-      AppState.event.title = 'Strange Feeling'
-      AppState.event.greeting = ''
-      AppState.event.text = 'You have an odd feeling that something wrong should\'ve happpened but didn\'t'
-      AppState.event.closing = ''
-      AppState.event.closeDesc = 'Strange'
-      $('#eventModal').modal('show')
-    } else {
-      AppState.event.title = 'Devil\'s Own Luck'
-      AppState.event.greeting = ''
-      AppState.event.text = 'Looks like a tractor broke down this month..'
-      AppState.event.closing = ''
-      AppState.event.closeDesc = 'Darn shame'
-      $('#eventModal').modal('show')
-      AppState.tractors--
-    }
-  }
-
-  brokenArm() {
-    logger.log('brokenArm')
-  }
-
-  sick() {
-    logger.log('sick')
-  }
-
-  childSick() {
-    logger.log('childSick')
-  }
-
-  childPassing() {
-    logger.log('childPassing')
-  }
-
-  killPlayer() {
-    logger.log('killPlayer')
-    // math.random based on age
-  }
-
-  miscarriage() {
-    logger.log('misscarriage')
-  }
-
-  wifePassing() {
-    logger.log('wifePassing')
-  }
-
-  cropFailure() {
-
-  }
-
-  // GoodFortunes 60-100
-
-  foundMoney() {
-    logger.log('foundMoney')
-  }
-
-  wonLottery() {
-    AppState.event.title = 'Lottery Ticket Winner'
-    AppState.event.greeting = ''
-    AppState.event.text = 'Looks like one of your lottery tickets paid off. $100 has been transfered into your account'
-    AppState.event.closing = ''
-    AppState.event.closeDesc = 'Nice'
-    $('#eventModal').modal('show')
-    AppState.character.currency += 100
-  }
-
-  wonBigLottery() {
-    AppState.event.title = 'Won Big!'
-    AppState.event.greeting = ''
-    AppState.event.text = 'CONGRATULATIONS, it\'s your lucky day! You won big! ' + AppState.currentYearCost * 100
-    AppState.event.closing = ''
-    AppState.event.closeDesc = 'Nice!'
-    $('#eventModal').modal('show')
-    AppState.character.currency += AppState.currentYearCost * 100
-  }
-
-  childBorn() {
-    logger.log('childBorn')
   }
 }
 export const eventService = new EventService()

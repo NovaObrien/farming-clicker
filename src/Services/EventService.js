@@ -30,8 +30,19 @@ class EventService {
     $('#eventModal').modal('show')
   }
 
+  // Uneventfull
+  uneventfull() {
+    AppState.event.title = 'Just another month'
+    AppState.event.greeting = ''
+    AppState.event.text = 'Sometimes nothing happening is okay'
+    AppState.event.closing = ''
+    AppState.event.closeDesc = 'Okay'
+    $('#eventModal').modal('show')
+  }
+
   // Devils Own Luck Cards
 
+  // decent chance
   tractorBroke() {
     if (AppState.tractors === 0) {
       AppState.event.title = 'Strange Feeling'
@@ -51,6 +62,26 @@ class EventService {
     }
   }
 
+  brokenArm() {
+
+  }
+
+  sick() {
+
+  }
+
+  childPassing() {
+
+  }
+
+  childSick() {
+
+  }
+
+  killPlayer() {
+    // math.random based on age
+  }
+
   wonLottery() {
     AppState.event.title = 'Lottery Ticket Winner'
     AppState.event.greeting = ''
@@ -58,6 +89,17 @@ class EventService {
     AppState.event.closing = ''
     AppState.event.closeDesc = 'Nice'
     $('#eventModal').modal('show')
+    AppState.character.currency += 100
+  }
+
+  wonBigLottery() {
+    AppState.event.title = 'Won Big!'
+    AppState.event.greeting = ''
+    AppState.event.text = 'CONGRATULATIONS, it\'s your lucky day! You won big! ' + AppState.currentYearCost * 100
+    AppState.event.closing = ''
+    AppState.event.closeDesc = 'Nice!'
+    $('#eventModal').modal('show')
+    AppState.character.currency += AppState.currentYearCost * 100
   }
 }
 export const eventService = new EventService()

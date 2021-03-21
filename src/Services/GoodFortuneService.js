@@ -30,7 +30,13 @@ class GoodFortuneService {
   }
 
   childBorn() {
-    logger.log('childBorn')
+    AppState.event.title = 'You had a child!'
+    AppState.event.greeting = ''
+    AppState.event.text = 'Congrats! Parenthood can feel like alot but it\'s always worth it in the end.'
+    AppState.event.closing = ''
+    AppState.event.closeDesc = 'Okay'
+    $('#eventModal').modal('show')
+    AppState.character.children++
   }
 
   investmentPaidOff() {

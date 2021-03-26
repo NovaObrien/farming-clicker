@@ -1,4 +1,5 @@
 import $ from 'jquery'
+import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
 
 class DOLService {
@@ -14,7 +15,7 @@ class DOLService {
       AppState.event.closeDesc = 'Strange'
       $('#eventModal').modal('show')
     } else {
-      AppState.event.title = 'Devil\'s Own Luck'
+      AppState.event.title = 'Tractor Breakdown'
       AppState.event.greeting = ''
       AppState.event.text = 'Looks like a tractor broke down this month..'
       AppState.event.closing = ''
@@ -25,7 +26,13 @@ class DOLService {
   }
 
   brokenArm() {
-    logger.log('brokenArm')
+    AppState.event.title = 'Broken Arm'
+    AppState.event.greeting = ''
+    AppState.event.text = 'It\'ll heal, but medical bills are never any fun.'
+    AppState.event.closing = ''
+    AppState.event.closeDesc = 'Ouch'
+    $('#eventModal').modal('show')
+    AppState.character.currency -= 150
   }
 
   sick() {

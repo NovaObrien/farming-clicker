@@ -36,15 +36,33 @@ class DOLService {
   }
 
   sick() {
-    logger.log('sick')
+    AppState.event.title = 'Sickness'
+    AppState.event.greeting = ''
+    AppState.event.text = 'Weather its the common cold or ammonia, getting sick is costly.'
+    AppState.event.closing = ''
+    AppState.event.closeDesc = 'Yuck'
+    $('#eventModal').modal('show')
+    AppState.character.currency -= 100
   }
 
   childSick() {
-    logger.log('childSick')
+    AppState.event.title = 'A sick child'
+    AppState.event.greeting = ''
+    AppState.event.text = 'It\'s one thing when you get sick but seeing a loved one sick is all that much harder.'
+    AppState.event.closing = ''
+    AppState.event.closeDesc = 'Thank god for medicine'
+    $('#eventModal').modal('show')
+    AppState.character.currency -= 100
   }
 
   childPassing() {
-    logger.log('childPassing')
+    AppState.event.title = 'Death of a Child'
+    AppState.event.greeting = ''
+    AppState.event.text = 'No one ever wants to see their child pass before them.. Sometimes it\'s just unavoidable.. Condolences..'
+    AppState.event.closing = ''
+    AppState.event.closeDesc = 'Life will never be the same...'
+    $('#eventModal').modal('show')
+    AppState.character.children--
   }
 
   killPlayer() {

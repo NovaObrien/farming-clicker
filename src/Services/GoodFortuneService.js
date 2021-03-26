@@ -40,7 +40,13 @@ class GoodFortuneService {
   }
 
   investmentPaidOff() {
-    logger.log('investmentPaidOff')
+    AppState.event.title = 'An investment paid off'
+    AppState.event.greeting = ''
+    AppState.event.text = 'Looks like a past invesment you made finnaly showed some fruit. Don\'t spend it all in one place!'
+    AppState.event.closing = ''
+    AppState.event.closeDesc = 'Wonderfull'
+    $('#eventModal').modal('show')
+    AppState.character.currency += 1000
   }
 }
 export const goodFortuneService = new GoodFortuneService()

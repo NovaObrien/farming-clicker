@@ -55,6 +55,16 @@ class DOLService {
     AppState.character.currency -= 100
   }
 
+  costlyInvestment() {
+    AppState.event.title = 'Bad Investment'
+    AppState.event.greeting = ''
+    AppState.event.text = 'Sometimes you win some, this time you loss.'
+    AppState.event.closing = ''
+    AppState.event.closeDesc = 'Can\'t win them all'
+    $('#eventModal').modal('show')
+    AppState.character.currency -= 500
+  }
+
   childPassing() {
     AppState.event.title = 'Death of a Child'
     AppState.event.greeting = ''
@@ -66,16 +76,13 @@ class DOLService {
   }
 
   killPlayer() {
-    logger.log('killPlayer')
-    // math.random based on age
-  }
-
-  miscarriage() {
-    logger.log('misscarriage')
-  }
-
-  wifePassing() {
-    logger.log('wifePassing')
+    AppState.event.title = 'Game Over'
+    AppState.event.greeting = ''
+    AppState.event.text = 'You\'ve come along way in the game of life, but every begining has to have an end.. Thanks for Playing!'
+    AppState.event.closing = ''
+    AppState.event.closeDesc = 'Goodbye World'
+    $('#eventModal').modal('show')
+    // TODO add a way to show player stats, and a way to reset restart the game.
   }
 
   cropFailure() {

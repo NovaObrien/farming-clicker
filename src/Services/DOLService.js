@@ -60,7 +60,7 @@ class DOLService {
     AppState.event.greeting = ''
     AppState.event.text = 'Sometimes you win some, this time you loss.'
     AppState.event.closing = ''
-    AppState.event.closeDesc = 'Can\'t win them all'
+    AppState.event.closeDesc = 'Can\'t win them all'npm
     $('#eventModal').modal('show')
     AppState.character.currency -= 500
   }

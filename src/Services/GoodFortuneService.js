@@ -116,7 +116,7 @@ class GoodFortuneService {
   }
 
   wonChiliFest() {
-    AppState.event.title = 'Best Chili Winner!'
+    AppState.event.title = 'Chili Contest Winner!'
     AppState.event.greeting = ''
     AppState.event.text = 'Looks like the judges loved your chili! Enjoy the sweet trophy! ($150 has been added to your account)'
     AppState.event.closing = ''

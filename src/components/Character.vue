@@ -1,12 +1,15 @@
 <template>
-  <div class="character bg-light shadow">
+  <div class="character bg-secondary rounded shadow">
     <div class="row">
       <div class="col m-2">
-        <h3 class="mb-3">
-          Welcome Back, {{ character.name }}
-        </h3>
+        <u>
+
+          <h3 class="mb-3">
+            Welcome Back, {{ character.name }}
+          </h3>
+        </u>
         <h4>
-          Available {{ (character.currency).toLocaleString('en-US', {
+          Available: {{ (character.currency).toLocaleString('en-US', {
             style: 'currency',
             currency: 'USD'
           }) }}

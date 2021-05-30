@@ -6,17 +6,17 @@
       </h5>
     </div>
     <div class="row">
-      <div class="col-3 rounded-top ml-3 mt-2" :class="state.hideAccount.truthy == true ? 'not-selected' : 'selected'" @click="showAccount">
+      <div class="col rounded-top ml-4 mt-2" :class="state.hideAccount.truthy == true ? 'not-selected' : 'selected'" @click="showAccount">
         <h6 class="mt-2">
           Account
         </h6>
       </div>
-      <div class="col-3 rounded-top ml-3 mt-2" :class="state.hideManage.truthy == true ? 'not-selected' : 'selected'" @click="showManage">
+      <div class="col rounded-top mx-3 mt-2" :class="state.hideManage.truthy == true ? 'not-selected' : 'selected'" @click="showManage">
         <h6 class="mt-2">
           Manage
         </h6>
       </div>
-      <div class="col-3 rounded-top ml-3 mt-2" :class="state.hideRealEstate.truthy == true ? 'not-selected' : 'selected'" @click="showRealEstate">
+      <div class="col rounded-top mr-4 mt-2" :class="state.hideRealEstate.truthy == true ? 'not-selected' : 'selected'" @click="showRealEstate">
         <h6>
           Real Estate
         </h6>

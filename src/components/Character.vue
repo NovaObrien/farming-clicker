@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col m-2">
         <h3 class="mb-3">
-          Welcome Back {{ character.name }}
+          Welcome Back, {{ character.name }}
         </h3>
         <h4>
           Available {{ (character.currency).toLocaleString('en-US', {

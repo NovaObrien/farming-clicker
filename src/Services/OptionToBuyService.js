@@ -43,6 +43,18 @@ class OptionToBuyService {
   sellLand(owned) {
     const yearCost = AppState.currentYearCost
     AppState.character.currency += ((owned.acers * yearCost + owned.beds * 2000) * 0.8)
+
+    const index = AppState.ownedLands.findIndex(o => o.id === owned.id)
+    AppState.ownedLands.splice(index, 1)
+
+    if (owned.acers <= 10) {
+      AppState.smallFarms.unshift(owned)
+    } else if (owned.acers <= 40) {
+      AppState.mediumFarms.unshift(owned)
+    } else {
+      AppState.largeFarms.unshift(owned)
+    }
+    saveState()
   }
 }
 export const optionToBuyService = new OptionToBuyService()

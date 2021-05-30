@@ -1,7 +1,7 @@
 <template>
   <div class="land-market">
     <div class="row">
-      <div class="col bg-primary rounded shadow">
+      <div class="col prop-row overflow-auto bg-primary rounded shadow">
         <h3 class="ml-3">
           Current Market
         </h3>
@@ -32,5 +32,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.prop-row{
+  height: 63vh;
+}
 </style>

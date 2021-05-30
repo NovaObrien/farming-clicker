@@ -43,6 +43,6 @@ color: rgb(107, 85, 24);
 font-size: 13px;
 }
 .prop-row{
-  height: 60vh;
+  height: 63vh;
 }
 </style>

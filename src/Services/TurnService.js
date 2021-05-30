@@ -1,5 +1,8 @@
 import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
+import { dolService } from './DOLService'
+import { eventService } from './EventService'
+import { goodFortuneService } from './GoodFortuneService'
 
 class TurnService {
   endTurn() {
@@ -13,7 +16,7 @@ class TurnService {
     // at the end of the year send in event showing a recolection of the past year
     // We will also pay bills for our house/ farms
     // this.updateOTBs()
-    this.drawEvent()
+    if (AppState.time.turn !== 3) { this.drawEvent() }
     this.payBills()
   }
 
@@ -46,25 +49,25 @@ class TurnService {
     // 40 % chance of uneventfull
     // 40 % chance of goodFortune
     if (draw <= 20) {
-      this.devilsOwnLuck()
+      this.devilsOwnLuck(draw)
     } else if (draw <= 60) {
       this.uneventfull()
     } else {
-      this.goodFortune()
+      this.goodFortune(draw)
     }
   }
 
   // Card Draws Below
-  devilsOwnLuck() {
-    logger.log('DOL')
+  devilsOwnLuck(draw) {
+    dolService.drawFate(draw)
   }
 
   uneventfull() {
-    logger.log('uneventfull')
+    eventService.uneventfull()
   }
 
-  goodFortune() {
-    logger.log('Good Fortune')
+  goodFortune(draw) {
+    goodFortuneService.drawFate(draw)
   }
 }
 export const turnService = new TurnService()

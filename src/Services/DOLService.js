@@ -4,6 +4,50 @@ import { logger } from '../utils/Logger'
 
 class DOLService {
 // Devils Own Luck Cards 1-20
+  drawFate(draw) {
+    switch (draw) {
+      case 1:
+      case 16:
+      case 17:
+        this.tractorBroke()
+        break
+      case 2:
+      case 15:
+        this.brokenArm()
+        break
+      case 3:
+      case 14:
+        this.sick()
+        break
+      case 4:
+      case 18:
+      case 19:
+        this.childSick()
+        break
+      case 5:
+      case 20:
+        this.costlyInvestment()
+        break
+      case 6:
+        this.childPassing()
+        break
+      case 7:
+        this.killPlayer()
+        break
+      case 8:
+        this.cropFailure()
+        break
+      case 9:
+      case 11:
+      case 12:
+      case 13:
+        this.badWeather()
+        break
+
+      default:
+        break
+    }
+  }
 
   // decent chance
   tractorBroke() {

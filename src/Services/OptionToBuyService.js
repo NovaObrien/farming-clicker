@@ -39,5 +39,10 @@ class OptionToBuyService {
       saveState()
     }
   }
+
+  sellLand(owned) {
+    const yearCost = AppState.currentYearCost
+    AppState.character.currency += ((owned.acers * yearCost + owned.beds * 2000) * 0.8)
+  }
 }
 export const optionToBuyService = new OptionToBuyService()

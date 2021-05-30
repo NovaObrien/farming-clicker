@@ -16,11 +16,9 @@
     </div>
     <div class="row">
       <div class="col-12 mt-5">
-        <u class="re-link">
-          <p>
-            Need Some Land? Click here for Listings!
-          </p>
-        </u>
+        <p class="re-link ml-3">
+          Hint: Need Some Land? Check out the Real Estate Tab
+        </p>
       </div>
     </div>
   </div>
@@ -42,9 +40,7 @@ export default {
 <style lang="scss" scoped>
 .re-link{
 color: rgb(107, 85, 24);
-}
-.re-link:hover{
-  color: darkgray;
+font-size: 13px;
 }
 .prop-row{
   height: 60vh;

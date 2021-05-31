@@ -2,7 +2,7 @@
   <div class="owned-land-menu">
     <div class="row">
       <div class="col mx-3 prop-row overflow-auto bg-primary rounded shadow">
-        <owned-land v-for="own in ownedLands" :owned-land-prop="own" :key="own.id" />
+        <owned-land class="m-3" v-for="own in ownedLands" :owned-land-prop="own" :key="own.id" />
         <div class="col-12 text-center text-light p-2 " v-if="ownedLands.length === 0">
           <h1 class="text-dark p-2 border">
             Aquire Property to Use This Feature

@@ -3,7 +3,10 @@
     <div class="row">
       <div class="col mx-3 prop-row overflow-auto bg-primary rounded shadow">
         <div class="row">
-          {{ tractors }}
+          <div class="col">
+            <i class="fas fa-tractor text-green"></i>
+            {{ tractors }}
+          </div>
         </div>
         <owned-land class="m-3" v-for="own in ownedLands" :owned-land-prop="own" :key="own.id" />
         <div class="col-12 text-center text-light p-2 " v-if="ownedLands.length === 0">
@@ -46,6 +49,9 @@ export default {
 .hint{
 color: rgb(107, 85, 24);
 font-size: 13px;
+}
+.text-green{
+  color: rgb(0, 0, 0);
 }
 @media (min-height: 630px){
 .prop-row{

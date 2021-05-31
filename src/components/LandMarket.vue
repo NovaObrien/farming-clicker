@@ -11,7 +11,7 @@
 
         <options-to-buy class="m-3" v-for="o in otbs.largeFarms" :options-to-buy-prop="o" :key="o.id" />
 
-        <div class="col-12 text-center text-light p-2 " v-if="otbs.length === 0">
+        <div class="col-12 text-center text-light p-2 " v-if="otbs.smallFarms.length === 0 && otbs.mediumFarms.length === 0 && otbs.largeFarms.length === 0">
           <h1 class="text-dark p-2 border">
             No Available Listings, Check back soon!
           </h1>

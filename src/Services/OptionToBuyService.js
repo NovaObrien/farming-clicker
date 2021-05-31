@@ -66,9 +66,11 @@ class OptionToBuyService {
   addSmallFarm() {
     const otbSmallFarms = AppState.optionsToBuy.smallFarms
     const smallFarms = AppState.smallFarms
-    if (otbSmallFarms.length <= 3 && smallFarms.length !== 0) {
-      const index = Math.floor(Math.random() * (smallFarms.length) - 1)
-      logger.log(index)
+
+    if (otbSmallFarms.length < 3 && smallFarms.length !== 0) {
+      const index = Math.floor(Math.random() * smallFarms.length)
+
+      logger.log('index: ' + index)
 
       const farm = AppState.smallFarms[index]
 
@@ -88,9 +90,10 @@ class OptionToBuyService {
   }
 
   // =================================
+  // ========== End Case =============
+  // =================================
 
   purchaseLand(option) {
-    logger.log(option)
     const money = AppState.character.currency
     const yearCost = AppState.currentYearCost
     const cost = option.acers * yearCost + option.beds * 2000
@@ -101,8 +104,7 @@ class OptionToBuyService {
         const index = AppState.optionsToBuy.smallFarms.findIndex(o => o.id === option.id)
         AppState.optionsToBuy.smallFarms.splice(index, 1)
         AppState.ownedLands.unshift(option)
-      }
-      if (option.acers <= 100) {
+      } else if (option.acers <= 100) {
         const index = AppState.optionsToBuy.mediumFarms.findIndex(o => o.id === option.id)
         AppState.optionsToBuy.mediumFarms.splice(index, 1)
         AppState.ownedLands.unshift(option)

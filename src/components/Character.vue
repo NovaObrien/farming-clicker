@@ -4,7 +4,7 @@
       <div class="col prop-row bg-primary overflow-auto rounded shadow mx-3">
         <div class="m-2 bg-secondary rounded p-2 border-light border">
           <h4 class="text-font mb-3">
-            Welcome Back {{ character.name }}
+            Welcome Back, {{ character.name }}
           </h4>
           <h5 class="pb-2">
             Available: {{ (character.currency).toLocaleString('en-US', {

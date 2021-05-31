@@ -16,7 +16,7 @@ InProgress
 
 6. Need a way to add sound 
 
-7. OTB logic needs finished for rest of cases
+<!-- WORKING 7. OTB logic needs finished for rest of cases -->
 
 8. Hiring Hands Needs Implemented in Managed properties
 
@@ -29,3 +29,5 @@ InProgress
 12. losing scenarios, such as running out of money
 
 13. fill out Help Modal text
+
+14. Move Hints on page to Help Modal && Replace with Farming Co. Logo

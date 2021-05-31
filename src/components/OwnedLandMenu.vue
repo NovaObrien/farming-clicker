@@ -3,9 +3,17 @@
     <div class="row">
       <div class="col mx-3 prop-row overflow-auto bg-primary rounded shadow">
         <div class="row">
-          <div class="col">
+          <div class="col-3">
             <i class="fas fa-tractor text-green"></i>
             {{ tractors }}
+          </div>
+          <div class="col">
+            <p>
+              Monthly Costs: {{ costs.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD'
+              }) }}
+            </p>
           </div>
         </div>
         <owned-land class="m-3" v-for="own in ownedLands" :owned-land-prop="own" :key="own.id" />
@@ -34,7 +42,8 @@ export default {
   setup() {
     return {
       ownedLands: computed(() => AppState.ownedLands),
-      tractors: computed(() => AppState.character.tractors)
+      tractors: computed(() => AppState.character.tractors),
+      costs: computed(() => AppState.monthlyCosts)
     }
   }
 }
@@ -57,5 +66,8 @@ font-size: 13px;
 .prop-row{
   height: 63vh;
 }
+}
+p{
+  font-size: 14px;
 }
 </style>

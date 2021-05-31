@@ -2,7 +2,16 @@
 import { AppState } from '../AppState'
 
 export function saveState() {
-  localStorage.setItem('farming-clicker', JSON.stringify({ character: AppState.character, time: AppState.time, optionsToBuy: AppState.optionsToBuy, ownedLands: AppState.ownedLands, smallFarms: AppState.smallFarms, mediumFarms: AppState.mediumFarms, LargeFarms: AppState.largeFarms }))
+  localStorage.setItem('farming-clicker', JSON.stringify({
+    character: AppState.character,
+    time: AppState.time,
+    optionsToBuy: AppState.optionsToBuy,
+    ownedLands: AppState.ownedLands,
+    smallFarms: AppState.smallFarms,
+    mediumFarms: AppState.mediumFarms,
+    LargeFarms: AppState.largeFarms,
+    monthlyCosts: AppState.monthlyCosts
+  }))
 }
 
 export function loadState() {
@@ -16,5 +25,6 @@ export function loadState() {
     AppState.smallFarms = data.smallFarms
     AppState.mediumFarms = data.mediumFarms
     AppState.largeFarms = data.largeFarms
+    AppState.monthlyCosts = data.monthlyCosts
   }
 }

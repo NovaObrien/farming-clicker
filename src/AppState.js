@@ -31,7 +31,7 @@ export const AppState = reactive({
   // farm cost: year cost * acer + beds * 2000
   // bills is 5% of cost lets say... 500 *12 =6000 so lets say 20k for a year survival rate
   currentYearCost: 196,
-
+  monthlyCosts: 150,
   ownedLands: [],
 
   optionsToBuy: {
@@ -43,6 +43,9 @@ export const AppState = reactive({
   names: ['Lexi', 'Gwenda', 'Charly', 'Leianna', 'Jonie', 'Kreig', 'Kenzie', 'Marita', 'Lauren', 'Mitch', 'Ansel', 'Mike', 'Yale', 'Mason', 'Joe', 'Alan', 'Tom', 'Boby'],
 
   // TODO Need to update information about acres ect | Acers Updated to fit farm type |
+
+  // Farm Types sm <= 10 || md <= 100 || lg > 100
+
   smallFarms: [{ id: 1, name: 'Birch Wood Farm', acers: 10, type: 'Hay', beds: 2 }, { id: 3, name: 'Cold Creek Cottage', acers: 10, type: 'Hay', beds: 2 }, { id: 4, name: 'Oak Acres', acers: 10, type: 'Hay', beds: 3 }, { id: 5, name: 'Old Homestead', acers: 8, type: 'Hay', beds: 3 }],
 
   mediumFarms: [{ id: 7, name: 'Rocky Creek Cottage', acers: 20, type: 'Hay', beds: 2 }, { id: 8, name: 'Rustic Homestead', acers: 25, type: 'Hay', beds: 2 }, { id: 9, name: 'Whispering Pines', acers: 55, type: 'Hay', beds: 2 }, { id: 10, name: 'Old Grove', acers: 75, type: 'Hay', beds: 2 }, { id: 11, name: 'Ridge Farms', acers: 100, type: 'Hay', beds: 2 }],

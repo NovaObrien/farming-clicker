@@ -1,6 +1,6 @@
 <template>
   <div class="options-to-buy">
-    <div class="row p-1">
+    <div class="row bg-secondary rounded shadow px-2 py-3">
       <div class="col">
         <div class="row">
           <h6>

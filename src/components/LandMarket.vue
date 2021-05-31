@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-12 mt-5">
+      <div class="col-12 mt-4">
         <p class="hint ml-3">
           Hint: New Listings have a chance to show up every month! As well as leave... Don't Miss out!
         </p>

@@ -29,7 +29,7 @@
             </div>
           </div>
           <div class="modal-footer d-flex justify-content-center">
-            <button type="button" class="btn btn-warning" data-dismiss="modal">
+            <button type="button" class="btn btn-success" data-dismiss="modal">
               {{ event.closeDesc }}
             </button>
           </div>

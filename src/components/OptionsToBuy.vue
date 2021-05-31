@@ -1,27 +1,38 @@
 <template>
   <div class="options-to-buy">
-    <div class="row bg-secondary rounded shadow px-2 py-3">
-      <div class="col">
+    <div class="row bg-secondary rounded shadow-lg border border-light px-2 py-3">
+      <div class="col-12">
+        <h5>
+          {{ option.name }}
+        </h5>
+      </div>
+      <div class="col ml-2">
         <div class="row">
-          <h6>
-            {{ option.name }}
-          </h6>
+          <div class="col">
+            Beds: {{ option.beds }}
+          </div>
         </div>
-        <div class="row ml-2">
-          {{ option.beds }} Beds
+        <div class="row">
+          <div class="col">
+            Acers: {{ option.acers }}
+          </div>
         </div>
-        <div class="row ml-2">
-          {{ option.type }}, {{ option.acers }} Acers
+        <div class="row">
+          <div class="col">
+            Type: {{ option.type }}
+          </div>
         </div>
-        <div class="row ml-2">
-          Cost {{ (option.acers * currentYearCost + option.beds * 2000).toLocaleString('en-US', {
-            style: 'currency',
-            currency: 'USD'
-          }) }}
+        <div class="row">
+          <div class="col">
+            Cost: {{ (option.acers * currentYearCost + option.beds * 2000).toLocaleString('en-US', {
+              style: 'currency',
+              currency: 'USD'
+            }) }}
+          </div>
         </div>
       </div>
-      <div class="col">
-        <button class="btn btn-sm btn-warning ml-auto" @click="purchaseLand(option)">
+      <div class="col d-flex align-items-end ml-3">
+        <button class="btn btn-success border-primary" @click="purchaseLand(option)">
           Purchase
         </button>
       </div>
@@ -81,7 +92,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.c{
-  color: #39af43;
-}
+
 </style>

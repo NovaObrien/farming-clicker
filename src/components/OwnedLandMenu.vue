@@ -11,9 +11,9 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-12 mt-5">
+      <div class="col-12 mt-4">
         <p class="hint ml-3">
-          Hint: Need Some Land? Check out the Real Estate Tab
+          Hint: Need Some Land? Check out the Listings Tab
         </p>
       </div>
     </div>
@@ -34,11 +34,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.prop-row{
+  height: 63vh;
+  border: solid var(--dark);
+  border-width: 2px;
+}
 .hint{
 color: rgb(107, 85, 24);
 font-size: 13px;
-}
-.prop-row{
-  height: 63vh;
 }
 </style>

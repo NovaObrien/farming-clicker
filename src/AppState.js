@@ -43,7 +43,7 @@ export const AppState = reactive({
   names: ['Lexi', 'Gwenda', 'Charly', 'Leianna', 'Jonie', 'Kreig', 'Kenzie', 'Marita', 'Lauren', 'Mitch', 'Ansel', 'Mike', 'Yale', 'Mason', 'Joe', 'Alan', 'Tom', 'Boby'],
 
   // TODO Need to update information about acres ect | Acers Updated to fit farm type |
-  smallFarms: [{ id: 1, name: 'Birch Wood Farm', acers: 10, type: 'Hay', beds: 2 }, { id: 3, name: 'ColdCreek Cottage', acers: 10, type: 'Hay', beds: 2 }, { id: 4, name: 'Oak Acres', acers: 10, type: 'Hay', beds: 3 }, { id: 5, name: 'Old Homestead', acers: 8, type: 'Hay', beds: 3 }],
+  smallFarms: [{ id: 1, name: 'Birch Wood Farm', acers: 10, type: 'Hay', beds: 2 }, { id: 3, name: 'Cold Creek Cottage', acers: 10, type: 'Hay', beds: 2 }, { id: 4, name: 'Oak Acres', acers: 10, type: 'Hay', beds: 3 }, { id: 5, name: 'Old Homestead', acers: 8, type: 'Hay', beds: 3 }],
 
   mediumFarms: [{ id: 7, name: 'Rocky Creek Cottage', acers: 20, type: 'Hay', beds: 2 }, { id: 8, name: 'Rustic Homestead', acers: 25, type: 'Hay', beds: 2 }, { id: 9, name: 'Whispering Pines', acers: 55, type: 'Hay', beds: 2 }, { id: 10, name: 'Old Grove', acers: 75, type: 'Hay', beds: 2 }, { id: 11, name: 'Ridge Farms', acers: 100, type: 'Hay', beds: 2 }],
 

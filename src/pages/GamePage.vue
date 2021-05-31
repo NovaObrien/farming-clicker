@@ -1,24 +1,24 @@
 <template>
   <div class="game container-fluid">
-    <div class="row d-flex justify-content-center py-1 bg-secondary">
+    <div class="row d-flex justify-content-center mb-3 bg-secondary border-bottom border-info text-font pt-1">
       <h5>
         {{ time.month }}, {{ time.season }} {{ time.year }}
       </h5>
     </div>
     <div class="row">
-      <div class="col rounded-top ml-4 mt-2" :class="state.hideAccount.truthy == true ? 'not-selected' : 'selected'" @click="showAccount">
+      <div class="col rounded-top ml-4" :class="state.hideAccount.truthy == true ? 'not-selected' : 'selected'" @click="showAccount">
         <h6 class="mt-2">
           Account
         </h6>
       </div>
-      <div class="col rounded-top mx-3 mt-2" :class="state.hideManage.truthy == true ? 'not-selected' : 'selected'" @click="showManage">
+      <div class="col rounded-top mx-3" :class="state.hideManage.truthy == true ? 'not-selected' : 'selected'" @click="showManage">
         <h6 class="mt-2">
           Manage
         </h6>
       </div>
-      <div class="col rounded-top mr-4 mt-2" :class="state.hideRealEstate.truthy == true ? 'not-selected' : 'selected'" @click="showRealEstate">
-        <h6>
-          Real Estate
+      <div class="col rounded-top mr-4" :class="state.hideRealEstate.truthy == true ? 'not-selected' : 'selected'" @click="showRealEstate">
+        <h6 class="mt-2">
+          Listings
         </h6>
       </div>
     </div>
@@ -100,10 +100,18 @@ export default
   display: inherit;
 }
 .not-selected{
- background-color: rgb(170, 166, 166);
+  background-color: var(--primary);
+  border: solid var(--info);
+  border-width: 1px 2px 0 2px;
+  margin-top: 10px;
 }
 .selected{
-  background-color: rgb(187, 157, 157);
+  color: var(--light);
+  background-color: var(--info);
+  border: solid var(--dark);
+  border-width: 1px 2px 0 2px;
 }
-
+.text-font{
+  font-family: 'Merriweather', serif;
+}
 </style>

@@ -46,6 +46,8 @@ export default {
 <style lang="scss" scoped>
 .prop-row{
   height: 63vh;
+  border: solid var(--dark);
+  border-width: 2px;
 }
 .hint{
 color: rgb(107, 85, 24);

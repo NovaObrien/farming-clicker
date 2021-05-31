@@ -5,7 +5,8 @@ export const AppState = reactive({
     name: '',
     age: 28,
     children: 0,
-    currency: 900000
+    currency: 900000,
+    tractors: 0
 
   },
   time: {
@@ -26,7 +27,6 @@ export const AppState = reactive({
   fruits: {},
   cattle: {},
   farmerFate: {},
-  tractors: 0,
 
   // farm cost: year cost * acer + beds * 2000
   // bills is 5% of cost lets say... 500 *12 =6000 so lets say 20k for a year survival rate

@@ -1,7 +1,7 @@
 <template>
-  <div class="character bg-primary rounded shadow">
+  <div class="character ">
     <div class="row">
-      <div class="col ml-4 m-2">
+      <div class="col bg-primary rounded shadow-lg mx-3">
         <u>
           <h3 class="mb-3">
             Welcome Back, {{ character.name }}

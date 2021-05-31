@@ -22,7 +22,8 @@
         </h6>
       </div>
     </div>
-    <land-market class="mx-3" :class="state.hideRealEstate.truthy == true ? 'hide-content' : 'show-content'" />
+
+    <land-market :class="state.hideRealEstate.truthy == true ? 'hide-content' : 'show-content'" />
     <owned-land-menu :class="state.hideManage.truthy == true ? 'hide-content' : 'show-content'" />
     <!-- <hay /> -->
     <character :class="state.hideAccount.truthy == true ? 'hide-content' : 'show-content'" />

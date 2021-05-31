@@ -1,11 +1,7 @@
 <template>
   <div class="owned-land-menu">
     <div class="row">
-      <div class="col">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col mx-3 prop-row overflow-auto bg-primary rounded">
+      <div class="col mx-3 prop-row overflow-auto bg-primary rounded shadow">
         <owned-land v-for="own in ownedLands" :owned-land-prop="own" :key="own.id" />
         <div class="col-12 text-center text-light p-2 " v-if="ownedLands.length === 0">
           <h1 class="text-dark p-2 border">
@@ -16,7 +12,7 @@
     </div>
     <div class="row">
       <div class="col-12 mt-5">
-        <p class="re-link ml-3">
+        <p class="hint ml-3">
           Hint: Need Some Land? Check out the Real Estate Tab
         </p>
       </div>
@@ -38,7 +34,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.re-link{
+.hint{
 color: rgb(107, 85, 24);
 font-size: 13px;
 }

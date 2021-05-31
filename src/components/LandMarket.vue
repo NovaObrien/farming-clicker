@@ -1,7 +1,7 @@
 <template>
   <div class="land-market">
     <div class="row">
-      <div class="col prop-row overflow-auto bg-primary rounded shadow">
+      <div class="col prop-row overflow-auto bg-primary rounded shadow mx-3">
         <h3 class="ml-3">
           Current Market
         </h3>
@@ -11,6 +11,13 @@
             No Available Listings, Check back soon!
           </h1>
         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mt-5">
+        <p class="hint ml-3">
+          Hint: New Listings have a chance to show up every month! As well as leave... Don't Miss out!
+        </p>
       </div>
     </div>
   </div>
@@ -34,5 +41,9 @@ export default {
 <style lang="scss" scoped>
 .prop-row{
   height: 63vh;
+}
+.hint{
+color: rgb(107, 85, 24);
+font-size: 13px;
 }
 </style>

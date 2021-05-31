@@ -86,9 +86,9 @@ class GoodFortuneService {
   }
 
   childBorn() {
-    AppState.event.title = 'You had a child!'
+    AppState.event.title = 'Parenthood'
     AppState.event.greeting = ''
-    AppState.event.text = 'Congrats! Parenthood can feel like alot but it\'s always worth it in the end.'
+    AppState.event.text = 'Congrats! Weather it\'s adoption or childbirth, Parenthood can feel like alot but at least they can help you out with some chores!'
     AppState.event.closing = ''
     AppState.event.closeDesc = 'Okay'
     $('#eventModal').modal('show')

@@ -9,7 +9,7 @@
     </router-view>
   </main>
   <footer>
-    <div class="row bg-dark border-top border-info d-flex justify-content-center">
+    <div class="row bg-dark border-top border-info d-flex justify-content-center position">
       <turn class="p-2" />
     </div>
   </footer>
@@ -29,5 +29,6 @@ export default {
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
-
+.position{
+}
 </style>

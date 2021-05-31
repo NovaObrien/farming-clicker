@@ -65,7 +65,7 @@ export default {
 
 <style lang="scss" scoped>
 .prop-row{
-  height: 63vh;
+  height: 57vh;
   border: solid var(--dark);
   border-width: 2px;
 }
@@ -75,5 +75,10 @@ font-size: 13px;
 }
 .text-font{
   font-family: 'Merriweather', serif;
+}
+@media (min-height: 630px){
+.prop-row{
+  height: 63vh;
+}
 }
 </style>

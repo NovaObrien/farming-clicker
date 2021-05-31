@@ -11,7 +11,7 @@
           Account
         </h6>
       </div>
-      <div class="col rounded-top mx-3" :class="state.hideManage.truthy == true ? 'not-selected' : 'selected'" @click="showManage">
+      <div class="col rounded-top mx-1" :class="state.hideManage.truthy == true ? 'not-selected' : 'selected'" @click="showManage">
         <h6 class="mt-2">
           Manage
         </h6>
@@ -85,6 +85,9 @@ export default
 </script>
 
 <style scoped lang="scss">
+h6{
+  font-size: 14px;
+}
 .home{
   text-align: center;
   user-select: none;

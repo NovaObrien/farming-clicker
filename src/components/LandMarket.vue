@@ -45,12 +45,18 @@ export default {
 
 <style lang="scss" scoped>
 .prop-row{
-  height: 63vh;
+  height: 57vh;
   border: solid var(--dark);
   border-width: 2px;
 }
 .hint{
 color: rgb(107, 85, 24);
 font-size: 13px;
+}
+
+@media (min-height: 630px){
+.prop-row{
+  height: 63vh;
+}
 }
 </style>

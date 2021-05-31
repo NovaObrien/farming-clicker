@@ -46,8 +46,8 @@ export default {
               'Your property has been sold!',
               'success'
             )
+            optionToBuyService.sellLand(owned)
           }
-          optionToBuyService.sellLand(owned)
         }
         )
       }

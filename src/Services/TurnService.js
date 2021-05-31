@@ -3,6 +3,7 @@ import { logger } from '../utils/Logger'
 import { dolService } from './DOLService'
 import { eventService } from './EventService'
 import { goodFortuneService } from './GoodFortuneService'
+import { optionToBuyService } from './OptionToBuyService'
 
 class TurnService {
   endTurn() {
@@ -38,9 +39,10 @@ class TurnService {
 
   updateOTBs() {
     const min = Math.ceil(1)
-    const max = Math.floor(4)
+    const max = Math.floor(15)
     const res = Math.floor(Math.random() * (max - min + 1) + min)
     logger.log('otb res = ' + res)
+    optionToBuyService.checkCase(res)
   }
 
   drawEvent() {

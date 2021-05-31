@@ -1,3 +1,31 @@
 Bug Notes
 =====================
 1. 
+
+InProgress
+========================
+1. Need a way to buy tractors, and all the logic behind that
+
+2. Manage Page has a long way to go
+
+3. Need to finish Good fortunes cards, as well as refine words of all cards
+
+4. Death Card Needs to actually end the game
+
+5. Need a way for player to restart game, an options menu of sorts.
+
+6. Need a way to add sound 
+
+7. OTB logic needs finished for rest of cases
+
+8. Hiring Hands Needs Implemented in Managed properties
+
+9. All the farming logic needs done
+
+10. how to handle house and fam needs thought out
+
+11.media responsiveness eventually.. mobile first
+
+12. losing scenarios, such as running out of money
+
+13. fill out Help Modal text

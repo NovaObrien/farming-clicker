@@ -35,7 +35,7 @@ class GoodFortuneService {
       case 66:
       case 81:
       case 82:
-        this.cryptoTakeoff()
+        this.cryptoTakeOff()
         break
       case 67:
       case 83:

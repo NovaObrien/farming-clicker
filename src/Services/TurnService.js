@@ -18,6 +18,7 @@ class TurnService {
     // this.updateOTBs()
     if (AppState.time.turn !== 3) { this.drawEvent() }
     this.payBills()
+    this.updateOTBs()
   }
 
   payBills() {
@@ -36,7 +37,10 @@ class TurnService {
   }
 
   updateOTBs() {
-    logger.log()
+    const min = Math.ceil(1)
+    const max = Math.floor(4)
+    const res = Math.floor(Math.random() * (max - min + 1) + min)
+    logger.log('otb res = ' + res)
   }
 
   drawEvent() {

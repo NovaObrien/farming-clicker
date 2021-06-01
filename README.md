@@ -44,3 +44,5 @@ InProgress && ToDos
 StretchGoals
 ============
 1. Dynamically change color scheme at certain year threshold?
+
+2. Make it take 1-12 months to sell farm and is cancable

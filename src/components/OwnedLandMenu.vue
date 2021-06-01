@@ -53,7 +53,7 @@ color: rgb(107, 85, 24);
 font-size: 13px;
 }
 .text-green{
-  color: rgb(0, 0, 0);
+  color: rgb(51, 97, 53);
 }
 @media (min-height: 630px){
 .prop-row{

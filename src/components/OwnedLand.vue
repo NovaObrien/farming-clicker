@@ -2,7 +2,7 @@
   <div class="owned-land">
     <div class="row bg-secondary rounded shadow-lg border border-light px-2 py-3">
       <div class="col-12">
-        <h5>
+        <h5 class="text-font">
           {{ owned.name }}
         </h5>
       </div>
@@ -25,10 +25,7 @@
       </div>
       <div class="col">
         <button class="btn btn-sm btn-danger rounded" @click="sellProperty(owned)">
-          Sell {{ ((owned.acers * currentYearCost.acerCost + owned.beds * currentYearCost.bedCost) * .8).toLocaleString('en-US', {
-            style: 'currency',
-            currency: 'USD'
-          }) }}
+          Appraise
         </button>
       </div>
       <!-- TODO we are going to need to add a way to sell owned properties, make a property your home and sell products during the last month of a season. also Add hellping hands to lands that you arent living at -->
@@ -52,9 +49,13 @@ export default {
       currentYearCost: computed(() => AppState.currentYearCost),
 
       sellProperty(owned) {
+        const cost = (owned.acers * this.currentYearCost.acerCost + owned.beds * this.currentYearCost.bedCost) * 0.8
         Swal.fire({
           title: 'Sell Property?',
-          text: "You won't be able to revert this!",
+          text: 'Your Farm has Been Appraised at ' + cost.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD'
+          }) + ' Do you want to place it on the Market?',
           icon: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#39af43',
@@ -79,5 +80,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.text-font{
+    font-family: 'Merriweather', serif;
+  }
 </style>

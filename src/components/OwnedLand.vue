@@ -1,14 +1,14 @@
 <template>
   <div class="owned-land">
     <div class="row bg-secondary rounded shadow-lg border border-light px-2 py-3">
-      <div class="col-8">
+      <div class="col-9">
         <h5 class="text-font">
           {{ owned.name }}
         </h5>
       </div>
-      <div class="col-4">
-        <button class="btn" :class="owned.activeTractor == true ? 'text-success' : 'text-danger'" @click="setTractor(owned)">
-          {{ owned.tractorActive }}
+      <div class="col-3">
+        <button class="btn" :class="owned.tractorActive == true ? 'text-success' : 'text-danger'" @click="setTractor(owned)">
+          <i class="fas fa-tractor"></i>
         </button>
       </div>
       <div class="col ml-2">
@@ -51,6 +51,7 @@ import { computed } from 'vue'
 import { AppState } from '../AppState'
 import Swal from 'sweetalert2'
 import { optionToBuyService } from '../Services/OptionToBuyService'
+import { farmService } from '../Services/FarmService'
 export default {
   name: 'OwnedLand',
   props: {
@@ -87,7 +88,7 @@ export default {
         )
       },
       setTractor(owned) {
-
+        farmService.setTractor(owned)
       }
     }
   },
@@ -99,4 +100,5 @@ export default {
 .text-font{
     font-family: 'Merriweather', serif;
   }
+
 </style>

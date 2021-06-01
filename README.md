@@ -45,4 +45,6 @@ StretchGoals
 ============
 1. Dynamically change color scheme at certain year threshold?
 
-2. Make it take 1-12 months to sell farm and is cancable
+2. Make it take 1-12 months to sell farm and is cancable (adds it to the nomral market with a cancel btn)
+
+3. Crop Rotations / change lands crop type between hay and veggies?

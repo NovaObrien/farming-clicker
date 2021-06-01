@@ -93,7 +93,7 @@ class DOLService {
     AppState.event.title = 'Broken Arm'
     AppState.event.greeting = ''
     AppState.event.text = 'It will heal, but medical bills are never any fun.'
-    AppState.event.closing = ''
+    AppState.event.closing = '($250 to the doctor)'
     AppState.event.closeDesc = 'Ouch'
     $('#eventModal').modal('show')
     AppState.character.currency -= 150
@@ -110,13 +110,15 @@ class DOLService {
   }
 
   childSick() {
-    AppState.event.title = 'A sick child'
-    AppState.event.greeting = ''
-    AppState.event.text = 'It\'s one thing when you get sick but seeing a loved one sick is all that much harder.'
-    AppState.event.closing = ''
-    AppState.event.closeDesc = 'Thank god for medicine'
-    $('#eventModal').modal('show')
-    AppState.character.currency -= 100
+    if (AppState.character.children > 0) {
+      AppState.event.title = 'A sick child'
+      AppState.event.greeting = ''
+      AppState.event.text = 'It\'s one thing when you get sick but seeing a loved one sick is all that much harder.'
+      AppState.event.closing = ''
+      AppState.event.closeDesc = 'Thank god for medicine'
+      $('#eventModal').modal('show')
+      AppState.character.currency -= 100
+    }
   }
 
   costlyInvestment() {

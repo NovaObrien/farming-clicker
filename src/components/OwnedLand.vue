@@ -30,8 +30,7 @@
       </div>
       <div class="col">
         <div class="row">
-          <img src="https://via.placeholder.com/75
-C/O https://placeholder.com/"
+          <img src="https://via.placeholder.com/75C/O https://placeholder.com/"
                alt=""
           >
         </div>

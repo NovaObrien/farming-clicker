@@ -106,13 +106,22 @@ class GoodFortuneService {
   }
 
   cryptoTakeOff() {
-    AppState.event.title = 'Crypto Goes to the Moon'
-    AppState.event.greeting = ''
-    AppState.event.text = 'Your investement in the crypto currency Big Chungus has paid off!'
-    AppState.event.closing = ''
-    AppState.event.closeDesc = 'Wonderfull'
-    $('#eventModal').modal('show')
-    AppState.character.currency += 10000
+    if (AppState.time.year > 2009) {
+      AppState.event.title = 'Crypto Goes to the Moon'
+      AppState.event.greeting = ''
+      AppState.event.text = 'Your investement in the crypto currency Big Chungus has paid off!'
+      AppState.event.closing = ''
+      AppState.event.closeDesc = 'Wonderfull'
+      $('#eventModal').modal('show')
+      AppState.character.currency += 1000000
+    } else {
+      AppState.event.title = 'Future Luck'
+      AppState.event.greeting = ''
+      AppState.event.text = 'You can feel the winds of luck blowing your way, you feel a fruitfull future headed your way! Probably..'
+      AppState.event.closing = ''
+      AppState.event.closeDesc = 'Ahh Lucky Wind..'
+      $('#eventModal').modal('show')
+    }
   }
 
   wonChiliFest() {

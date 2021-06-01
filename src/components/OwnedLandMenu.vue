@@ -24,13 +24,6 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12 mt-4">
-        <p class="hint ml-3">
-          Hint: Need Some Land? Check out the Listings Tab
-        </p>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -64,7 +57,7 @@ font-size: 13px;
 }
 @media (min-height: 630px){
 .prop-row{
-  height: 63vh;
+  height: 73vh;
 }
 }
 p{

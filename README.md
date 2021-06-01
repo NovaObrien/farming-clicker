@@ -2,7 +2,7 @@ Bug Notes
 =====================
 1. Chance that Large Farms will Become undefined
 
-InProgress
+InProgress && ToDos
 ========================
 1. Need a way to buy tractors, and all the logic behind that
 
@@ -14,7 +14,7 @@ InProgress
 
 5. Need a way for player to restart game, an options menu of sorts.
 
-6. Need a way to add sound 
+6. Need Artwork for farm types
 
 <!-- WORKING 7. OTB logic needs finished for rest of cases -->
 
@@ -37,3 +37,10 @@ InProgress
 16. Create a more accurate monthly cost formula
 
 17. Logic for how this app is working in 1970 when there wasnt smart phones or websites
+
+18. Need to diversify farms ie different amount of bed ect
+
+==============
+StretchGoals
+============
+1. Dynamically change color scheme at certain year threshold?

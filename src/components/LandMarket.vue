@@ -2,9 +2,6 @@
   <div class="land-market">
     <div class="row">
       <div class="col prop-row overflow-auto bg-primary rounded shadow mx-3">
-        <h3 class="ml-3">
-          Current Market
-        </h3>
         <options-to-buy class="m-3" v-for="o in otbs.smallFarms" :options-to-buy-prop="o" :key="o.id" />
 
         <options-to-buy class="m-3" v-for="o in otbs.mediumFarms" :options-to-buy-prop="o" :key="o.id" />
@@ -16,13 +13,6 @@
             No Available Listings, Check back soon!
           </h1>
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12 mt-4">
-        <p class="hint ml-3">
-          Hint: New Listings have a chance to show up every month! As well as leave... Don't Miss out!
-        </p>
       </div>
     </div>
   </div>
@@ -56,7 +46,7 @@ font-size: 13px;
 
 @media (min-height: 630px){
 .prop-row{
-  height: 63vh;
+  height: 73vh;
 }
 }
 </style>

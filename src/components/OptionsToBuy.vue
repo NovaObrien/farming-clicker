@@ -2,7 +2,7 @@
   <div class="options-to-buy">
     <div class="row bg-secondary rounded shadow-lg border border-light px-2 py-3">
       <div class="col-12">
-        <h5>
+        <h5 class="text-font">
           {{ option.name }}
         </h5>
       </div>
@@ -31,10 +31,18 @@
           </div>
         </div>
       </div>
-      <div class="col d-flex align-items-end ml-3">
-        <button class="btn btn-success border-primary" @click="purchaseLand(option)">
-          Purchase
-        </button>
+      <div class="col ml-3">
+        <div class="row">
+          <img src="https://via.placeholder.com/75
+C/O https://placeholder.com/"
+               alt=""
+          >
+        </div>
+        <div class="row mt-3">
+          <button class="btn btn-success border-primary" @click="purchaseLand(option)">
+            Purchase
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -92,5 +100,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.text-font{
+    font-family: 'Merriweather', serif;
+  }
 </style>

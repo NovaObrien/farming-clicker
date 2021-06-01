@@ -40,11 +40,11 @@ class TurnService {
   }
 
   drawEvent() {
-    const min = Math.ceil(1)
-    const max = Math.floor(100)
-    const draw = Math.floor(Math.random() * (max - min + 1) + min)
-
-    logger.log('draw is ' + draw)
+    // const min = Math.ceil(1)
+    // const max = Math.floor(100)
+    // const draw = Math.floor(Math.random() * (max - min + 1) + min)
+    const draw = 1
+    // logger.log('draw is ' + draw)
     // 20 % chance of DOL..
     // 40 % chance of uneventfull
     // 40 % chance of goodFortune

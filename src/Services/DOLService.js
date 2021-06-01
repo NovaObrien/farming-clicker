@@ -54,13 +54,14 @@ class DOLService {
   tractorBroke() {
     const owned = AppState.ownedLands
     const hasTractors = []
+    const tractors = AppState.tractors
     for (let i = 0; i < owned.length; i++) {
-      if (owned[i].hasTractors === true) {
+      if (owned[i].tractorActive === true) {
         hasTractors.unshift(owned[i])
       }
     }
     if (hasTractors.length !== 0) {
-      const index = Math.floor(Math.random * hasTractors.length)
+      const index = Math.floor(Math.random() * hasTractors.length)
       const res = hasTractors[index]
 
       const ownedIndex = owned.findIndex(o => o.id === res.id)
@@ -71,10 +72,10 @@ class DOLService {
       saveState()
     }
 
-    if (AppState.tractors === 0 && hasTractors.length === 0) {
+    if (tractors === 0 && hasTractors.length === 0) {
       AppState.event.title = 'Strange Feeling'
       AppState.event.greeting = ''
-      AppState.event.text = 'You have an odd feeling that something wrong should\'ve happpened but didn\'t'
+      AppState.event.text = 'You have an odd feeling that something wrong should\'ve happpened'
       AppState.event.closing = ''
       AppState.event.closeDesc = 'Strange'
       $('#eventModal').modal('show')

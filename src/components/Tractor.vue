@@ -1,25 +1,28 @@
 <template>
   <div class="tractor">
-    <div class="row bg-secondary rounded shadow-lg border border-light px-1 py-3">
+    <div class="row bg-secondary rounded shadow-lg border border-light px-1 py-1">
       <div class="col-12">
-        <h5 class="text-font">
-          Tractor
-        </h5>
       </div>
       <div class="col-6 ml-2">
         <div class="row">
-          Price: $15,000.00
+          <h5 class="text-font">
+            Tractor
+          </h5>
         </div>
         <div class="row">
+          <div class="col">
+            $15,000.00
+          </div>
         </div>
         <div class="row">
-          Seller:
-          <p class="text-info">
-            Tractor Co.
-          </p>
+          <div class="col">
+            <p class="text-info">
+              Tractor Co.
+            </p>
+          </div>
         </div>
       </div>
-      <div class="col">
+      <div class="col ml-3">
         <div class="row">
           <img src="https://via.placeholder.com/75C/O https://placeholder.com/"
                alt=""

@@ -1,6 +1,6 @@
 Bug Notes
 =====================
-1. Chance that Large Farms will Become undefined
+<!-- FIXED 1. Chance that Large Farms will Become undefined -->
 
 InProgress && ToDos
 ========================

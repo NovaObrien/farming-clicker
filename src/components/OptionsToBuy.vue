@@ -1,12 +1,12 @@
 <template>
   <div class="options-to-buy">
-    <div class="row bg-secondary rounded shadow-lg border border-light px-2 py-3">
+    <div class="row bg-secondary rounded shadow-lg border border-light px-1 py-3">
       <div class="col-12">
         <h5 class="text-font">
           {{ option.name }}
         </h5>
       </div>
-      <div class="col ml-2">
+      <div class="col-6 ml-2">
         <div class="row">
           <div class="col">
             Beds: {{ option.beds }}
@@ -19,12 +19,12 @@
         </div>
         <div class="row">
           <div class="col">
-            Type: {{ option.type }}
+            {{ option.type }}
           </div>
         </div>
         <div class="row">
           <div class="col">
-            Price: {{ (option.acers * currentYearCost.acerCost + option.beds * currentYearCost.bedCost).toLocaleString('en-US', {
+            {{ (option.acers * currentYearCost.acerCost + option.beds * currentYearCost.bedCost).toLocaleString('en-US', {
               style: 'currency',
               currency: 'USD'
             }) }}

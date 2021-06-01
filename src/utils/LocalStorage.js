@@ -9,7 +9,7 @@ export function saveState() {
     ownedLands: AppState.ownedLands,
     smallFarms: AppState.smallFarms,
     mediumFarms: AppState.mediumFarms,
-    LargeFarms: AppState.largeFarms,
+    largeFarms: AppState.largeFarms,
     monthlyCosts: AppState.monthlyCosts
   }))
 }

@@ -1,5 +1,6 @@
 import $ from 'jquery'
 import { AppState } from '../AppState'
+import { saveState } from '../utils/LocalStorage'
 import { logger } from '../utils/Logger'
 
 class DOLService {
@@ -51,7 +52,26 @@ class DOLService {
 
   // decent chance
   tractorBroke() {
-    if (AppState.tractors === 0) {
+    const owned = AppState.ownedLands
+    const hasTractors = []
+    for (let i = 0; i < owned.length; i++) {
+      if (owned[i].hasTractors === true) {
+        hasTractors.unshift(owned[i])
+      }
+    }
+    if (hasTractors.length !== 0) {
+      const index = Math.floor(Math.random * hasTractors.length)
+      const res = hasTractors[index]
+
+      const ownedIndex = owned.findIndex(o => o.id === res.id)
+      AppState.ownedLands[ownedIndex].tractorActive = false
+      saveState()
+    } else if (AppState.tractors > 0) {
+      AppState.tractors--
+      saveState()
+    }
+
+    if (AppState.tractors === 0 && hasTractors.length === 0) {
       AppState.event.title = 'Strange Feeling'
       AppState.event.greeting = ''
       AppState.event.text = 'You have an odd feeling that something wrong should\'ve happpened but didn\'t'
@@ -65,14 +85,13 @@ class DOLService {
       AppState.event.closing = ''
       AppState.event.closeDesc = 'Darn shame'
       $('#eventModal').modal('show')
-      AppState.tractors--
     }
   }
 
   brokenArm() {
     AppState.event.title = 'Broken Arm'
     AppState.event.greeting = ''
-    AppState.event.text = 'It\'ll heal, but medical bills are never any fun.'
+    AppState.event.text = 'It will heal, but medical bills are never any fun.'
     AppState.event.closing = ''
     AppState.event.closeDesc = 'Ouch'
     $('#eventModal').modal('show')
@@ -110,13 +129,22 @@ class DOLService {
   }
 
   childPassing() {
-    AppState.event.title = 'Death of a Child'
-    AppState.event.greeting = ''
-    AppState.event.text = 'No one ever wants to see their child pass before them.. Sometimes it\'s just unavoidable.. Condolences..'
-    AppState.event.closing = ''
-    AppState.event.closeDesc = 'Life will never be the same...'
-    $('#eventModal').modal('show')
-    AppState.character.children--
+    if (AppState.character.children > 0) {
+      AppState.event.title = 'Death of a Child'
+      AppState.event.greeting = ''
+      AppState.event.text = 'No one ever wants to see their child pass before them.. Sometimes it\'s just unavoidable.. Condolences..'
+      AppState.event.closing = ''
+      AppState.event.closeDesc = 'Life will never be the same...'
+      $('#eventModal').modal('show')
+      AppState.character.children--
+    } else {
+      AppState.event.title = 'Strange Feeling'
+      AppState.event.greeting = ''
+      AppState.event.text = 'You have an odd feeling that something wrong should\'ve happpened but didn\'t'
+      AppState.event.closing = ''
+      AppState.event.closeDesc = 'Strange'
+      $('#eventModal').modal('show')
+    }
   }
 
   killPlayer() {

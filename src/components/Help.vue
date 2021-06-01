@@ -33,6 +33,9 @@
                   New listings have a chance to show up every month! As well as leave... Don't miss out!
                 </li>
                 <li class="pt-3">
+                  Tractors help improve the quality of your harvestables, dont forget to add them to a farm
+                </li>
+                <li class="pt-3">
                   From everyone at Farming Manager Co. Thank you
                 </li>
               </ul>

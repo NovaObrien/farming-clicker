@@ -21,6 +21,7 @@ export const AppState = reactive({
     closing: '',
     closeDesc: ''
   },
+  // Tractors var isn't total tractor count but available or not in use
   tractors: 0,
   hay: 0,
   vegtables: {},

@@ -1,10 +1,15 @@
 <template>
   <div class="owned-land">
     <div class="row bg-secondary rounded shadow-lg border border-light px-2 py-3">
-      <div class="col-12">
+      <div class="col-8">
         <h5 class="text-font">
           {{ owned.name }}
         </h5>
+      </div>
+      <div class="col-4">
+        <button class="btn" :class="owned.activeTractor == true ? 'text-success' : 'text-danger'" @click="setTractor(owned)">
+          {{ owned.tractorActive }}
+        </button>
       </div>
       <div class="col ml-2">
         <div class="row">
@@ -80,6 +85,9 @@ export default {
           }
         }
         )
+      },
+      setTractor(owned) {
+
       }
     }
   },

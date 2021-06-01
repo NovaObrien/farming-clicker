@@ -118,6 +118,13 @@ class DOLService {
       AppState.event.closeDesc = 'Thank god for medicine'
       $('#eventModal').modal('show')
       AppState.character.currency -= 100
+    } else {
+      AppState.event.title = 'Strange Feeling'
+      AppState.event.greeting = ''
+      AppState.event.text = 'You have an odd feeling that something wrong should\'ve happpened'
+      AppState.event.closing = ''
+      AppState.event.closeDesc = 'Strange'
+      $('#eventModal').modal('show')
     }
   }
 

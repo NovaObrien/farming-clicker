@@ -1,6 +1,6 @@
 Bug Notes
 =====================
-1. 
+1. Chance that Large Farms will Become undefined
 
 InProgress
 ========================
@@ -31,3 +31,7 @@ InProgress
 13. fill out Help Modal text
 
 14. Move Hints on page to Help Modal && Replace with Farming Co. Logo
+
+15. Acers are linear wich is fine, however the bed costs being linear isnt necasarily accuarte to the rapid increase in housing costs (which is more exponential than linear, like acers is) 
+
+16. Create a more accurate monthly cost formula

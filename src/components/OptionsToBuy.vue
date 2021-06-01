@@ -24,7 +24,7 @@
         </div>
         <div class="row">
           <div class="col">
-            Cost: {{ (option.acers * currentYearCost + option.beds * 2000).toLocaleString('en-US', {
+            Price: {{ (option.acers * currentYearCost.acerCost + option.beds * currentYearCost.bedCost).toLocaleString('en-US', {
               style: 'currency',
               currency: 'USD'
             }) }}

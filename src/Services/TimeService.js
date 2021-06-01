@@ -23,7 +23,8 @@ class TimeService {
     if (turn === 1) {
       AppState.time.month = 'January'
       AppState.time.year++
-      AppState.currentYearCost += 78
+      AppState.currentYearCost.acerCost += 78
+      AppState.currentYearCost.bedCost += 1100
     } else if (turn === 2) {
       AppState.time.month = 'February'
     } else {

@@ -131,7 +131,8 @@ class OptionToBuyService {
   purchaseLand(option) {
     const money = AppState.character.currency
     const yearCost = AppState.currentYearCost
-    const cost = option.acers * yearCost + option.beds * 2000
+    const cost = option.acers * yearCost.acerCost + option.beds * yearCost.bedCost
+
     if (money >= cost) {
       AppState.character.currency -= cost
       // removes property and adds to owned list
@@ -155,7 +156,7 @@ class OptionToBuyService {
 
   sellLand(owned) {
     const yearCost = AppState.currentYearCost
-    AppState.character.currency += ((owned.acers * yearCost + owned.beds * 2000) * 0.8)
+    AppState.character.currency += ((owned.acers * yearCost.acerCost + owned.beds * yearCost.bedCost) * 0.8)
 
     const index = AppState.ownedLands.findIndex(o => o.id === owned.id)
     AppState.ownedLands.splice(index, 1)

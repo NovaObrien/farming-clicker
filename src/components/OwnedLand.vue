@@ -25,7 +25,7 @@
       </div>
       <div class="col">
         <button class="btn btn-sm btn-danger rounded" @click="sellProperty(owned)">
-          Sell {{ ((owned.acers * currentYearCost + owned.beds * 2000) * .8).toLocaleString('en-US', {
+          Sell {{ ((owned.acers * currentYearCost.acerCost + owned.beds * currentYearCost.bedCost) * .8).toLocaleString('en-US', {
             style: 'currency',
             currency: 'USD'
           }) }}

@@ -28,9 +28,13 @@ export const AppState = reactive({
   cattle: {},
   farmerFate: {},
 
-  // Acer Costs for the year increase by 78 per year
-  currentYearCost: 196,
+  // Acer Costs for the year increase by 78 per year && bed costs increase by 1,100 update happens in timeService
+  currentYearCost: {
+    acerCost: 196,
+    bedCost: 5000
+  },
   monthlyCosts: 150,
+
   ownedLands: [],
 
   optionsToBuy: {

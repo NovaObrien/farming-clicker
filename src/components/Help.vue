@@ -22,18 +22,25 @@
                   Help
                 </h5>
               </div>
-              <div class="row pb-3">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi, velit.
-              </div>
-              <div class="row d-flex justify-content-center">
-              </div>
-              <div class="row pt-3">
-              </div>
+              <ul>
+                <li class="pt-3">
+                  Need some land? Check out the Listings Tab
+                </li>
+                <li class="pt-3">
+                  Land and home vaules increase Yearly.
+                </li>
+                <li class="pt-3">
+                  New listings have a chance to show up every month! As well as leave... Don't miss out!
+                </li>
+                <li class="pt-3">
+                  From everyone at Farming Manager Co. Thank you
+                </li>
+              </ul>
             </div>
           </div>
           <div class="modal-footer d-flex justify-content-center">
             <button type="button" class="btn btn-success" data-dismiss="modal">
-              close
+              Close
             </button>
           </div>
         </div>

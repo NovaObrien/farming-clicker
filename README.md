@@ -8,7 +8,7 @@ InProgress
 
 2. Manage Page has a long way to go
 
-3. Need to finish Good fortunes cards, as well as refine words of all cards
+3. Need to finish Good fortunes cards, as well as refine words of all cards && make certain cards not trigger if the year is to early
 
 4. Death Card Needs to actually end the game
 
@@ -35,3 +35,5 @@ InProgress
 15. Acers are linear wich is fine, however the bed costs being linear isnt necasarily accuarte to the rapid increase in housing costs (which is more exponential than linear, like acers is) 
 
 16. Create a more accurate monthly cost formula
+
+17. Logic for how this app is working in 1970 when there wasnt smart phones or websites

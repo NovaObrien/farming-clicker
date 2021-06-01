@@ -128,6 +128,14 @@ class OptionToBuyService {
   // ========== End Case =============
   // =================================
 
+  purchaseTractor() {
+    if (AppState.character.currency >= 15000) {
+      AppState.tractor++
+      AppState.character.currency -= 15000
+      saveState()
+    }
+  }
+
   purchaseLand(option) {
     const money = AppState.character.currency
     const yearCost = AppState.currentYearCost

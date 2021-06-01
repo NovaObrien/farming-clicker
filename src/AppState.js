@@ -5,8 +5,7 @@ export const AppState = reactive({
     name: '',
     age: 28,
     children: 0,
-    currency: 900000,
-    tractors: 0
+    currency: 900000
 
   },
   time: {
@@ -22,6 +21,7 @@ export const AppState = reactive({
     closing: '',
     closeDesc: ''
   },
+  tractors: 0,
   hay: 0,
   vegtables: {},
   fruits: {},

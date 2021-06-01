@@ -24,9 +24,17 @@
         </div>
       </div>
       <div class="col">
-        <button class="btn btn-sm btn-danger rounded" @click="sellProperty(owned)">
-          Appraise
-        </button>
+        <div class="row">
+          <img src="https://via.placeholder.com/75
+C/O https://placeholder.com/"
+               alt=""
+          >
+        </div>
+        <div class="row mt-3">
+          <button class="btn btn-sm btn-danger rounded" @click="sellProperty(owned)">
+            Appraise
+          </button>
+        </div>
       </div>
       <!-- TODO we are going to need to add a way to sell owned properties, make a property your home and sell products during the last month of a season. also Add hellping hands to lands that you arent living at -->
     </div>

@@ -10,7 +10,8 @@ export function saveState() {
     smallFarms: AppState.smallFarms,
     mediumFarms: AppState.mediumFarms,
     largeFarms: AppState.largeFarms,
-    monthlyCosts: AppState.monthlyCosts
+    monthlyCosts: AppState.monthlyCosts,
+    tractors: AppState.tractors
   }))
 }
 
@@ -26,5 +27,6 @@ export function loadState() {
     AppState.mediumFarms = data.mediumFarms
     AppState.largeFarms = data.largeFarms
     AppState.monthlyCosts = data.monthlyCosts
+    AppState.tractors = data.tractors
   }
 }

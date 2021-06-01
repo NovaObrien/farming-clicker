@@ -130,7 +130,7 @@ class OptionToBuyService {
 
   purchaseTractor() {
     if (AppState.character.currency >= 15000) {
-      AppState.tractor++
+      AppState.tractors++
       AppState.character.currency -= 15000
       saveState()
     }

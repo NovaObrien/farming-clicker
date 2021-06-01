@@ -35,7 +35,7 @@ export default {
   setup() {
     return {
       ownedLands: computed(() => AppState.ownedLands),
-      tractors: computed(() => AppState.character.tractors),
+      tractors: computed(() => AppState.tractors),
       costs: computed(() => AppState.monthlyCosts)
     }
   }

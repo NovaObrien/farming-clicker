@@ -8,13 +8,13 @@
           </h5>
         </div>
         <div class="row">
-          <div class="col">
-            price: $15,000.00
-            Seller:
-            <p class="text-info">
-              Tractor Co.
-            </p>
-          </div>
+          Price: $15,000.00
+        </div>
+        <div class="row">
+          Seller:
+          <p class="text-info">
+            Tractor Co.
+          </p>
         </div>
       </div>
       <div class="col mx-3">
@@ -34,13 +34,43 @@
 </template>
 
 <script>
-import { logger } from '../utils/Logger'
+import Swal from 'sweetalert2'
+import { AppState } from '../AppState'
+import { optionToBuyService } from '../Services/OptionToBuyService'
 export default {
   name: 'Tractor',
   setup() {
     return {
       purchaseTractor() {
-        logger.log('PurchasedTractor')
+        Swal.fire({
+          title: 'Purchase Tractor?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#39af43',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, purchase!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            const cost = 15000
+            if (AppState.character.currency < cost) {
+              Swal.fire({
+
+                title: 'Insufficient funds',
+                text: 'Please check your available balance in the account tab',
+                icon: 'error'
+              }
+              )
+            } else {
+              Swal.fire(
+                'Purchase Complete!',
+                'Don\'t forget to assign it to a farm!',
+                'success'
+              )
+            }
+            optionToBuyService.purchaseTractor()
+          }
+        })
       }
     }
   },
@@ -49,5 +79,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.text-font{
+    font-family: 'Merriweather', serif;
+  }
 </style>

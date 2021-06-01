@@ -1,33 +1,24 @@
 <template>
-  <div class="options-to-buy">
-    <div class="row bg-secondary rounded shadow-lg border border-light px-1 py-3">
+  <div class="tractor">
+    <div class="row bg-secondary rounded shadow-lg border border-light px-1 py-1">
       <div class="col-12">
-        <h5 class="text-font">
-          {{ option.name }}
-        </h5>
       </div>
       <div class="col-6 ml-2">
         <div class="row">
+          <h5 class="text-font">
+            Tractor
+          </h5>
+        </div>
+        <div class="row">
           <div class="col">
-            Beds: {{ option.beds }}
+            $15,000.00
           </div>
         </div>
         <div class="row">
           <div class="col">
-            Acers: {{ option.acers }}
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            {{ option.type }}
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            {{ (option.acers * currentYearCost.acerCost + option.beds * currentYearCost.bedCost).toLocaleString('en-US', {
-              style: 'currency',
-              currency: 'USD'
-            }) }}
+            <p class="text-info">
+              Tractor Co.
+            </p>
           </div>
         </div>
       </div>
@@ -38,7 +29,7 @@
           >
         </div>
         <div class="row mt-3">
-          <button class="btn btn-success border-primary" @click="purchaseLand(option)">
+          <button class="btn btn-success border-primary" @click="purchaseTractor">
             Purchase
           </button>
         </div>
@@ -48,22 +39,16 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+import Swal from 'sweetalert2'
 import { AppState } from '../AppState'
 import { optionToBuyService } from '../Services/OptionToBuyService'
-import Swal from 'sweetalert2'
 export default {
-  name: 'OptionsToBuy',
-  props: {
-    optionsToBuyProp: Object
-  },
-  setup(props) {
+  name: 'Tractor',
+  setup() {
     return {
-      option: props.optionsToBuyProp,
-      currentYearCost: computed(() => AppState.currentYearCost),
-      purchaseLand(option) {
+      purchaseTractor() {
         Swal.fire({
-          title: 'Purchase Property?',
+          title: 'Purchase Tractor?',
           text: "You won't be able to revert this!",
           icon: 'warning',
           showCancelButton: true,
@@ -72,7 +57,7 @@ export default {
           confirmButtonText: 'Yes, purchase!'
         }).then((result) => {
           if (result.isConfirmed) {
-            const cost = option.acers * AppState.currentYearCost + option.beds * 2000
+            const cost = 15000
             if (AppState.character.currency < cost) {
               Swal.fire({
 
@@ -83,12 +68,12 @@ export default {
               )
             } else {
               Swal.fire(
-                'Thanks for your acquistion',
-                'Check out your new property in the manage tab!',
+                'Purchase Complete!',
+                'Don\'t forget to assign it to a farm!',
                 'success'
               )
             }
-            optionToBuyService.purchaseLand(option)
+            optionToBuyService.purchaseTractor()
           }
         })
       }

@@ -4,7 +4,7 @@
       <div class="col prop-row bg-primary overflow-auto rounded shadow mx-3">
         <div class="m-2 bg-secondary rounded p-2 border-light border">
           <h4 class="text-font mb-3">
-            Welcome Back {{ character.name }}
+            Welcome Back, {{ character.name }}
           </h4>
           <h5 class="pb-2">
             Available: {{ (character.currency).toLocaleString('en-US', {
@@ -38,10 +38,11 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-12 mt-4">
-        <p class="hint ml-3">
-          Hint: We hope you enjoy the app!
+      <div class="col-12 mt-4 d-flex justify-content-center">
+        <p class="hint text-info">
+          Farming Manager Co.
         </p>
+        <i class="fas fa-tractor"></i>
       </div>
     </div>
   </div>
@@ -64,17 +65,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .text-font{
+    font-family: 'Merriweather', serif;
+  }
 .prop-row{
   height: 57vh;
   border: solid var(--dark);
   border-width: 2px;
 }
-.hint{
+.fa-tractor{
 color: rgb(107, 85, 24);
 font-size: 13px;
-}
-.text-font{
-  font-family: 'Merriweather', serif;
 }
 @media (min-height: 630px){
 .prop-row{

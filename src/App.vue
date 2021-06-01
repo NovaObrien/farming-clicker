@@ -9,8 +9,10 @@
     </router-view>
   </main>
   <footer>
-    <div class="row bg-dark border-top border-info d-flex justify-content-center">
-      <turn class="p-2" />
+    <div class="row bg-dark border-top border-info d-flex align-items-center justify-content-around">
+      <settings />
+      <turn class="py-1 " />
+      <help class="mt-1" />
     </div>
   </footer>
 </template>
@@ -18,7 +20,8 @@
 <script>
 import { computed } from 'vue'
 import { AppState } from './AppState'
-export default {
+export default
+{
   name: 'App',
   setup() {
     return {
@@ -29,5 +32,4 @@ export default {
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
-
 </style>

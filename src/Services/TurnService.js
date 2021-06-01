@@ -23,13 +23,7 @@ class TurnService {
   }
 
   payBills() {
-    const ownedLands = AppState.ownedLands
-    let cost = 0
-    for (let i = 0; i < ownedLands.length; i++) {
-      cost = cost + ownedLands[i].acers * 25 + ownedLands[i].beds * 100
-    }
-    logger.log(cost)
-    const bills = 400 + cost
+    const bills = AppState.monthlyCosts
     if (bills > AppState.character.currency) {
       logger.log('cant afford')
     } else {
@@ -39,7 +33,7 @@ class TurnService {
 
   updateOTBs() {
     const min = Math.ceil(1)
-    const max = Math.floor(15)
+    const max = Math.floor(20)
     const res = Math.floor(Math.random() * (max - min + 1) + min)
     logger.log('otb res = ' + res)
     optionToBuyService.checkCase(res)
@@ -49,8 +43,8 @@ class TurnService {
     const min = Math.ceil(1)
     const max = Math.floor(100)
     const draw = Math.floor(Math.random() * (max - min + 1) + min)
-
-    logger.log('draw is ' + draw)
+    // const draw = 1
+    // logger.log('draw is ' + draw)
     // 20 % chance of DOL..
     // 40 % chance of uneventfull
     // 40 % chance of goodFortune

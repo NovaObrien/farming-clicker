@@ -1,6 +1,6 @@
 <template>
   <div class="turn">
-    <button class="btn btn-success border-secondary" @click="endTurn">
+    <button class="btn btn-success border-light" @click="endTurn">
       Next Month
     </button>
   </div>

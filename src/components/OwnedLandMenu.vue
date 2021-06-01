@@ -44,7 +44,7 @@ export default {
 
 <style lang="scss" scoped>
 .prop-row{
-  height: 57vh;
+  height: 67vh;
   border: solid var(--dark);
   border-width: 2px;
 }

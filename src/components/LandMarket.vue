@@ -2,6 +2,7 @@
   <div class="land-market">
     <div class="row">
       <div class="col prop-row overflow-auto bg-primary rounded shadow mx-3">
+        <tractor class="m-3" />
         <options-to-buy class="m-3" v-for="o in otbs.smallFarms" :options-to-buy-prop="o" :key="o.id" />
 
         <options-to-buy class="m-3" v-for="o in otbs.mediumFarms" :options-to-buy-prop="o" :key="o.id" />
@@ -35,7 +36,7 @@ export default {
 
 <style lang="scss" scoped>
 .prop-row{
-  height: 57vh;
+  height: 67vh;
   border: solid var(--dark);
   border-width: 2px;
 }

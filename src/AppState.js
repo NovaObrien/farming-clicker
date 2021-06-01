@@ -28,8 +28,7 @@ export const AppState = reactive({
   cattle: {},
   farmerFate: {},
 
-  // farm cost: year cost * acer + beds * 2000
-  // bills is 5% of cost lets say... 500 *12 =6000 so lets say 20k for a year survival rate
+  // Acer Costs for the year increase by 78 per year
   currentYearCost: 196,
   monthlyCosts: 150,
   ownedLands: [],

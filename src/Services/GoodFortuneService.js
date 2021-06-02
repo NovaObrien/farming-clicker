@@ -78,11 +78,14 @@ class GoodFortuneService {
   wonBigLottery() {
     AppState.event.title = 'Won Big!'
     AppState.event.greeting = ''
-    AppState.event.text = 'CONGRATULATIONS, it\'s your lucky day! You won big! ($' + AppState.currentYearCost.acerCost * 100 + ' has been added to your account)'
+    AppState.event.text = 'CONGRATULATIONS, it\'s your lucky day! You won big! ( ' + (AppState.currentYearCost.acerCost * 100).toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD'
+    }) + ' has been added to your account)'
     AppState.event.closing = ''
     AppState.event.closeDesc = 'Nice!'
     $('#eventModal').modal('show')
-    AppState.character.currency += AppState.currentYearCost * 100
+    AppState.character.currency += AppState.currentYearCost.acerCost * 100
   }
 
   childBorn() {

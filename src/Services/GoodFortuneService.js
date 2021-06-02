@@ -78,7 +78,7 @@ class GoodFortuneService {
   wonBigLottery() {
     AppState.event.title = 'Won Big!'
     AppState.event.greeting = ''
-    AppState.event.text = 'CONGRATULATIONS, it\'s your lucky day! You won big! ($' + AppState.currentYearCost * 100 + ' has been added to your account)'
+    AppState.event.text = 'CONGRATULATIONS, it\'s your lucky day! You won big! ($' + AppState.currentYearCost.acerCost * 100 + ' has been added to your account)'
     AppState.event.closing = ''
     AppState.event.closeDesc = 'Nice!'
     $('#eventModal').modal('show')

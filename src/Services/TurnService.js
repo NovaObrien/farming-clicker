@@ -1,9 +1,10 @@
 import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
 import { dolService } from './DOLService'
-import { eventService } from './EventService'
 import { goodFortuneService } from './GoodFortuneService'
 import { optionToBuyService } from './OptionToBuyService'
+import $ from 'jquery'
+import { farmService } from './FarmService'
 
 class TurnService {
   endTurn() {
@@ -17,9 +18,13 @@ class TurnService {
     // at the end of the year send in event showing a recolection of the past year
     // We will also pay bills for our house/ farms
     // this.updateOTBs()
-    if (AppState.time.turn !== 3) { this.drawEvent() }
+    if (AppState.time.turn !== 3) {
+      this.drawEvent()
+    }
     this.payBills()
     this.updateOTBs()
+
+    farmService.checkTend()
   }
 
   payBills() {
@@ -44,30 +49,19 @@ class TurnService {
     const max = Math.floor(100)
     const draw = Math.floor(Math.random() * (max - min + 1) + min)
     // const draw = 1
-    // logger.log('draw is ' + draw)
-    // 20 % chance of DOL..
-    // 40 % chance of uneventfull
-    // 40 % chance of goodFortune
     if (draw <= 20) {
-      this.devilsOwnLuck(draw)
+      dolService.drawFate(draw)
     } else if (draw <= 60) {
-      this.uneventfull()
+      // Uneventfull  20-60
+      AppState.event.title = 'Just another month'
+      AppState.event.greeting = ''
+      AppState.event.text = 'Sometimes nothing happening is okay'
+      AppState.event.closing = ''
+      AppState.event.closeDesc = 'Okay'
+      $('#eventModal').modal('show')
     } else {
-      this.goodFortune(draw)
+      goodFortuneService.drawFate(draw)
     }
-  }
-
-  // Card Draws Below
-  devilsOwnLuck(draw) {
-    dolService.drawFate(draw)
-  }
-
-  uneventfull() {
-    eventService.uneventfull()
-  }
-
-  goodFortune(draw) {
-    goodFortuneService.drawFate(draw)
   }
 }
 export const turnService = new TurnService()

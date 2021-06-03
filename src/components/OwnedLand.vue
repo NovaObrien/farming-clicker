@@ -1,17 +1,13 @@
 <template>
-  <div class="owned-land">
-    <div class="row bg-secondary rounded shadow-lg border border-light px-2 py-3">
-      <div class="col-9">
-        <h5 class="text-font">
-          {{ owned.name }}
-        </h5>
-      </div>
-      <div class="col-3">
-        <button class="btn" :class="owned.tractorActive == true ? 'text-success' : 'text-danger'" @click="setTractor(owned)">
-          <i class="fas fa-tractor"></i>
-        </button>
-      </div>
-      <div class="col ml-2">
+  <div class="owned-land  bg-secondary rounded shadow-lg border border-light mx-1 pl-4 py-3">
+    <div class="row">
+      <div class="col-8">
+        <div class="row">
+          <h5 class="text-font">
+            {{ owned.name }}
+          </h5>
+        </div>
+
         <div class="row">
           <div class="col">
             Beds: {{ owned.beds }}
@@ -27,20 +23,41 @@
             Type: {{ owned.type }}
           </div>
         </div>
-      </div>
-      <div class="col">
         <div class="row">
-          <img src="https://via.placeholder.com/75C/O https://placeholder.com/"
-               alt=""
-          >
+          <div class="col">
+            Tended: {{ owned.tended }} / {{ owned.acers }}
+          </div>
         </div>
-        <div class="row mt-3">
-          <button class="btn btn-sm btn-danger rounded" @click="sellProperty(owned)">
-            Appraise
-          </button>
+        <div class="row">
+          <div class="col">
+            Quality: {{ owned.quality }}
+          </div>
         </div>
       </div>
-      <!-- TODO we are going to need to add a way to sell owned properties, make a property your home and sell products during the last month of a season. also Add hellping hands to lands that you arent living at -->
+
+      <div class="col-4">
+        <button class="btn" :class="owned.tractorActive == true ? 'text-success' : 'text-danger'" @click="setTractor(owned)">
+          <i class="fas fa-tractor"></i>
+        </button>
+        <make-home />
+        <helping-hands />
+      </div>
+
+      <div class="col-4 mt-3">
+        <button class="btn btn-sm btn-danger rounded" @click="sellProperty(owned)">
+          Appraise
+        </button>
+      </div>
+      <div class="col-4 mt-3">
+        <button class="btn btn-sm btn-success">
+          Harvest
+        </button>
+      </div>
+      <div class="col-4 mt-3">
+        <button class="btn btn-sm btn-light" @click="tend(owned)">
+          Tend
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -81,6 +98,7 @@ export default {
               'Your property has been sold!',
               'success'
             )
+            farmService.returnTractor(owned)
             optionToBuyService.sellLand(owned)
           }
         }
@@ -88,6 +106,9 @@ export default {
       },
       setTractor(owned) {
         farmService.setTractor(owned)
+      },
+      tend(owned) {
+        farmService.tend(owned)
       }
     }
   },

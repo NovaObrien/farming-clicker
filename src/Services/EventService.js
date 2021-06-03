@@ -29,15 +29,5 @@ class EventService {
     AppState.event.closeDesc = 'Another year older...'
     $('#eventModal').modal('show')
   }
-
-  // Uneventfull  20-60
-  uneventfull() {
-    AppState.event.title = 'Just another month'
-    AppState.event.greeting = ''
-    AppState.event.text = 'Sometimes nothing happening is okay'
-    AppState.event.closing = ''
-    AppState.event.closeDesc = 'Okay'
-    $('#eventModal').modal('show')
-  }
 }
 export const eventService = new EventService()

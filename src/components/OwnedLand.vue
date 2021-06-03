@@ -67,7 +67,7 @@
         </button>
       </div>
       <div class="col">
-        <button class="btn btn-sm btn-light">
+        <button class="btn btn-sm btn-light" @click="tend(owned)">
           Tend
         </button>
       </div>
@@ -118,6 +118,9 @@ export default {
       },
       setTractor(owned) {
         farmService.setTractor(owned)
+      },
+      tend(owned) {
+        farmService.tend(owned)
       }
     }
   },

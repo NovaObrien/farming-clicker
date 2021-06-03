@@ -2,6 +2,8 @@ Bug Notes
 =====================
 <!-- FIXED 1. Chance that Large Farms will Become undefined -->
 
+Weird little shift thing when planting trees
+
 InProgress && ToDos
 ========================
 1. Need a way to buy tractors, and all the logic behind that

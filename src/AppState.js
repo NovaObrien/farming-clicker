@@ -33,15 +33,19 @@ export const AppState = reactive({
   },
   fruits: [
     { id: 0, title: 'Apple', selected: false },
-    { id: 1, title: 'Cherry', selected: false },
-    { id: 2, title: 'Peaches', selected: false }
+    { id: 1, title: 'Peach', selected: false },
+    { id: 2, title: 'Cherry', selected: false }
 
     // apples: 0,
     // cherries: 0,
     // peaches: 0,
     // nuts: 0
   ],
-  plantLocationFruit: [],
+  plantedFruit: [
+    { id: 0, title: 'Emphty' },
+    { id: 1, title: 'Emphty' },
+    { id: 2, title: 'Emphty' },
+    { id: 3, title: 'Emphty' }],
   cattle: {},
   // farmerFate: {},
 

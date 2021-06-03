@@ -39,5 +39,9 @@ class FarmService {
         break
     }
   }
+
+  plantFruit(id, selectedFruit) {
+    AppState.plantedFruit[id].title = selectedFruit
+  }
 }
 export const farmService = new FarmService()

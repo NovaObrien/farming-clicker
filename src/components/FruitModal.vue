@@ -23,7 +23,7 @@
                 </h5>
               </div>
               <div class="row d-flex justify-content-center my-3">
-                Select a Fruit Tree to Plant:
+                Select a type of Fruit Tree to Plant:
               </div>
               <div class="row d-flex justify-content-around">
                 <div class="div"
@@ -33,28 +33,52 @@
                   <h5
                     class="p-1 border rounded"
                     :class="f.selected == true ?'text-success border-success' : 'text-danger border-danger'"
-                    @click="setActive(f.id)"
+                    @click="setActive(f)"
                   >
                     {{ f.title }}
                   </h5>
                 </div>
               </div>
-              <div class="row">
-                <div class="col">
-                  <!-- {{ fruit[0].type }} -->
+              <div class="row d-flex justify-content-center mt-4">
+                Then Select a place to plant your tree:
+              </div>
+              <div class="row d-flex justify-content-center mt-4">
+                <div class="plot mx-3 border-right border-bottom border-dark" @click="plantFruit(0)">
+                  <p>
+                    {{ plantedFruit[0].title }}
+                  </p>
+                </div>
+                <div class="plot mx-3 border-left border-bottom border-dark"
+                     @click="plantFruit(1)"
+                >
+                  <p>
+                    {{ plantedFruit[1].title }}
+                  </p>
                 </div>
               </div>
-              <div class="row">
+              <div class="
+                     row"
+              >
                 <div class="col d-flex justify-content-center">
                   <i class="fas fa-home"></i>
                 </div>
               </div>
-              <div class="row">
-                <div class="col">
+              <div class="row d-flex justify-content-center">
+                <div class="plot mx-3 border-right border-top border-dark"
+                     @click="plantFruit(2)"
+                >
+                  <p>
+                    {{ plantedFruit[2].title }}
+                  </p>
+                </div>
+                <div class="plot mx-3 border-left border-top border-dark" @click="plantFruit(3)">
+                  <p>
+                    {{ plantedFruit[3].title }}
+                  </p>
                 </div>
               </div>
             </div>
-            <div class="modal-footer d-flex justify-content-center">
+            <div class="modal-footer d-flex justify-content-center mt-5">
               <button type="button" class="btn btn-success" data-dismiss="modal">
                 Close
               </button>
@@ -67,17 +91,26 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, reactive } from 'vue'
 import { AppState } from '../AppState'
 import { farmService } from '../Services/FarmService'
 export default {
   name: 'FruitModal',
   setup() {
+    const state = reactive({
+      selectedFruit: 'Emphty'
+    })
     return {
+      state,
       fruits: computed(() => AppState.fruits),
+      plantedFruit: computed(() => AppState.plantedFruit),
 
-      setActive(id) {
-        farmService.setActiveFruit(id)
+      setActive(fruit) {
+        farmService.setActiveFruit(fruit.id)
+        state.selectedFruit = fruit.title
+      },
+      plantFruit(id) {
+        farmService.plantFruit(id, state.selectedFruit)
       }
 
     }
@@ -92,6 +125,13 @@ export default {
 }
 
 .fa-home{
-  font-size: 25px;
+  font-size: 35px;
 }
+
+.plot{
+  height: 3em;
+  widows: 15px;
+  padding: 10px;
+}
+
 </style>

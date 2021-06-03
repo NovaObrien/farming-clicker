@@ -6,7 +6,7 @@ Weird little shift thing when planting trees
 
 InProgress && ToDos
 ========================
-1. Need a way to buy tractors, and all the logic behind that
+<!--WORKING 1. Need a way to buy tractors, and all the logic behind that -->
 
 2. Manage Page has a long way to go
 
@@ -32,7 +32,7 @@ InProgress && ToDos
 
 13. fill out Help Modal text
 
-14. Move Hints on page to Help Modal && Replace with Farming Co. Logo
+14. Replace Farming Mangager Co. Logo with artwork
 
 15. Acers are linear wich is fine, however the bed costs being linear isnt necasarily accuarte to the rapid increase in housing costs (which is more exponential than linear, like acers is) 
 

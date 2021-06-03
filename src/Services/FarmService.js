@@ -59,7 +59,7 @@ class FarmService {
     if (owned.tended < owned.acers) {
       const index = AppState.ownedLands.findIndex(o => o.id === owned.id)
       let tended = AppState.ownedLands[index].tended
-      tended++
+      tended += AppState.character.children + 1
       AppState.ownedLands[index].tended = tended
       const mod = tended % 10
       if (mod === 0 || mod === 5) {

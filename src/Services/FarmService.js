@@ -17,25 +17,27 @@ class FarmService {
     }
   }
 
-  // brokenTractor() {
-  //   const owned = AppState.ownedLands
-  //   const hasTractors = []
-  //   for (let i = 0; i < owned.length; i++) {
-  //     if (owned[i].hasTractors === true) {
-  //       hasTractors.unshift(owned[i])
-  //     }
-  //   }
-  //   if (hasTractors.length !== 0) {
-  //     const index = Math.floor(Math.random * hasTractors.length)
-  //     const res = hasTractors[index]
+  setActiveFruit(id) {
+    switch (id) {
+      case 0:
+        AppState.fruits[0].selected = true
+        AppState.fruits[1].selected = false
+        AppState.fruits[2].selected = false
 
-  //     const ownedIndex = owned.findIndex(o => o.id === res.id)
-  //     AppState.ownedLands[ownedIndex].tractorActive = false
-  //     saveState()
-  //   } else if (AppState.tractors > 0) {
-  //     AppState.tractors--
-  //     saveState()
-  //   }
-  // }
+        break
+      case 1:
+        AppState.fruits[0].selected = false
+        AppState.fruits[1].selected = true
+        AppState.fruits[2].selected = false
+        break
+      case 2:
+        AppState.fruits[0].selected = false
+        AppState.fruits[1].selected = false
+        AppState.fruits[2].selected = true
+        break
+      default:
+        break
+    }
+  }
 }
 export const farmService = new FarmService()

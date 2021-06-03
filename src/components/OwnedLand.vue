@@ -1,6 +1,6 @@
 <template>
-  <div class="owned-land">
-    <div class="row bg-secondary rounded shadow-lg border border-light px-2 py-3">
+  <div class="owned-land bg-secondary rounded shadow-lg border border-light px-2 py-3">
+    <div class="row ">
       <div class="col-9">
         <h5 class="text-font">
           {{ owned.name }}
@@ -27,6 +27,21 @@
             Type: {{ owned.type }}
           </div>
         </div>
+        <div class="row">
+          <div class="col">
+            Tended: {{ owned.tended }} / {{ owned.acers }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            Quality: {{ owned.quality }}
+          </div>
+        </div>
+        <!-- <div class="row mt-3">
+          <button class="btn btn-sm btn-danger rounded" @click="sellProperty(owned)">
+            Appraise
+          </button>
+        </div> -->
       </div>
       <div class="col">
         <div class="row">
@@ -34,13 +49,28 @@
                alt=""
           >
         </div>
-        <div class="row mt-3">
-          <button class="btn btn-sm btn-danger rounded" @click="sellProperty(owned)">
-            Appraise
-          </button>
+        <div class="row pt-3" :v-if="owned.type === 'Fruit'">
+          <fruit-modal />
         </div>
       </div>
       <!-- TODO we are going to need to add a way to sell owned properties, make a property your home and sell products during the last month of a season. also Add hellping hands to lands that you arent living at -->
+    </div>
+    <div class="row mt-3">
+      <div class="col">
+        <button class="btn btn-sm btn-danger rounded" @click="sellProperty(owned)">
+          Appraise
+        </button>
+      </div>
+      <div class="col">
+        <button class="btn btn-sm btn-success">
+          Harvest
+        </button>
+      </div>
+      <div class="col">
+        <button class="btn btn-sm btn-light">
+          Tend
+        </button>
+      </div>
     </div>
   </div>
 </template>

@@ -19,7 +19,7 @@
             <div class="container-fluid">
               <div class="row d-flex justify-content-center pb-3 border-bottom">
                 <h5 class="text-font text-dark">
-                  Plant Fruit Trees
+                  Fruit Trees
                 </h5>
               </div>
               <div class="row d-flex justify-content-center my-3">

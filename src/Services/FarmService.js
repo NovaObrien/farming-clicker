@@ -17,6 +17,16 @@ class FarmService {
     }
   }
 
+  // happens when you sell tractor
+  returnTractor(owned) {
+    const index = AppState.ownedLands.findIndex(o => o.id === owned.id)
+    const bool = AppState.ownedLands[index].tractorActive
+    if (bool === true) {
+      AppState.ownedLands[index].tractorActive = false
+      AppState.tractors++
+    }
+  }
+
   setActiveFruit(id) {
     switch (id) {
       case 0:

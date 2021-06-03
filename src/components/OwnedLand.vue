@@ -1,75 +1,57 @@
 <template>
-  <div class="owned-land bg-secondary rounded shadow-lg border border-light px-2 py-3">
-    <div class="row ">
-      <div class="col-9">
+  <div class="owned-land row bg-secondary rounded shadow-lg border border-light mx-1 pl-4 py-3">
+    <div class="col-9">
+      <div class="row">
         <h5 class="text-font">
           {{ owned.name }}
         </h5>
       </div>
-      <div class="col-3">
-        <button class="btn" :class="owned.tractorActive == true ? 'text-success' : 'text-danger'" @click="setTractor(owned)">
-          <i class="fas fa-tractor"></i>
-        </button>
+
+      <div class="row">
+        <div class="col">
+          Beds: {{ owned.beds }}
+        </div>
       </div>
-      <div class="col ml-2">
-        <div class="row">
-          <div class="col">
-            Beds: {{ owned.beds }}
-          </div>
+      <div class="row">
+        <div class="col">
+          Acers: {{ owned.acers }}
         </div>
-        <div class="row">
-          <div class="col">
-            Acers: {{ owned.acers }}
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            Type: {{ owned.type }}
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            Tended: {{ owned.tended }} / {{ owned.acers }}
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            Quality: {{ owned.quality }}
-          </div>
-        </div>
-        <!-- <div class="row mt-3">
-          <button class="btn btn-sm btn-danger rounded" @click="sellProperty(owned)">
-            Appraise
-          </button>
-        </div> -->
       </div>
-      <div class="col">
-        <div class="row">
-          <img src="https://via.placeholder.com/75C/O https://placeholder.com/"
-               alt=""
-          >
+      <div class="row">
+        <div class="col">
+          Type: {{ owned.type }}
         </div>
-        <!-- <div class="row pt-3" :v-if="owned.type === 'Fruit'">
-        </div> -->
       </div>
-      <!-- TODO we are going to need to add a way to sell owned properties, make a property your home and sell products during the last month of a season. also Add hellping hands to lands that you arent living at -->
+      <div class="row">
+        <div class="col">
+          Tended: {{ owned.tended }} / {{ owned.acers }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          Quality: {{ owned.quality }}
+        </div>
+      </div>
     </div>
-    <div class="row mt-3">
-      <div class="col">
-        <button class="btn btn-sm btn-danger rounded" @click="sellProperty(owned)">
-          Appraise
-        </button>
-      </div>
-      <div class="col">
-        <button class="btn btn-sm btn-success">
-          Harvest
-        </button>
-      </div>
-      <div class="col">
-        <button class="btn btn-sm btn-light" @click="tend(owned)">
-          Tend
-        </button>
-      </div>
+
+    <div class="col-2">
+      <button class="btn" :class="owned.tractorActive == true ? 'text-success' : 'text-danger'" @click="setTractor(owned)">
+        <i class="fas fa-tractor"></i>
+      </button>
+      <make-home />
+      <helping-hands />
+    </div>
+
+    <div class="row d-flex justify-content-between mt-3">
+      <button class="btn btn-sm btn-danger rounded" @click="sellProperty(owned)">
+        Appraise
+      </button>
+      <button class="btn btn-sm btn-success">
+        Harvest
+      </button>
+      <button class="btn btn-sm btn-light" @click="tend(owned)">
+        Tend
+      </button>
     </div>
   </div>
 </template>
@@ -110,6 +92,7 @@ export default {
               'Your property has been sold!',
               'success'
             )
+            farmService.returnTractor(owned)
             optionToBuyService.sellLand(owned)
           }
         }

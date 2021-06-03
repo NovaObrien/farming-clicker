@@ -2,7 +2,7 @@
   <div class="fruit-modal">
     <div class="text-font" data-toggle="modal" data-target="#fruitModal">
       <h6 class="fruit-btn">
-        Plant Fruit
+        Fruit Tree Layout
       </h6>
     </div>
 
@@ -39,8 +39,10 @@
                   </h5>
                 </div>
               </div>
-              <div class="row d-flex justify-content-center mt-4">
-                Then Select a place to plant your tree:
+              <div class="row mt-4">
+                <p class="text-center">
+                  Then design the optimal layout for next years harvest:
+                </p>
               </div>
               <div class="row d-flex justify-content-center mt-4">
                 <div class="plot mx-3 border-right border-bottom border-dark" @click="plantFruit(0)">

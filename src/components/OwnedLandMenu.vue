@@ -16,6 +16,8 @@
             </p>
           </div>
         </div>
+        <fruit-modal />
+
         <owned-land class="m-3" v-for="own in ownedLands" :owned-land-prop="own" :key="own.id" />
         <div class="col-12 text-center text-light p-2 " v-if="ownedLands.length === 0">
           <h1 class="text-dark p-2 border">

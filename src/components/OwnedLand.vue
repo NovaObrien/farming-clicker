@@ -49,9 +49,8 @@
                alt=""
           >
         </div>
-        <div class="row pt-3" :v-if="owned.type === 'Fruit'">
-          <fruit-modal />
-        </div>
+        <!-- <div class="row pt-3" :v-if="owned.type === 'Fruit'">
+        </div> -->
       </div>
       <!-- TODO we are going to need to add a way to sell owned properties, make a property your home and sell products during the last month of a season. also Add hellping hands to lands that you arent living at -->
     </div>

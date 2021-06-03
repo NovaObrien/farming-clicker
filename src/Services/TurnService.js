@@ -4,6 +4,7 @@ import { dolService } from './DOLService'
 import { goodFortuneService } from './GoodFortuneService'
 import { optionToBuyService } from './OptionToBuyService'
 import $ from 'jquery'
+import { farmService } from './FarmService'
 
 class TurnService {
   endTurn() {
@@ -17,9 +18,13 @@ class TurnService {
     // at the end of the year send in event showing a recolection of the past year
     // We will also pay bills for our house/ farms
     // this.updateOTBs()
-    if (AppState.time.turn !== 3) { this.drawEvent() }
+    if (AppState.time.turn !== 3) {
+      this.drawEvent()
+    }
     this.payBills()
     this.updateOTBs()
+
+    farmService.checkTend()
   }
 
   payBills() {

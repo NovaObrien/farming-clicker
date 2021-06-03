@@ -60,11 +60,29 @@ class FarmService {
       const index = AppState.ownedLands.findIndex(o => o.id === owned.id)
       let tended = AppState.ownedLands[index].tended
       tended += AppState.character.children + 1
-      AppState.ownedLands[index].tended = tended
-      const mod = tended % 10
-      if (mod === 0 || mod === 5) {
+
+      if (tended > owned.acers) {
+        AppState.ownedLands[index].tended = owned.acers
         saveState()
+      } else {
+        AppState.ownedLands[index].tended = tended
+
+        const mod = tended % 10
+        if (mod === 0 || mod === 5) {
+          saveState()
+        }
       }
+    }
+  }
+
+  checkTend() {
+    for (let i = 0; i < AppState.ownedLands.length; i++) {
+      if (AppState.ownedLands[i].tended === AppState.ownedLands[i].acers) {
+        AppState.ownedLands[i].quality++
+      } else {
+        AppState.ownedLands[i].quality -= 1
+      }
+      AppState.ownedLands[i].tended = 0
     }
   }
 }

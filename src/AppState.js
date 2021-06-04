@@ -45,7 +45,17 @@ export const AppState = reactive({
     { id: 0, title: 'Apple' },
     { id: 1, title: 'Apple' },
     { id: 2, title: 'Apple' },
-    { id: 3, title: 'Apple' }],
+    { id: 3, title: 'Apple' },
+    { id: 4, title: 'Apple' },
+    { id: 5, title: 'Apple' },
+    { id: 6, title: 'Apple' },
+    { id: 7, title: 'Apple' }],
+
+  fruitBonuses: {
+    varityBonus: 0,
+    bushelBonus: 3
+  },
+
   cattle: {},
   // farmerFate: {},
 

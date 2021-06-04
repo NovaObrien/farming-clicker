@@ -55,6 +55,17 @@ class FarmService {
     saveState()
   }
 
+  checkFruitTreeLayout() {
+    // need to check 0 and 3 position?? what if we add more???
+    // const plantedFruit = AppState.plantedFruit
+    // const bushelBonus = 0
+    // const varityBonus = 0
+    // if (plantedFruit[0].title === plantedFruit[1].title) {
+
+    // }
+    // 0 1 2  3
+  }
+
   tend(owned) {
     if (owned.tended < owned.acers) {
       const index = AppState.ownedLands.findIndex(o => o.id === owned.id)

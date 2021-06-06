@@ -56,14 +56,93 @@ class FarmService {
   }
 
   checkFruitTreeLayout() {
-    // need to check 0 and 3 position?? what if we add more???
-    // const plantedFruit = AppState.plantedFruit
-    // const bushelBonus = 0
-    // const varityBonus = 0
-    // if (plantedFruit[0].title === plantedFruit[1].title) {
+    debugger
+    const plantedFruit = AppState.plantedFruit
+    let bushelBonus = 0
+    let varityBonus = 8
+    if (plantedFruit[0].title === plantedFruit[1].title) {
+      bushelBonus++
+      varityBonus--
+    }
+    if (plantedFruit[0].title === plantedFruit[3].title) {
+      bushelBonus++
+      varityBonus--
+    }
+    if (plantedFruit[2].title === plantedFruit[1].title) {
+      bushelBonus++
+      varityBonus--
+    }
+    if (plantedFruit[2].title === plantedFruit[4].title) {
+      bushelBonus++
+      varityBonus--
+    }
 
-    // }
+    if (plantedFruit[5].title === plantedFruit[3].title) {
+      bushelBonus++
+      varityBonus--
+    }
+    if (plantedFruit[5].title === plantedFruit[6].title) {
+      bushelBonus++
+      varityBonus--
+    }
+    if (plantedFruit[7].title === plantedFruit[4].title) {
+      bushelBonus++
+      varityBonus--
+    }
+    if (plantedFruit[7].title === plantedFruit[6].title) {
+      bushelBonus++
+      varityBonus--
+    }
+
+    AppState.fruitBonuses.bushelBonus = bushelBonus
+    AppState.fruitBonuses.varityBonus = varityBonus
+
     // how to solve a Linear Ordinary Differential Equations
+    let apples = 0
+    let peaches = 0
+    let cherries = 0
+
+    for (let i = 0; i < 8; i++) {
+      if (plantedFruit[i].title === 'Apple') {
+        apples++
+      } else if (plantedFruit[i].title === 'Peach') {
+        peaches++
+      } else {
+        cherries++
+      }
+    }
+
+    AppState.curentlyPlantedFruit.apples = apples
+    AppState.curentlyPlantedFruit.peaches = peaches
+    AppState.curentlyPlantedFruit.cherries = cherries
+  }
+
+  harvestFruit(owned) {
+    const month = AppState.time.month
+    const numFruits = AppState.curentlyPlantedFruit
+    if (month === 'June' || month === 'July') {
+      if (AppState.fruits[2].harvested !== true) {
+        AppState.character.currency += numFruits.cherries * AppState.fruitBonuses.bushelBonus * owned.quality
+
+        AppState.fruits[2].harvested = true
+      }
+    }
+
+    if (month === 'July' || month === 'August') {
+      if (AppState.fruits[1].harvested !== true) {
+        AppState.character.currency += numFruits.peaches * AppState.fruitBonuses.bushelBonus * owned.quality
+
+        AppState.fruits[1].harvested = true
+      }
+    }
+
+    if (month === 'June' || month === 'July') {
+      if (AppState.fruits[2].harvested !== true) {
+        AppState.character.currency += numFruits.cherries * AppState.fruitBonuses.bushelBonus * owned.quality
+
+        AppState.fruits[2].harvested = true
+      }
+    }
   }
 
   tend(owned) {

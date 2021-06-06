@@ -32,15 +32,16 @@ export const AppState = reactive({
     umbels: 0
   },
   fruits: [
-    { id: 0, title: 'Apple', selected: false },
-    { id: 1, title: 'Peach', selected: false },
-    { id: 2, title: 'Cherry', selected: false }
+    { id: 0, title: 'Apple', selected: false, harvested: false },
+    { id: 1, title: 'Peach', selected: false, harvested: false },
+    { id: 2, title: 'Cherry', selected: false, harvested: false }
 
     // apples: 0,
     // cherries: 0,
     // peaches: 0,
     // nuts: 0
   ],
+  // for next years settings
   plantedFruit: [
     { id: 0, title: 'Apple' },
     { id: 1, title: 'Apple' },
@@ -51,9 +52,17 @@ export const AppState = reactive({
     { id: 6, title: 'Apple' },
     { id: 7, title: 'Apple' }],
 
+  // this years settings
+  curentlyPlantedFruit: {
+    apples: 8,
+    peaches: 0,
+    cherries: 0
+
+  },
+
   fruitBonuses: {
     varityBonus: 0,
-    bushelBonus: 3
+    bushelBonus: 8
   },
 
   cattle: {},

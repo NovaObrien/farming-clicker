@@ -35,11 +35,6 @@ export const AppState = reactive({
     { id: 0, title: 'Apple', selected: false, harvested: false },
     { id: 1, title: 'Peach', selected: false, harvested: false },
     { id: 2, title: 'Cherry', selected: false, harvested: false }
-
-    // apples: 0,
-    // cherries: 0,
-    // peaches: 0,
-    // nuts: 0
   ],
   // for next years settings
   plantedFruit: [
@@ -61,8 +56,12 @@ export const AppState = reactive({
   },
 
   fruitBonuses: {
-    varityBonus: 0,
-    bushelBonus: 8
+    // varitySave: reduces the effect of quality reduciton in crop diseases or bug cards +1 for each tree next to each other that are different
+    varitySave: 0,
+    // bushel bonus effects the amount gathered from trees +1 for each tree next to each other
+    appleBushelBonus: 8,
+    peachBushelBonus: 0,
+    cherryBushelBonus: 0
   },
 
   cattle: {},

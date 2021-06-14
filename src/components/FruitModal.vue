@@ -129,7 +129,7 @@
 <script>
 import { computed, reactive } from 'vue'
 import { AppState } from '../AppState'
-import { farmService } from '../Services/FarmService'
+import { fruitService } from '../Services/FruitService'
 export default {
   name: 'FruitModal',
   setup() {
@@ -142,11 +142,11 @@ export default {
       plantedFruit: computed(() => AppState.plantedFruit),
 
       setActive(fruit) {
-        farmService.setActiveFruit(fruit.id)
+        fruitService.setActiveFruit(fruit.id)
         state.selectedFruit = fruit.title
       },
       plantFruit(id) {
-        farmService.plantFruit(id, state.selectedFruit)
+        fruitService.plantFruit(id, state.selectedFruit)
       }
 
     }

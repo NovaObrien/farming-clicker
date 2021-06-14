@@ -1,7 +1,7 @@
 import { AppState } from '../AppState'
 import { saveState } from '../utils/LocalStorage'
 import { eventService } from './EventService'
-import { farmService } from './FarmService'
+import { fruitService } from './FruitService'
 
 class TimeService {
   endTurn() {
@@ -27,7 +27,7 @@ class TimeService {
       AppState.currentYearCost.acerCost += 78
       AppState.currentYearCost.bedCost += 1100
 
-      farmService.checkFruitTreeLayout()
+      fruitService.checkFruitTreeLayout()
     } else if (turn === 2) {
       AppState.time.month = 'February'
     } else {

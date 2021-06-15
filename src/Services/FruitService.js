@@ -1,7 +1,6 @@
+import Swal from 'sweetalert2'
 import { AppState } from '../AppState'
 import { saveState } from '../utils/LocalStorage'
-import { logger } from '../utils/Logger'
-
 class FruitService {
   setActiveFruit(id) {
     switch (id) {
@@ -161,25 +160,49 @@ class FruitService {
     // debugger
     const month = AppState.time.month
     const numFruits = AppState.currentlyPlantedFruit
-    if (month === 'June' || month === 'July') {
-      if (AppState.fruits[2].harvested !== true) {
-        AppState.character.currency += numFruits.cherries * AppState.fruitBonuses.cherryBushelBonus * owned.quality
+    if (month === 'July') {
+      if (AppState.fruits[2].harvested !== true && AppState.currentlyPlantedFruit.cherries !== 0) {
+        const total = numFruits.cherries * AppState.fruitBonuses.cherryBushelBonus * owned.quality
+        Swal.fire({
+          title: 'Harvest',
+          text: 'Your Cherries Sold for ' + (total).toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD'
+          })
+        })
+        AppState.character.currency += total
 
         AppState.fruits[2].harvested = true
       }
     }
 
-    if (month === 'July' || month === 'August') {
-      if (AppState.fruits[1].harvested !== true) {
-        AppState.character.currency += numFruits.peaches * AppState.fruitBonuses.peachBushelBonus * owned.quality
+    if (month === 'August') {
+      if (AppState.fruits[1].harvested !== true && AppState.currentlyPlantedFruit.peaches !== 0) {
+        const total = numFruits.peaches * AppState.fruitBonuses.peachBushelBonus * owned.quality
+        Swal.fire({
+          title: 'Harvest',
+          text: 'Your Peaches Sold for ' + (total).toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD'
+          })
+        })
+        AppState.character.currency += total
 
         AppState.fruits[1].harvested = true
       }
     }
 
-    if (month === 'September' || month === 'August') {
-      if (AppState.fruits[0].harvested !== true) {
-        logger.log(AppState.character.currency += numFruits.apples * AppState.fruitBonuses.appleBushelBonus * owned.quality)
+    if (month === 'September') {
+      if (AppState.fruits[0].harvested !== true && AppState.currentlyPlantedFruit.apples !== 0) {
+        const total = numFruits.apples * AppState.fruitBonuses.appleBushelBonus * owned.quality
+        Swal.fire({
+          title: 'Harvest',
+          text: 'Your Apples Sold for ' + (total).toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD'
+          })
+        })
+        AppState.character.currency += total
 
         AppState.fruits[0].harvested = true
       }

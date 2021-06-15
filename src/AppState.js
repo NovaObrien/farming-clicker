@@ -36,6 +36,7 @@ export const AppState = reactive({
     { id: 1, title: 'Peach', selected: false, harvested: false },
     { id: 2, title: 'Cherry', selected: false, harvested: false }
   ],
+
   // for next years settings
   plantedFruit: [
     { id: 0, title: 'Apple' },
@@ -47,12 +48,11 @@ export const AppState = reactive({
     { id: 6, title: 'Apple' },
     { id: 7, title: 'Apple' }],
 
-  // this years settings
-  curentlyPlantedFruit: {
+  // this years individualy planted
+  currentlyPlantedFruit: {
     apples: 8,
     peaches: 0,
     cherries: 0
-
   },
 
   fruitBonuses: {
@@ -61,7 +61,8 @@ export const AppState = reactive({
     // bushel bonus effects the amount gathered from trees +1 for each tree next to each other
     appleBushelBonus: 8,
     peachBushelBonus: 0,
-    cherryBushelBonus: 0
+    cherryBushelBonus: 0,
+    fruitPlanChanged: false
   },
 
   cattle: {},

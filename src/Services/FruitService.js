@@ -1,5 +1,6 @@
 import { AppState } from '../AppState'
 import { saveState } from '../utils/LocalStorage'
+import { logger } from '../utils/Logger'
 
 class FruitService {
   setActiveFruit(id) {
@@ -27,8 +28,11 @@ class FruitService {
 
   plantFruit(id, selectedFruit) {
     if (selectedFruit !== 'Emphty') {
-      AppState.plantedFruit[id].title = selectedFruit
-      saveState()
+      if (AppState.plantedFruit[id].title !== selectedFruit) {
+        AppState.plantedFruit[id].title = selectedFruit
+        AppState.fruitBonuses.fruitPlanChanged = true
+        saveState()
+      }
     }
   }
 
@@ -40,58 +44,43 @@ class FruitService {
     let cherryBushelBonus = 0
     let varitySave = 8
 
-    let apples = 0
-    let peaches = 0
-    let cherries = 0
     if (plantedFruit[0].title === plantedFruit[1].title) {
       if (plantedFruit[0].title === 'Apple') {
         appleBushelBonus++
-        apples++
       } else if (plantedFruit[0].title === 'Peach') {
         peachBushelBonus++
-        peaches++
       } else {
         cherryBushelBonus++
-        cherries++
       }
       varitySave--
     }
     if (plantedFruit[0].title === plantedFruit[3].title) {
       if (plantedFruit[0].title === 'Apple') {
         appleBushelBonus++
-        apples++
       } else if (plantedFruit[0].title === 'Peach') {
         peachBushelBonus++
-        peaches++
       } else {
         cherryBushelBonus++
-        cherries++
       }
       varitySave--
     }
     if (plantedFruit[2].title === plantedFruit[1].title) {
       if (plantedFruit[2].title === 'Apple') {
         appleBushelBonus++
-        apples++
       } else if (plantedFruit[2].title === 'Peach') {
         peachBushelBonus++
-        peaches++
       } else {
         cherryBushelBonus++
-        cherries++
       }
       varitySave--
     }
     if (plantedFruit[2].title === plantedFruit[4].title) {
       if (plantedFruit[2].title === 'Apple') {
         appleBushelBonus++
-        apples++
       } else if (plantedFruit[2].title === 'Peach') {
         peachBushelBonus++
-        peaches++
       } else {
         cherryBushelBonus++
-        cherries++
       }
       varitySave--
     }
@@ -99,52 +88,40 @@ class FruitService {
     if (plantedFruit[5].title === plantedFruit[3].title) {
       if (plantedFruit[5].title === 'Apple') {
         appleBushelBonus++
-        apples++
       } else if (plantedFruit[5].title === 'Peach') {
         peachBushelBonus++
-        peaches++
       } else {
         cherryBushelBonus++
-        cherries++
       }
       varitySave--
     }
     if (plantedFruit[5].title === plantedFruit[6].title) {
       if (plantedFruit[5].title === 'Apple') {
         appleBushelBonus++
-        apples++
       } else if (plantedFruit[5].title === 'Peach') {
         peachBushelBonus++
-        peaches++
       } else {
         cherryBushelBonus++
-        cherries++
       }
       varitySave--
     }
     if (plantedFruit[7].title === plantedFruit[4].title) {
       if (plantedFruit[7].title === 'Apple') {
         appleBushelBonus++
-        apples++
       } else if (plantedFruit[7].title === 'Peach') {
         peachBushelBonus++
-        peaches++
       } else {
         cherryBushelBonus++
-        cherries++
       }
       varitySave--
     }
     if (plantedFruit[7].title === plantedFruit[6].title) {
       if (plantedFruit[7].title === 'Apple') {
         appleBushelBonus++
-        apples++
       } else if (plantedFruit[7].title === 'Peach') {
         peachBushelBonus++
-        peaches++
       } else {
         cherryBushelBonus++
-        cherries++
       }
       varitySave--
     }
@@ -154,17 +131,39 @@ class FruitService {
     AppState.fruitBonuses.cherryBushelBonus = cherryBushelBonus
     AppState.fruitBonuses.varitySave = varitySave
 
-    AppState.curentlyPlantedFruit.apples = apples
-    AppState.curentlyPlantedFruit.peaches = peaches
-    AppState.curentlyPlantedFruit.cherries = cherries
+    AppState.fruitBonuses.fruitPlanChanged = false
+
+    // update currently planted Fruit
+    this.countPlantedTrees()
+    saveState()
+  }
+
+  countPlantedTrees() {
+    let apples = 0
+    let peaches = 0
+    let cherries = 0
+    const fruit = AppState.plantedFruit
+    for (let i = 0; i < fruit.length; i++) {
+      if (fruit[i].title === 'Apple') {
+        apples++
+      } else if (fruit[i].title === 'Peach') {
+        peaches++
+      } else {
+        cherries++
+      }
+    }
+    AppState.currentlyPlantedFruit.apples = apples
+    AppState.currentlyPlantedFruit.peaches = peaches
+    AppState.currentlyPlantedFruit.cherries = cherries
   }
 
   harvestFruit(owned) {
+    // debugger
     const month = AppState.time.month
-    const numFruits = AppState.curentlyPlantedFruit
+    const numFruits = AppState.currentlyPlantedFruit
     if (month === 'June' || month === 'July') {
       if (AppState.fruits[2].harvested !== true) {
-        AppState.character.currency += numFruits.cherries * AppState.fruitBonuses.appleBushelBonus * owned.quality
+        AppState.character.currency += numFruits.cherries * AppState.fruitBonuses.cherryBushelBonus * owned.quality
 
         AppState.fruits[2].harvested = true
       }
@@ -178,12 +177,18 @@ class FruitService {
       }
     }
 
-    if (month === 'June' || month === 'July') {
-      if (AppState.fruits[2].harvested !== true) {
-        AppState.character.currency += numFruits.cherries * AppState.fruitBonuses.cherryBushelBonus * owned.quality
+    if (month === 'September' || month === 'August') {
+      if (AppState.fruits[0].harvested !== true) {
+        logger.log(AppState.character.currency += numFruits.apples * AppState.fruitBonuses.appleBushelBonus * owned.quality)
 
-        AppState.fruits[2].harvested = true
+        AppState.fruits[0].harvested = true
       }
+    }
+  }
+
+  resetFruitHarvest() {
+    for (let i = 0; i < AppState.fruits.length; i++) {
+      AppState.fruits[i].harvested = false
     }
   }
 }

@@ -49,7 +49,7 @@
         </button>
       </div>
       <div class="col-4 mt-3">
-        <button class="btn btn-sm btn-success">
+        <button class="btn btn-sm btn-success" @click="harvest(owned)">
           Harvest
         </button>
       </div>
@@ -109,6 +109,9 @@ export default {
       },
       tend(owned) {
         farmService.tend(owned)
+      },
+      harvest(owned) {
+        farmService.harvest(owned)
       }
     }
   },

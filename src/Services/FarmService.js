@@ -1,5 +1,7 @@
 import { AppState } from '../AppState'
 import { saveState } from '../utils/LocalStorage'
+import { logger } from '../utils/Logger'
+import { fruitService } from './FruitService'
 
 class FarmService {
   setTractor(owned) {
@@ -24,6 +26,14 @@ class FarmService {
     if (bool === true) {
       AppState.ownedLands[index].tractorActive = false
       AppState.tractors++
+    }
+  }
+
+  harvest(owned) {
+    if (owned.type === 'Fruit') {
+      fruitService.harvestFruit(owned)
+    } else {
+      logger.log('harvest not implemented for type')
     }
   }
 
@@ -56,6 +66,19 @@ class FarmService {
       }
       AppState.ownedLands[i].tended = 0
     }
+  }
+
+  updateFruit() {
+    if (AppState.fruitBonuses.fruitPlanChanged === true) {
+      fruitService.checkFruitTreeLayout()
+    } else {
+      for (let i = 0; i < AppState.ownedLands.length; i++) {
+        if (AppState.ownedLands[i].type === 'Fruit') {
+          AppState.ownedLands[i].quality += 10
+        }
+      }
+    }
+    fruitService.resetFruitHarvest()
   }
 }
 export const farmService = new FarmService()

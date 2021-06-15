@@ -4,6 +4,9 @@ Bug Notes
 
 Weird little shift thing when planting trees
 
+
+
+
 InProgress && ToDos
 ========================
 <!--WORKING 1. Need a way to buy tractors, and all the logic behind that -->
@@ -50,3 +53,5 @@ StretchGoals
 2. Make it take 1-12 months to sell farm and is cancable (adds it to the nomral market with a cancel btn)
 
 3. Crop Rotations / change lands crop type between hay and veggies?
+
+4. Need to update Fruit planting to where if they player changes back to their orginal plan it wont cos them their quality bonus at the begining of the year..

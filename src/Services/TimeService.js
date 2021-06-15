@@ -33,6 +33,7 @@ class TimeService {
     } else {
       AppState.time.month = 'March'
       AppState.time.season = 'Spring'
+      AppState.time.harvestables = 'Hay, Cherries'
       AppState.character.age++
       eventService.birthdayEvent()
     }
@@ -48,6 +49,7 @@ class TimeService {
     } else {
       AppState.time.month = 'June'
       AppState.time.season = 'Summer'
+      AppState.time.harvestables = 'Hay, Peaches'
     }
 
     saveState()
@@ -61,6 +63,7 @@ class TimeService {
     } else {
       AppState.time.month = 'September'
       AppState.time.season = 'Fall'
+      AppState.time.harvestables = 'Hay, Apples'
     }
 
     saveState()
@@ -74,6 +77,8 @@ class TimeService {
     } else {
       AppState.time.month = 'December'
       AppState.time.season = 'Winter'
+      AppState.time.harvestables = 'None'
+
       AppState.time.turn = 0
     }
     saveState()

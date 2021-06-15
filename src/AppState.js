@@ -13,7 +13,7 @@ export const AppState = reactive({
     year: 1970,
     month: 'March',
     season: 'Spring',
-    harvestables: []
+    harvestables: 'Hay, Cherries'
   },
   event: {
     title: '',

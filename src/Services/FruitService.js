@@ -158,9 +158,9 @@ class FruitService {
 
   harvestFruit(owned) {
     // debugger
-    const month = AppState.time.month
+    const season = AppState.time.season
     const numFruits = AppState.currentlyPlantedFruit
-    if (month === 'July') {
+    if (season === 'Spring') {
       if (AppState.fruits[2].harvested !== true && AppState.currentlyPlantedFruit.cherries !== 0) {
         const total = numFruits.cherries * AppState.fruitBonuses.cherryBushelBonus * owned.quality
         Swal.fire({
@@ -174,9 +174,7 @@ class FruitService {
 
         AppState.fruits[2].harvested = true
       }
-    }
-
-    if (month === 'August') {
+    } else if (season === 'Summer') {
       if (AppState.fruits[1].harvested !== true && AppState.currentlyPlantedFruit.peaches !== 0) {
         const total = numFruits.peaches * AppState.fruitBonuses.peachBushelBonus * owned.quality
         Swal.fire({
@@ -190,9 +188,7 @@ class FruitService {
 
         AppState.fruits[1].harvested = true
       }
-    }
-
-    if (month === 'September') {
+    } else if (season === 'Fall') {
       if (AppState.fruits[0].harvested !== true && AppState.currentlyPlantedFruit.apples !== 0) {
         const total = numFruits.apples * AppState.fruitBonuses.appleBushelBonus * owned.quality
         Swal.fire({

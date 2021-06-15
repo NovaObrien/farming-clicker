@@ -14,6 +14,9 @@
                 currency: 'USD'
               }) }}
             </p>
+            <p>
+              Able to Harvest: {{ harvestables }}
+            </p>
           </div>
         </div>
         <fruit-modal />
@@ -38,7 +41,8 @@ export default {
     return {
       ownedLands: computed(() => AppState.ownedLands),
       tractors: computed(() => AppState.tractors),
-      costs: computed(() => AppState.monthlyCosts)
+      costs: computed(() => AppState.monthlyCosts),
+      harvestables: computed(() => AppState.time.harvestables)
     }
   }
 }

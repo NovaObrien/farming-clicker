@@ -38,6 +38,8 @@ export const AppState = reactive({
     { id: 2, title: 'Cherry', selected: false, harvested: false }
   ],
 
+  // TODO create a way for each fruit farm to be harvested individually?? Testing in individual farms data
+
   // for next years settings
   plantedFruit: [
     { id: 0, title: 'Apple' },
@@ -80,7 +82,21 @@ export const AppState = reactive({
 
   optionsToBuy: {
     smallFarms: [{ id: 2, name: 'River Banks Farm', acers: 8, type: 'Hay', beds: 2, tractorActive: false, tended: 0, quality: 50 }],
-    mediumFarms: [{ id: 6, name: 'Apple Way', acers: 70, type: 'Fruit', beds: 3, tractorActive: false, tended: 0, quality: 50 }],
+    mediumFarms: [{
+      id: 6,
+      name: 'Apple Way',
+      acers: 70,
+      type: 'Fruit',
+      beds: 3,
+      tractorActive: false,
+      tended: 0,
+      quality: 50,
+      harvestables: {
+        cherries: false,
+        peaches: false,
+        apples: false
+      }
+    }],
     largeFarms: [{ id: 12, name: 'Cattle Co.', acers: 900, type: 'Cattle', beds: 5, tractorActive: false, tended: 0, quality: 50 }]
   },
 

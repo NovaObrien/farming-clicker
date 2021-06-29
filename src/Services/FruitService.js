@@ -161,7 +161,7 @@ class FruitService {
     const season = AppState.time.season
     const numFruits = AppState.currentlyPlantedFruit
     if (season === 'Spring') {
-      if (AppState.fruits[2].harvested !== true && AppState.currentlyPlantedFruit.cherries !== 0) {
+      if (owned.harvestables.cherries !== true && AppState.currentlyPlantedFruit.cherries !== 0) {
         const total = numFruits.cherries * AppState.fruitBonuses.cherryBushelBonus * owned.quality
         Swal.fire({
           title: 'Harvest',
@@ -172,10 +172,10 @@ class FruitService {
         })
         AppState.character.currency += total
 
-        AppState.fruits[2].harvested = true
+        owned.harvestables.cherries = true
       }
     } else if (season === 'Summer') {
-      if (AppState.fruits[1].harvested !== true && AppState.currentlyPlantedFruit.peaches !== 0) {
+      if (owned.harvestables.peaches !== true && AppState.currentlyPlantedFruit.peaches !== 0) {
         const total = numFruits.peaches * AppState.fruitBonuses.peachBushelBonus * owned.quality
         Swal.fire({
           title: 'Harvest',
@@ -186,10 +186,10 @@ class FruitService {
         })
         AppState.character.currency += total
 
-        AppState.fruits[1].harvested = true
+        owned.harvestables.peaches = true
       }
     } else if (season === 'Fall') {
-      if (AppState.fruits[0].harvested !== true && AppState.currentlyPlantedFruit.apples !== 0) {
+      if (owned.harvestables.apples !== true && AppState.currentlyPlantedFruit.apples !== 0) {
         const total = numFruits.apples * AppState.fruitBonuses.appleBushelBonus * owned.quality
         Swal.fire({
           title: 'Harvest',
@@ -200,14 +200,19 @@ class FruitService {
         })
         AppState.character.currency += total
 
-        AppState.fruits[0].harvested = true
+        owned.harvestables.apples = true
       }
     }
   }
 
   resetFruitHarvest() {
-    for (let i = 0; i < AppState.fruits.length; i++) {
-      AppState.fruits[i].harvested = false
+    const ownedLand = AppState.ownedLands
+    for (let i = 0; i < ownedLand.length; i++) {
+      if (ownedLand[i].type === 'Fruit') {
+        ownedLand[i].harvestables.cherries = false
+        ownedLand[i].harvestables.peaches = false
+        ownedLand[i].harvestables.apples = false
+      }
     }
   }
 }

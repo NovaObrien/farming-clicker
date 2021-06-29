@@ -173,6 +173,7 @@ class FruitService {
         AppState.character.currency += total
 
         owned.harvestables.cherries = true
+        saveState()
       }
     } else if (season === 'Summer') {
       if (owned.harvestables.peaches !== true && AppState.currentlyPlantedFruit.peaches !== 0) {
@@ -187,6 +188,7 @@ class FruitService {
         AppState.character.currency += total
 
         owned.harvestables.peaches = true
+        saveState()
       }
     } else if (season === 'Fall') {
       if (owned.harvestables.apples !== true && AppState.currentlyPlantedFruit.apples !== 0) {
@@ -201,6 +203,7 @@ class FruitService {
         AppState.character.currency += total
 
         owned.harvestables.apples = true
+        saveState()
       }
     }
   }
@@ -214,6 +217,7 @@ class FruitService {
         ownedLand[i].harvestables.apples = false
       }
     }
+    AppState.ownedLands = ownedLand
   }
 }
 export const fruitService = new FruitService()

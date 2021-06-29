@@ -81,7 +81,21 @@ export const AppState = reactive({
   ownedLands: [],
 
   optionsToBuy: {
-    smallFarms: [{ id: 2, name: 'River Banks Farm', acers: 8, type: 'Hay', beds: 2, tractorActive: false, tended: 0, quality: 50 }],
+    smallFarms: [{
+      id: 2,
+      name: 'River Banks Farm',
+      acers: 8,
+      type: 'Hay',
+      beds: 2,
+      tractorActive: false,
+      tended: 0,
+      quality: 50,
+      harvested: {
+        spring: false,
+        summer: false,
+        fall: false
+      }
+    }],
     mediumFarms: [{
       id: 6,
       name: 'Apple Way',
@@ -100,7 +114,7 @@ export const AppState = reactive({
     largeFarms: [{ id: 12, name: 'Cattle Co.', acers: 900, type: 'Cattle', beds: 5, tractorActive: false, tended: 0, quality: 50 }]
   },
 
-  // TODO Need to update information about acres ect | Acers Updated to fit farm type |
+  // TODO Need to update information about acres ect | Acers Updated to fit farm type | NEED to add harvestable dictionaries
 
   // Farm Types sm <= 10 || md <= 100 || lg > 100
 

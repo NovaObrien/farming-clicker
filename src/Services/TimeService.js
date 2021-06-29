@@ -2,6 +2,7 @@ import { AppState } from '../AppState'
 import { saveState } from '../utils/LocalStorage'
 import { eventService } from './EventService'
 import { farmService } from './FarmService'
+import { hayService } from './HayService'
 
 class TimeService {
   endTurn() {
@@ -28,6 +29,7 @@ class TimeService {
       AppState.currentYearCost.bedCost += 1100
 
       farmService.updateFruit()
+      hayService.resetHayHarvest()
     } else if (turn === 2) {
       AppState.time.month = 'February'
     } else {

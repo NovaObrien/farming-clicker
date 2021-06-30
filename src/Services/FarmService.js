@@ -5,6 +5,12 @@ import { fruitService } from './FruitService'
 import { hayService } from './HayService'
 
 class FarmService {
+  setHome(owned) {
+    // debugger
+    const index = AppState.ownedLands.findIndex(o => o.id === owned.id)
+    AppState.ownedLands[index].active.home = true
+  }
+
   setTractor(owned) {
     const index = AppState.ownedLands.findIndex(o => o.id === owned.id)
     const bool = AppState.ownedLands[index].tractorActive
@@ -41,23 +47,28 @@ class FarmService {
   }
 
   tend(owned) {
-    if (owned.tended < owned.acers) {
-      const index = AppState.ownedLands.findIndex(o => o.id === owned.id)
-      let tended = AppState.ownedLands[index].tended
-      tended += AppState.character.children + 1
+    if (owned.active.home !== false) {
+      if (owned.tended < owned.acers) {
+        const index = AppState.ownedLands.findIndex(o => o.id === owned.id)
+        let tended = AppState.ownedLands[index].tended
+        tended += AppState.character.children + 1
 
-      if (tended > owned.acers) {
-        AppState.ownedLands[index].tended = owned.acers
-        saveState()
-      } else {
-        AppState.ownedLands[index].tended = tended
-
-        const mod = tended % 10
-        if (mod === 0 || mod === 5) {
+        if (tended > owned.acers) {
+          AppState.ownedLands[index].tended = owned.acers
           saveState()
+        } else {
+          AppState.ownedLands[index].tended = tended
+
+          const mod = tended % 10
+          if (mod === 0 || mod === 5) {
+            saveState()
+          }
         }
       }
     }
+    // else if (owned.active.workers !== false) {
+
+    // }
   }
 
   checkTend() {

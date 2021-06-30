@@ -39,7 +39,12 @@
         <button class="btn" :class="owned.tractorActive == true ? 'text-success' : 'text-danger'" @click="setTractor(owned)">
           <i class="fas fa-tractor"></i>
         </button>
-        <make-home />
+
+        <!-- Set Home Active -->
+        <button class="btn" :class="owned.active.home == true ? 'text-success' : 'text-danger'" @click="setHome(owned)">
+          <i class="fas fa-house-user"></i>
+        </button>
+
         <helping-hands />
       </div>
 
@@ -112,6 +117,27 @@ export default {
       },
       harvest(owned) {
         farmService.harvest(owned)
+      },
+      setHome(owned) {
+        Swal.fire({
+          title: 'Make Active Home?',
+          text: 'Are you Sure?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#39af43',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire(
+              'Thank you for confirming',
+              'Welcome to your new place',
+              'success'
+            )
+            farmService.setHome(owned)
+          }
+        }
+        )
       }
     }
   },

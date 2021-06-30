@@ -94,6 +94,10 @@ export const AppState = reactive({
         spring: false,
         summer: false,
         fall: false
+      },
+      active: {
+        home: false,
+        workers: false
       }
     }],
     mediumFarms: [{
@@ -109,6 +113,10 @@ export const AppState = reactive({
         cherries: false,
         peaches: false,
         apples: false
+      },
+      active: {
+        home: false,
+        workers: false
       }
     }],
     largeFarms: [{ id: 12, name: 'Cattle Co.', acers: 900, type: 'Cattle', beds: 5, tractorActive: false, tended: 0, quality: 50 }]

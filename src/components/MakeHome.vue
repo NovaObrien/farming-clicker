@@ -1,6 +1,6 @@
 <template>
   <div class="make-home">
-    <button class="btn" @click="setHome">
+    <button class="btn" @click="setHome(owned)">
       <i class="fas fa-house-user"></i>
     </button>
   </div>
@@ -8,11 +8,12 @@
 
 <script>
 import Swal from 'sweetalert2'
+import { farmService } from '../Services/FarmService'
 export default {
   name: 'MakeHome',
   setup() {
     return {
-      setHome() {
+      setHome(owned) {
         Swal.fire({
           title: 'Make Active Home?',
           text: 'Are you Sure?',
@@ -28,7 +29,7 @@ export default {
               'Welcome to your new place',
               'success'
             )
-            // optionToBuyService.sellLand(owned)
+            farmService.setHome(owned)
           }
         }
         )

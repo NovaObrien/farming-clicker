@@ -53,12 +53,13 @@ class FarmService {
         let tended = AppState.ownedLands[index].tended
         tended += AppState.character.children + 1
 
-        if (tended > owned.acers) {
+        if (tended >= owned.acers) {
           AppState.ownedLands[index].tended = owned.acers
           saveState()
         } else {
           AppState.ownedLands[index].tended = tended
 
+          // Makes Save happen not every click
           const mod = tended % 10
           if (mod === 0 || mod === 5) {
             saveState()
@@ -72,23 +73,26 @@ class FarmService {
   }
 
   checkTend() {
+    const qualityDecrease = 1
+    const resetValue = 0
     for (let i = 0; i < AppState.ownedLands.length; i++) {
-      if (AppState.ownedLands[i].tended === AppState.ownedLands[i].acers) {
+      if (AppState.ownedLands[i].tended >= AppState.ownedLands[i].acers) {
         AppState.ownedLands[i].quality++
       } else {
-        AppState.ownedLands[i].quality -= 1
+        AppState.ownedLands[i].quality -= qualityDecrease
       }
-      AppState.ownedLands[i].tended = 0
+      AppState.ownedLands[i].tended = resetValue
     }
   }
 
   updateFruit() {
+    const yearlyQualityBonus = 10
     if (AppState.fruitBonuses.fruitPlanChanged === true) {
       fruitService.checkFruitTreeLayout()
     } else {
       for (let i = 0; i < AppState.ownedLands.length; i++) {
         if (AppState.ownedLands[i].type === 'Fruit') {
-          AppState.ownedLands[i].quality += 10
+          AppState.ownedLands[i].quality += yearlyQualityBonus
         }
       }
     }

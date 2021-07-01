@@ -6,9 +6,22 @@ import { hayService } from './HayService'
 
 class FarmService {
   setHome(owned) {
-    // debugger
+    const familySize = AppState.character.children + 1
+    if (owned.beds > familySize) { return }
+    this.deactivateOldHome()
     const index = AppState.ownedLands.findIndex(o => o.id === owned.id)
     AppState.ownedLands[index].active.home = true
+    AppState.ownedLands[index].active.workers = false
+    // After setting Active Home Makes sure to deactivate any previous homes
+  }
+
+  deactivateOldHome() {
+    for (let i = 0; i < AppState.ownedLands.length; i++) {
+      if (AppState.ownedLands[i].active.home === true) {
+        AppState.ownedLands[i].active.home = false
+        return
+      }
+    }
   }
 
   setTractor(owned) {

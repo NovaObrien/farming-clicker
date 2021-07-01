@@ -73,6 +73,7 @@ import { AppState } from '../AppState'
 import Swal from 'sweetalert2'
 import { optionToBuyService } from '../Services/OptionToBuyService'
 import { farmService } from '../Services/FarmService'
+import { saveState } from '../utils/LocalStorage'
 export default {
   name: 'OwnedLand',
   props: {
@@ -135,6 +136,7 @@ export default {
               'success'
             )
             farmService.setHome(owned)
+            saveState()
           }
         }
         )

@@ -4,7 +4,7 @@ export const AppState = reactive({
   character: {
     name: '',
     age: 28,
-    children: 0,
+    children: 5,
     currency: 900000
 
   },
@@ -93,7 +93,7 @@ export const AppState = reactive({
       name: 'River Banks Farm',
       acers: 8,
       type: 'Hay',
-      beds: 2,
+      beds: 1,
       tractorActive: false,
       tended: 0,
       quality: 50,

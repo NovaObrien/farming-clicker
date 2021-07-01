@@ -33,15 +33,22 @@ export const AppState = reactive({
     umbels: 0
   },
   fruits: [
-    { id: 0, title: 'Apple', selected: false, harvested: false },
-    { id: 1, title: 'Peach', selected: false, harvested: false },
-    { id: 2, title: 'Cherry', selected: false, harvested: false }
+    { id: 0, title: 'Apple', selected: false },
+    { id: 1, title: 'Peach', selected: false },
+    { id: 2, title: 'Cherry', selected: false }
   ],
-
-  // TODO create a way for each fruit farm to be harvested individually?? Testing in individual farms data
 
   // for next years settings
   plantedFruit: [
+    { id: 0, title: 'Apple' },
+    { id: 1, title: 'Apple' },
+    { id: 2, title: 'Apple' },
+    { id: 3, title: 'Apple' },
+    { id: 4, title: 'Apple' },
+    { id: 5, title: 'Apple' },
+    { id: 6, title: 'Apple' },
+    { id: 7, title: 'Apple' }],
+  oldPlantedFruit: [
     { id: 0, title: 'Apple' },
     { id: 1, title: 'Apple' },
     { id: 2, title: 'Apple' },

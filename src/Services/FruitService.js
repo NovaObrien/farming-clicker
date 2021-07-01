@@ -26,32 +26,40 @@ class FruitService {
   }
 
   plantFruit(id, selectedFruit) {
-    if (selectedFruit !== 'Emphty') {
-      if (AppState.plantedFruit[id].title !== selectedFruit) {
-        AppState.plantedFruit[id].title = selectedFruit
-        AppState.fruitBonuses.fruitPlanChanged = true
-        saveState()
-      }
+    if (selectedFruit === 'Emphty') {
+      return
     }
+    AppState.plantedFruit[id].title = selectedFruit
+    saveState()
   }
 
   checkFruitTreeLayout() {
     // how to solve a Linear Ordinary Differential Equations
     const plantedFruit = AppState.plantedFruit
-    let appleBushelBonus = 0
-    let peachBushelBonus = 0
-    let cherryBushelBonus = 0
-    let varitySave = 8
+    const oldPlantedFruit = AppState.oldPlantedFruit
+    const startingFruitBonusValue = 0
+    debugger
+    if (plantedFruit === oldPlantedFruit) {
+      return
+    }
+    AppState.fruitBonuses.fruitPlanChanged = true
+
+    AppState.appleBushelBonus = startingFruitBonusValue
+    AppState.peachBushelBonus = startingFruitBonusValue
+    AppState.cherryBushelBonus = startingFruitBonusValue
+    AppState.varitySave = startingFruitBonusValue
+
+    const plotArr = [0, 0, 2, 2, 5, 5, 7, 7]
+    const checkedArr = [1, 3, 1, 4, 3, 6, 4, 6]
+
+    for (let i = 0; i < plotArr.length; i++) {
+      if (plantedFruit[plotArr[i]].title === plantedFruit[checkedArr[i]].title) {
+        this.countFruitBonuses(i)
+      }
+    }
 
     if (plantedFruit[0].title === plantedFruit[1].title) {
-      if (plantedFruit[0].title === 'Apple') {
-        appleBushelBonus++
-      } else if (plantedFruit[0].title === 'Peach') {
-        peachBushelBonus++
-      } else {
-        cherryBushelBonus++
-      }
-      varitySave--
+      this.countFruitBonuses(0)
     }
     if (plantedFruit[0].title === plantedFruit[3].title) {
       if (plantedFruit[0].title === 'Apple') {
@@ -131,6 +139,18 @@ class FruitService {
     AppState.fruitBonuses.varitySave = varitySave
 
     saveState()
+  }
+
+  countFruitBonuses(index) {
+    const plantedFruit = AppState.plantedFruit
+    if (plantedFruit[index].title === 'Apple') {
+      AppState.appleBushelBonus++
+    } else if (plantedFruit[index].title === 'Peach') {
+      AppState.peachBushelBonus++
+    } else {
+      AppState.cherryBushelBonus++
+    }
+    AppState.varitySave--
   }
 
   countPlantedTrees() {

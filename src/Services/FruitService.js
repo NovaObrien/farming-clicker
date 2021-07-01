@@ -37,120 +37,39 @@ class FruitService {
     // how to solve a Linear Ordinary Differential Equations
     const plantedFruit = AppState.plantedFruit
     const oldPlantedFruit = AppState.oldPlantedFruit
-    const startingFruitBonusValue = 0
-    debugger
-    if (plantedFruit === oldPlantedFruit) {
-      return
+
+    for (let i = 0; i < plantedFruit.length; i++) {
+      if (plantedFruit[i].title !== oldPlantedFruit[i].title) {
+        AppState.fruitBonuses.fruitPlanChanged = true
+        AppState.oldPlantedFruit = plantedFruit
+      }
     }
-    AppState.fruitBonuses.fruitPlanChanged = true
+  }
 
-    AppState.appleBushelBonus = startingFruitBonusValue
-    AppState.peachBushelBonus = startingFruitBonusValue
-    AppState.cherryBushelBonus = startingFruitBonusValue
-    AppState.varitySave = startingFruitBonusValue
+  countFruitBonuses() {
+    const plantedFruit = AppState.plantedFruit
+    const startingFruitBonusValue = 0
+    const startingVarritySaveValue = 8
 
+    AppState.fruitBonuses.appleBushelBonus = startingFruitBonusValue
+    AppState.fruitBonuses.peachBushelBonus = startingFruitBonusValue
+    AppState.fruitBonuses.cherryBushelBonus = startingFruitBonusValue
+    AppState.fruitBonuses.varitySave = startingVarritySaveValue
     const plotArr = [0, 0, 2, 2, 5, 5, 7, 7]
     const checkedArr = [1, 3, 1, 4, 3, 6, 4, 6]
 
     for (let i = 0; i < plotArr.length; i++) {
       if (plantedFruit[plotArr[i]].title === plantedFruit[checkedArr[i]].title) {
-        this.countFruitBonuses(i)
+        if (plantedFruit[plotArr[i]].title === 'Apple') {
+          AppState.fruitBonuses.appleBushelBonus++
+        } else if (plantedFruit[plotArr[i]].title === 'Peach') {
+          AppState.fruitBonuses.peachBushelBonus++
+        } else {
+          AppState.fruitBonuses.cherryBushelBonus++
+        }
+        AppState.fruitBonuses.varitySave--
       }
     }
-
-    if (plantedFruit[0].title === plantedFruit[1].title) {
-      this.countFruitBonuses(0)
-    }
-    if (plantedFruit[0].title === plantedFruit[3].title) {
-      if (plantedFruit[0].title === 'Apple') {
-        appleBushelBonus++
-      } else if (plantedFruit[0].title === 'Peach') {
-        peachBushelBonus++
-      } else {
-        cherryBushelBonus++
-      }
-      varitySave--
-    }
-    if (plantedFruit[2].title === plantedFruit[1].title) {
-      if (plantedFruit[2].title === 'Apple') {
-        appleBushelBonus++
-      } else if (plantedFruit[2].title === 'Peach') {
-        peachBushelBonus++
-      } else {
-        cherryBushelBonus++
-      }
-      varitySave--
-    }
-    if (plantedFruit[2].title === plantedFruit[4].title) {
-      if (plantedFruit[2].title === 'Apple') {
-        appleBushelBonus++
-      } else if (plantedFruit[2].title === 'Peach') {
-        peachBushelBonus++
-      } else {
-        cherryBushelBonus++
-      }
-      varitySave--
-    }
-
-    if (plantedFruit[5].title === plantedFruit[3].title) {
-      if (plantedFruit[5].title === 'Apple') {
-        appleBushelBonus++
-      } else if (plantedFruit[5].title === 'Peach') {
-        peachBushelBonus++
-      } else {
-        cherryBushelBonus++
-      }
-      varitySave--
-    }
-    if (plantedFruit[5].title === plantedFruit[6].title) {
-      if (plantedFruit[5].title === 'Apple') {
-        appleBushelBonus++
-      } else if (plantedFruit[5].title === 'Peach') {
-        peachBushelBonus++
-      } else {
-        cherryBushelBonus++
-      }
-      varitySave--
-    }
-    if (plantedFruit[7].title === plantedFruit[4].title) {
-      if (plantedFruit[7].title === 'Apple') {
-        appleBushelBonus++
-      } else if (plantedFruit[7].title === 'Peach') {
-        peachBushelBonus++
-      } else {
-        cherryBushelBonus++
-      }
-      varitySave--
-    }
-    if (plantedFruit[7].title === plantedFruit[6].title) {
-      if (plantedFruit[7].title === 'Apple') {
-        appleBushelBonus++
-      } else if (plantedFruit[7].title === 'Peach') {
-        peachBushelBonus++
-      } else {
-        cherryBushelBonus++
-      }
-      varitySave--
-    }
-
-    AppState.fruitBonuses.appleBushelBonus = appleBushelBonus
-    AppState.fruitBonuses.peachBushelBonus = peachBushelBonus
-    AppState.fruitBonuses.cherryBushelBonus = cherryBushelBonus
-    AppState.fruitBonuses.varitySave = varitySave
-
-    saveState()
-  }
-
-  countFruitBonuses(index) {
-    const plantedFruit = AppState.plantedFruit
-    if (plantedFruit[index].title === 'Apple') {
-      AppState.appleBushelBonus++
-    } else if (plantedFruit[index].title === 'Peach') {
-      AppState.peachBushelBonus++
-    } else {
-      AppState.cherryBushelBonus++
-    }
-    AppState.varitySave--
   }
 
   countPlantedTrees() {

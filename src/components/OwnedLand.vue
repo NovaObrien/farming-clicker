@@ -45,7 +45,9 @@
           <i class="fas fa-house-user"></i>
         </button>
 
-        <helping-hands />
+        <button class="btn" :class="owned.active.workers == true ? 'text-success' : 'text-danger'" @click="hireHelpingHands(owned)">
+          <i class="fas fa-user-plus"></i>
+        </button>
       </div>
 
       <div class="col-4 mt-3">
@@ -140,6 +142,51 @@ export default {
           }
         }
         )
+      },
+      hireHelpingHands(owned) {
+        if (owned.active.workers === false) {
+          Swal.fire({
+            title: 'Hire Helping Hands?',
+            text: 'Are you Sure?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#39af43',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire(
+                'Thank you for confirming',
+                'Your workers will still need direction',
+                'success'
+              )
+              farmService.hireHelpingHands(owned)
+              saveState()
+            }
+          }
+          )
+        } else {
+          Swal.fire({
+            title: 'Fire Helping Hands?',
+            text: 'Are you Sure?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#39af43',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire(
+                'Thank you for confirming',
+                'You can always hire them back!',
+                'success'
+              )
+              farmService.hireHelpingHands(owned)
+              saveState()
+            }
+          }
+          )
+        }
       }
     }
   },

@@ -5,6 +5,14 @@ import { fruitService } from './FruitService'
 import { hayService } from './HayService'
 
 class FarmService {
+  hireHelpingHands(owned) {
+    let helpingHands = owned.active.workers
+    helpingHands === false ? helpingHands = true : helpingHands = false
+    const index = AppState.ownedLands.findIndex(o => o.id === owned.id)
+    AppState.ownedLands[index].active.workers = helpingHands
+    AppState.ownedLands[index].active.home = false
+  }
+
   setHome(owned) {
     const familySize = AppState.character.children + 1
     if (owned.beds > familySize) { return }

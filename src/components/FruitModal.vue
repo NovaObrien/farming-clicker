@@ -22,10 +22,14 @@
                   Fruit Trees
                 </h5>
               </div>
-              <div class="row d-flex justify-content-center my-3">
+              <div
+                class="row d-flex justify-content-center my-3"
+              >
                 Select a type of Fruit Tree to Plant:
               </div>
-              <div class="row d-flex justify-content-around">
+              <div
+                class="row d-flex justify-content-around"
+              >
                 <div class="div"
                      v-for="f in fruits"
                      :key="f.id"
@@ -44,38 +48,68 @@
                   Then design the optimal layout for next years harvest:
                 </p>
               </div>
-              <div class="row d-flex justify-content-center mt-4">
-                <div class="plot mx-3 border-right border-bottom border-dark" @click="plantFruit(0)">
+              <div
+                class="row d-flex justify-content-center mt-4"
+              >
+                <div class="plot border-right border-bottom border-dark" @click="plantFruit(0)">
                   <p>
                     {{ plantedFruit[0].title }}
                   </p>
                 </div>
-                <div class="plot mx-3 border-left border-bottom border-dark"
-                     @click="plantFruit(1)"
+                <div
+                  class="plot mx-3 border-right border-left border-bottom border-dark"
+                  @click="plantFruit(1)"
                 >
                   <p>
                     {{ plantedFruit[1].title }}
                   </p>
                 </div>
-              </div>
-              <div class="
-                     row"
-              >
-                <div class="col d-flex justify-content-center">
-                  <i class="fas fa-home"></i>
-                </div>
-              </div>
-              <div class="row d-flex justify-content-center">
-                <div class="plot mx-3 border-right border-top border-dark"
-                     @click="plantFruit(2)"
+                <div
+                  class="plot border-left border-bottom border-dark"
+                  @click="plantFruit(2)"
                 >
                   <p>
                     {{ plantedFruit[2].title }}
                   </p>
                 </div>
-                <div class="plot mx-3 border-left border-top border-dark" @click="plantFruit(3)">
+              </div>
+
+              <div class="row">
+                <div class="col d-flex justify-content-center my-3">
+                  <div class="plot border-right border-bottom border-top border-dark" @click="plantFruit(3)">
+                    <p>
+                      {{ plantedFruit[3].title }}
+                    </p>
+                  </div>
+
+                  <p class="mx-4">
+                    <i class="fas fa-home"></i>
+                  </p>
+
+                  <div class="plot border-left border-bottom border-top border-dark" @click="plantFruit(4)">
+                    <p>
+                      {{ plantedFruit[4].title }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row d-flex justify-content-center">
+                <div class="plot border-right border-top border-dark"
+                     @click="plantFruit(5)"
+                >
                   <p>
-                    {{ plantedFruit[3].title }}
+                    {{ plantedFruit[5].title }}
+                  </p>
+                </div>
+                <div class="plot mx-3 border-left border-top border-right border-dark" @click="plantFruit(6)">
+                  <p>
+                    {{ plantedFruit[6].title }}
+                  </p>
+                </div>
+                <div class="plot border-left border-top border-dark" @click="plantFruit(7)">
+                  <p>
+                    {{ plantedFruit[7].title }}
                   </p>
                 </div>
               </div>
@@ -95,7 +129,7 @@
 <script>
 import { computed, reactive } from 'vue'
 import { AppState } from '../AppState'
-import { farmService } from '../Services/FarmService'
+import { fruitService } from '../Services/FruitService'
 export default {
   name: 'FruitModal',
   setup() {
@@ -108,11 +142,11 @@ export default {
       plantedFruit: computed(() => AppState.plantedFruit),
 
       setActive(fruit) {
-        farmService.setActiveFruit(fruit.id)
+        fruitService.setActiveFruit(fruit.id)
         state.selectedFruit = fruit.title
       },
       plantFruit(id) {
-        farmService.plantFruit(id, state.selectedFruit)
+        fruitService.plantFruit(id, state.selectedFruit)
       }
 
     }

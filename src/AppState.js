@@ -12,7 +12,8 @@ export const AppState = reactive({
     turn: 3,
     year: 1970,
     month: 'March',
-    season: 'Spring'
+    season: 'Spring',
+    harvestables: 'Hay, Cherries'
   },
   event: {
     title: '',
@@ -35,17 +36,45 @@ export const AppState = reactive({
     { id: 0, title: 'Apple', selected: false },
     { id: 1, title: 'Peach', selected: false },
     { id: 2, title: 'Cherry', selected: false }
-
-    // apples: 0,
-    // cherries: 0,
-    // peaches: 0,
-    // nuts: 0
   ],
+
+  // for next years settings
   plantedFruit: [
     { id: 0, title: 'Apple' },
     { id: 1, title: 'Apple' },
     { id: 2, title: 'Apple' },
-    { id: 3, title: 'Apple' }],
+    { id: 3, title: 'Apple' },
+    { id: 4, title: 'Apple' },
+    { id: 5, title: 'Apple' },
+    { id: 6, title: 'Apple' },
+    { id: 7, title: 'Apple' }],
+  oldPlantedFruit: [
+    { id: 0, title: 'Apple' },
+    { id: 1, title: 'Apple' },
+    { id: 2, title: 'Apple' },
+    { id: 3, title: 'Apple' },
+    { id: 4, title: 'Apple' },
+    { id: 5, title: 'Apple' },
+    { id: 6, title: 'Apple' },
+    { id: 7, title: 'Apple' }],
+
+  // this years individualy planted
+  currentlyPlantedFruit: {
+    apples: 8,
+    peaches: 0,
+    cherries: 0
+  },
+
+  fruitBonuses: {
+    // varitySave: reduces the effect of quality reduciton in crop diseases or bug cards +1 for each tree next to each other that are different
+    varitySave: 0,
+    // bushel bonus effects the amount gathered from trees +1 for each tree next to each other
+    appleBushelBonus: 8,
+    peachBushelBonus: 0,
+    cherryBushelBonus: 0,
+    fruitPlanChanged: false
+  },
+
   cattle: {},
   // farmerFate: {},
 
@@ -59,12 +88,48 @@ export const AppState = reactive({
   ownedLands: [],
 
   optionsToBuy: {
-    smallFarms: [{ id: 2, name: 'River Banks Farm', acers: 8, type: 'Hay', beds: 2, tractorActive: false, tended: 0, quality: 50 }],
-    mediumFarms: [{ id: 6, name: 'Apple Way', acers: 70, type: 'Fruit', beds: 3, tractorActive: false, tended: 0, quality: 50 }],
+    smallFarms: [{
+      id: 2,
+      name: 'River Banks Farm',
+      acers: 8,
+      type: 'Hay',
+      beds: 2,
+      tractorActive: false,
+      tended: 0,
+      quality: 50,
+      harvested: {
+        spring: false,
+        summer: false,
+        fall: false
+      },
+      active: {
+        home: false,
+        workers: false
+      }
+    }],
+    mediumFarms: [{
+      id: 6,
+      name: 'Apple Way',
+      acers: 70,
+      type: 'Fruit',
+      beds: 3,
+      tractorActive: false,
+      tended: 0,
+      quality: 50,
+      harvestables: {
+        cherries: false,
+        peaches: false,
+        apples: false
+      },
+      active: {
+        home: false,
+        workers: false
+      }
+    }],
     largeFarms: [{ id: 12, name: 'Cattle Co.', acers: 900, type: 'Cattle', beds: 5, tractorActive: false, tended: 0, quality: 50 }]
   },
 
-  // TODO Need to update information about acres ect | Acers Updated to fit farm type |
+  // TODO Need to update information about acres ect | Acers Updated to fit farm type | NEED to add harvestable dictionaries
 
   // Farm Types sm <= 10 || md <= 100 || lg > 100
 

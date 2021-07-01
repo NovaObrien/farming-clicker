@@ -19,7 +19,7 @@ class TurnService {
     // We will also pay bills for our house/ farms
     // this.updateOTBs()
     if (AppState.time.turn !== 3) {
-      this.drawEvent()
+      // this.drawEvent()
     }
     this.payBills()
     this.updateOTBs()

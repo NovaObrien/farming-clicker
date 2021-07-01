@@ -144,6 +144,7 @@ export default {
         )
       },
       hireHelpingHands(owned) {
+        // TODO add monthly costs
         if (owned.active.workers === false) {
           Swal.fire({
             title: 'Hire Helping Hands?',

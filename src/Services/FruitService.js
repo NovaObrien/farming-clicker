@@ -92,6 +92,7 @@ class FruitService {
   }
 
   harvestFruit(owned) {
+    if (owned.active.workers === false && owned.active.home === false) { return }
     const season = AppState.time.season
     const numFruits = AppState.currentlyPlantedFruit
     if (season === 'Spring') {

@@ -130,10 +130,6 @@ class FruitService {
     AppState.fruitBonuses.cherryBushelBonus = cherryBushelBonus
     AppState.fruitBonuses.varitySave = varitySave
 
-    AppState.fruitBonuses.fruitPlanChanged = false
-
-    // update currently planted Fruit
-    this.countPlantedTrees()
     saveState()
   }
 

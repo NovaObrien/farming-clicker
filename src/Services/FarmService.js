@@ -89,6 +89,8 @@ class FarmService {
     const yearlyQualityBonus = 10
     if (AppState.fruitBonuses.fruitPlanChanged === true) {
       fruitService.checkFruitTreeLayout()
+      fruitService.countPlantedTrees()
+      AppState.fruitBonuses.fruitPlanChanged = false
     } else {
       for (let i = 0; i < AppState.ownedLands.length; i++) {
         if (AppState.ownedLands[i].type === 'Fruit') {

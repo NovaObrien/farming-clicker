@@ -92,7 +92,6 @@ class FruitService {
   }
 
   harvestFruit(owned) {
-    // debugger
     const season = AppState.time.season
     const numFruits = AppState.currentlyPlantedFruit
     if (season === 'Spring') {

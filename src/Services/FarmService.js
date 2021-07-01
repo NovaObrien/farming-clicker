@@ -89,6 +89,7 @@ class FarmService {
     const yearlyQualityBonus = 10
     fruitService.checkFruitTreeLayout()
     if (AppState.fruitBonuses.fruitPlanChanged === true) {
+      fruitService.countFruitBonuses()
       fruitService.countPlantedTrees()
       AppState.fruitBonuses.fruitPlanChanged = false
     } else {
@@ -99,6 +100,7 @@ class FarmService {
       }
     }
     fruitService.resetFruitHarvest()
+    saveState()
   }
 }
 export const farmService = new FarmService()

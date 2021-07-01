@@ -68,9 +68,10 @@ class FarmService {
   }
 
   tend(owned) {
+    if (owned.active.home === false && owned.active.workers === false) { return }
+    const index = AppState.ownedLands.findIndex(o => o.id === owned.id)
     if (owned.active.home !== false) {
       if (owned.tended < owned.acers) {
-        const index = AppState.ownedLands.findIndex(o => o.id === owned.id)
         let tended = AppState.ownedLands[index].tended
         tended += AppState.character.children + 1
 
@@ -87,10 +88,10 @@ class FarmService {
           }
         }
       }
+    } else {
+      AppState.ownedLands[index].tended = owned.acers
+      saveState()
     }
-    // else if (owned.active.workers !== false) {
-
-    // }
   }
 
   checkTend() {

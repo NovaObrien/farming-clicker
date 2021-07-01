@@ -93,6 +93,9 @@ class FruitService {
 
   harvestFruit(owned) {
     if (owned.active.workers === false && owned.active.home === false) { return }
+    if (AppState.season === 'Winter') { return }
+    const index = AppState.ownedLands.findIndex(o => o.id === owned.id)
+
     const season = AppState.time.season
     const numFruits = AppState.currentlyPlantedFruit
     if (season === 'Spring') {
@@ -108,7 +111,6 @@ class FruitService {
         AppState.character.currency += total
 
         owned.harvestables.cherries = true
-        saveState()
       }
     } else if (season === 'Summer') {
       if (owned.harvestables.peaches !== true && AppState.currentlyPlantedFruit.peaches !== 0) {
@@ -123,7 +125,6 @@ class FruitService {
         AppState.character.currency += total
 
         owned.harvestables.peaches = true
-        saveState()
       }
     } else if (season === 'Fall') {
       if (owned.harvestables.apples !== true && AppState.currentlyPlantedFruit.apples !== 0) {
@@ -138,9 +139,10 @@ class FruitService {
         AppState.character.currency += total
 
         owned.harvestables.apples = true
-        saveState()
       }
     }
+    AppState.ownedLands[index] = owned
+    saveState()
   }
 
   incYearlyFruitQuality() {

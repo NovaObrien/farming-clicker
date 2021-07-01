@@ -95,6 +95,7 @@ class FarmService {
   }
 
   checkTend() {
+    if (AppState.season === 'Winter') { return }
     const qualityDecrease = 1
     const resetValue = 0
     for (let i = 0; i < AppState.ownedLands.length; i++) {
@@ -117,7 +118,6 @@ class FarmService {
       fruitService.incYearlyFruitQuality()
     }
     fruitService.resetFruitHarvest()
-    saveState()
   }
 }
 export const farmService = new FarmService()

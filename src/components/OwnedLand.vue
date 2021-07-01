@@ -24,7 +24,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col">
+          <div class="col" :class="season !== 'Winter' ? 'text-black' : 'text-gray'">
             Tended: {{ owned.tended }} / {{ owned.acers }}
           </div>
         </div>
@@ -61,7 +61,10 @@
         </button>
       </div>
       <div class="col-4 mt-3">
-        <button class="btn btn-sm btn-light" @click="tend(owned)">
+        <button class="btn btn-sm btn-light" @click="tend(owned)" v-if="season !== 'Winter'">
+          Tend
+        </button>
+        <button class="btn-sm btn-gray" v-else>
           Tend
         </button>
       </div>
@@ -85,6 +88,7 @@ export default {
     return {
       owned: props.ownedLandProp,
       currentYearCost: computed(() => AppState.currentYearCost),
+      season: computed(() => AppState.time.season),
 
       sellProperty(owned) {
         const cost = (owned.acers * this.currentYearCost.acerCost + owned.beds * this.currentYearCost.bedCost) * 0.8
@@ -199,5 +203,15 @@ export default {
 .text-font{
     font-family: 'Merriweather', serif;
   }
+  .btn-gray{
+    color: grey;
+    border: solid 1px;
+  }
 
+  .text-gray{
+    color: grey;
+  }
+  .text-black{
+    color: black;
+  }
 </style>

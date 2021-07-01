@@ -142,6 +142,16 @@ class FruitService {
     }
   }
 
+  incYearlyFruitQuality() {
+    const yearlyQualityBonus = 10
+
+    for (let i = 0; i < AppState.ownedLands.length; i++) {
+      if (AppState.ownedLands[i].type === 'Fruit') {
+        AppState.ownedLands[i].quality += yearlyQualityBonus
+      }
+    }
+  }
+
   resetFruitHarvest() {
     const ownedLand = AppState.ownedLands
     for (let i = 0; i < ownedLand.length; i++) {

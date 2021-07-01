@@ -86,18 +86,13 @@ class FarmService {
   }
 
   updateFruit() {
-    const yearlyQualityBonus = 10
     fruitService.checkFruitTreeLayout()
     if (AppState.fruitBonuses.fruitPlanChanged === true) {
       fruitService.countFruitBonuses()
       fruitService.countPlantedTrees()
       AppState.fruitBonuses.fruitPlanChanged = false
     } else {
-      for (let i = 0; i < AppState.ownedLands.length; i++) {
-        if (AppState.ownedLands[i].type === 'Fruit') {
-          AppState.ownedLands[i].quality += yearlyQualityBonus
-        }
-      }
+      fruitService.incYearlyFruitQuality()
     }
     fruitService.resetFruitHarvest()
     saveState()

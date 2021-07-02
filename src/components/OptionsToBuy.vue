@@ -52,6 +52,7 @@ import { computed } from 'vue'
 import { AppState } from '../AppState'
 import { optionToBuyService } from '../Services/OptionToBuyService'
 import Swal from 'sweetalert2'
+import { charactersService } from '../Services/CharactersService'
 export default {
   name: 'OptionsToBuy',
   props: {
@@ -72,8 +73,10 @@ export default {
           confirmButtonText: 'Yes, purchase!'
         }).then((result) => {
           if (result.isConfirmed) {
-            const cost = option.acers * AppState.currentYearCost + option.beds * 2000
-            if (AppState.character.currency < cost) {
+            const money = AppState.character.currency
+            const yearCost = AppState.currentYearCost
+            const cost = option.acers * yearCost.acerCost + option.beds * yearCost.bedCost
+            if (money < cost) {
               Swal.fire({
 
                 title: 'Insufficient funds',
@@ -89,6 +92,7 @@ export default {
               )
             }
             optionToBuyService.purchaseLand(option)
+            charactersService.addMonthlyCosts(option)
           }
         })
       }

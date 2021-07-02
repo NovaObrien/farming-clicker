@@ -124,9 +124,9 @@ class OptionToBuyService {
     }
   }
 
-  // =================================
-  // ========== End Case =============
-  // =================================
+  // =========================================
+  // ========== End Case For OTB =============
+  // =========================================
 
   purchaseTractor() {
     if (AppState.character.currency >= 15000) {
@@ -157,8 +157,6 @@ class OptionToBuyService {
         AppState.optionsToBuy.largeFarms.splice(index, 1)
         AppState.ownedLands.unshift(option)
       }
-      this.updateMonthlyCosts()
-      saveState()
     }
   }
 
@@ -176,17 +174,6 @@ class OptionToBuyService {
     } else {
       AppState.largeFarms.unshift(owned)
     }
-    this.updateMonthlyCosts()
-    saveState()
-  }
-
-  updateMonthlyCosts() {
-    const ownedLands = AppState.ownedLands
-    let total = 0
-    for (let i = 0; i < ownedLands.length; i++) {
-      total = total + ownedLands[i].acers * 20 + ownedLands[i].beds * 100
-    }
-    AppState.monthlyCosts = total + 150
   }
 }
 export const optionToBuyService = new OptionToBuyService()

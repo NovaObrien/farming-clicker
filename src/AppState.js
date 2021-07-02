@@ -4,8 +4,8 @@ export const AppState = reactive({
   character: {
     name: '',
     age: 28,
-    children: 5,
-    currency: 900000
+    children: 0,
+    currency: 9000
 
   },
   time: {
@@ -81,7 +81,8 @@ export const AppState = reactive({
   // Acer Costs for the year increase by 78 per year && bed costs increase by 1,100 update happens in timeService
   currentYearCost: {
     acerCost: 196,
-    bedCost: 5000
+    bedCost: 5000,
+    wageCost: 2
   },
   monthlyCosts: 150,
 
@@ -126,7 +127,20 @@ export const AppState = reactive({
         workers: false
       }
     }],
-    largeFarms: [{ id: 12, name: 'Cattle Co.', acers: 900, type: 'Cattle', beds: 5, tractorActive: false, tended: 0, quality: 50 }]
+    largeFarms: [{
+      id: 12,
+      name: 'Cattle Co.',
+      acers: 900,
+      type: 'Cattle',
+      beds: 5,
+      tractorActive: false,
+      tended: 0,
+      quality: 50,
+      active: {
+        home: false,
+        workers: false
+      }
+    }]
   },
 
   // TODO Need to update information about acres ect | Acers Updated to fit farm type | NEED to add harvestable dictionaries

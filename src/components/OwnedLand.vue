@@ -79,6 +79,7 @@ import Swal from 'sweetalert2'
 import { optionToBuyService } from '../Services/OptionToBuyService'
 import { farmService } from '../Services/FarmService'
 import { saveState } from '../utils/LocalStorage'
+import { charactersService } from '../Services/CharactersService'
 export default {
   name: 'OwnedLand',
   props: {
@@ -112,6 +113,7 @@ export default {
             )
             farmService.returnTractor(owned)
             optionToBuyService.sellLand(owned)
+            charactersService.removeMonthlyCosts(owned)
           }
         }
         )
@@ -148,11 +150,14 @@ export default {
         )
       },
       hireHelpingHands(owned) {
-        // TODO add monthly costs
+        // TODO make helping hands hiring cost more accurate
         if (owned.active.workers === false) {
           Swal.fire({
             title: 'Hire Helping Hands?',
-            text: 'Are you Sure?',
+            text: 'Are you Sure? This will add ' + ((owned.acers * AppState.currentYearCost.wageCost) * owned.beds).toLocaleString('en-US', {
+              style: 'currency',
+              currency: 'USD'
+            }) + ' to monthly costs.',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#39af43',

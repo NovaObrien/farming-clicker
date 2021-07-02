@@ -1,5 +1,6 @@
 import { AppState } from '../AppState'
 import { saveState } from '../utils/LocalStorage'
+import { charactersService } from './CharactersService'
 import { eventService } from './EventService'
 import { farmService } from './FarmService'
 import { hayService } from './HayService'
@@ -27,6 +28,7 @@ class TimeService {
       AppState.time.year++
       AppState.currentYearCost.acerCost += 78
       AppState.currentYearCost.bedCost += 1100
+      charactersService.updateMonthlyCosts()
 
       farmService.updateFruit()
       hayService.resetHayHarvest()

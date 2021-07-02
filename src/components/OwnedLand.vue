@@ -92,7 +92,7 @@ export default {
       season: computed(() => AppState.time.season),
 
       sellProperty(owned) {
-        const cost = (owned.acers * this.currentYearCost.acerCost + owned.beds * this.currentYearCost.bedCost) * 0.8
+        const cost = (optionToBuyService.calculateMarketPrice(owned)) * 0.8
         Swal.fire({
           title: 'Sell Property?',
           text: 'Your Farm has Been Appraised at ' + cost.toLocaleString('en-US', {

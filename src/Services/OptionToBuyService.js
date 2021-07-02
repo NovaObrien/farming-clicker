@@ -138,8 +138,7 @@ class OptionToBuyService {
 
   purchaseLand(option) {
     const money = AppState.character.currency
-    const yearCost = AppState.currentYearCost
-    const cost = option.acers * yearCost.acerCost + option.beds * yearCost.bedCost
+    const cost = this.calculateMarketPrice(option)
 
     if (money >= cost) {
       AppState.character.currency -= cost
@@ -161,8 +160,7 @@ class OptionToBuyService {
   }
 
   sellLand(owned) {
-    const yearCost = AppState.currentYearCost
-    AppState.character.currency += ((owned.acers * yearCost.acerCost + owned.beds * yearCost.bedCost) * 0.8)
+    AppState.character.currency += ((this.calculateMarketPrice(owned)) * 0.8)
 
     const index = AppState.ownedLands.findIndex(o => o.id === owned.id)
     AppState.ownedLands.splice(index, 1)
@@ -174,6 +172,13 @@ class OptionToBuyService {
     } else {
       AppState.largeFarms.unshift(owned)
     }
+  }
+
+  // ===== IF YOU UPDATE MAKE SURE TO UPDATE IN HTML CALCS Or figure out how to add this funtion to it=====
+  calculateMarketPrice(land) {
+    const yearCost = AppState.currentYearCost
+    const cost = land.acers * yearCost.acerCost + land.beds * yearCost.bedCost
+    return (cost)
   }
 }
 export const optionToBuyService = new OptionToBuyService()

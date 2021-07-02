@@ -20,12 +20,12 @@ class CharactersService {
   }
 
   addMonthlyCosts(property) {
-    AppState.monthlyCosts += ((property.beds * AppState.currentYearCost.acerCost) / 2)
+    AppState.monthlyCosts += (((property.beds * AppState.currentYearCost.bedCost) + (property.acers * AppState.currentYearCost.acerCost)) / 2)
     saveState()
   }
 
   removeMonthlyCosts(property) {
-    AppState.monthlyCosts -= ((property.beds * AppState.currentYearCost.acerCost) / 2)
+    AppState.monthlyCosts -= (((property.beds * AppState.currentYearCost.bedCost) + (property.acers * AppState.currentYearCost.acerCost)) / 2)
     saveState()
   }
 

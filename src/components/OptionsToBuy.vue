@@ -63,8 +63,12 @@ export default {
       option: props.optionsToBuyProp,
       currentYearCost: computed(() => AppState.currentYearCost),
       purchaseLand(option) {
+        const cost = optionToBuyService.calculateMarketPrice(option)
         Swal.fire({
-          title: 'Purchase Property?',
+          title: 'Purchase Property for ' + cost.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD'
+          }) + '?',
           text: "You won't be able to revert this!",
           icon: 'warning',
           showCancelButton: true,
@@ -74,8 +78,6 @@ export default {
         }).then((result) => {
           if (result.isConfirmed) {
             const money = AppState.character.currency
-            const yearCost = AppState.currentYearCost
-            const cost = option.acers * yearCost.acerCost + option.beds * yearCost.bedCost
             if (money < cost) {
               Swal.fire({
 

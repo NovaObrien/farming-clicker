@@ -95,7 +95,7 @@ class FarmService {
   }
 
   checkTend() {
-    if (AppState.season === 'Winter') { return }
+    if (AppState.time.season === 'Winter') { return }
     const qualityDecrease = 1
     const resetValue = 0
     for (let i = 0; i < AppState.ownedLands.length; i++) {

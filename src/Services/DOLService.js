@@ -96,7 +96,7 @@ class DOLService {
     AppState.event.closing = '($250 to the doctor)'
     AppState.event.closeDesc = 'Ouch'
     $('#eventModal').modal('show')
-    AppState.character.currency -= 150
+    AppState.character.currency -= 250
   }
 
   sick() {

@@ -1,5 +1,6 @@
 import { AppState } from '../AppState'
 import { saveState } from '../utils/LocalStorage'
+import { optionToBuyService } from './OptionToBuyService'
 
 class CharactersService {
   genName() {
@@ -29,12 +30,14 @@ class CharactersService {
     saveState()
   }
 
-  addHiringCosts() {
-
+  addHiringCosts(owned) {
+    const landCost = optionToBuyService.calculateMarketPrice(owned)
+    AppState.monthlyCosts += landCost / 240
   }
 
-  removeHiringCosts() {
-
+  removeHiringCosts(owned) {
+    const landCost = optionToBuyService.calculateMarketPrice(owned)
+    AppState.monthlyCosts -= landCost / 240
   }
 }
 

@@ -171,6 +171,7 @@ export default {
                 'success'
               )
               farmService.hireHelpingHands(owned)
+              charactersService.addHiringCosts(owned)
               saveState()
             }
           }
@@ -192,6 +193,7 @@ export default {
                 'success'
               )
               farmService.hireHelpingHands(owned)
+              charactersService.removeHiringCosts(owned)
               saveState()
             }
           }

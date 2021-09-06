@@ -11,7 +11,7 @@ class HayService {
     const index = AppState.ownedLands.findIndex(o => o.id === owned.id)
 
     if (season === 'Spring' && owned.harvested.spring !== true) {
-      const total = owned.acers * owned.quality
+      const total = (owned.acers * 2) * ((AppState.currentYearCost.acerCost * owned.quality) / 100)
       Swal.fire({
         title: 'Harvest',
         text: 'Your Hay Sold for ' + (total).toLocaleString('en-US', {
@@ -23,7 +23,7 @@ class HayService {
 
       owned.harvested.spring = true
     } else if (season === 'Summer' && owned.harvested.summer !== true) {
-      const total = owned.acers * owned.quality
+      const total = (owned.acers * 2) * ((AppState.currentYearCost.acerCost * owned.quality) / 100)
       Swal.fire({
         title: 'Harvest',
         text: 'Your Hay Sold for ' + (total).toLocaleString('en-US', {
@@ -36,7 +36,7 @@ class HayService {
       owned.harvested.summer = true
       saveState()
     } else if (season === 'Fall' && owned.harvested.fall !== true) {
-      const total = owned.acers * owned.quality
+      const total = (owned.acers * 2) * ((AppState.currentYearCost.acerCost * owned.quality) / 100)
       Swal.fire({
         title: 'Harvest',
         text: 'Your Hay Sold for ' + (total).toLocaleString('en-US', {

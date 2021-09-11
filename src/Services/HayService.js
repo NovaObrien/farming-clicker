@@ -8,8 +8,8 @@ class HayService {
     const season = AppState.time.season
     if (season === 'Winter') { return }
     if (season === 'Spring' && owned.harvested.spring === true) { return }
-    if (season === 'Summer' && owned.harvested.Summer === true) { return }
-    if (season === 'Fall' && owned.harvested.Fall === true) { return }
+    if (season === 'Summer' && owned.harvested.summer === true) { return }
+    if (season === 'Fall' && owned.harvested.fall === true) { return }
 
     const index = AppState.ownedLands.findIndex(o => o.id === owned.id)
 

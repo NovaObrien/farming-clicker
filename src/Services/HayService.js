@@ -5,48 +5,28 @@ import { saveState } from '../utils/LocalStorage'
 class HayService {
   harvestHay(owned) {
     if (owned.active.workers === false && owned.active.home === false) { return }
-
     const season = AppState.time.season
     if (season === 'Winter') { return }
+    if (season === 'Spring' && owned.harvested.spring === true) { return }
+    if (season === 'Summer' && owned.harvested.Summer === true) { return }
+    if (season === 'Fall' && owned.harvested.Fall === true) { return }
+
     const index = AppState.ownedLands.findIndex(o => o.id === owned.id)
 
     if (season === 'Spring' && owned.harvested.spring !== true) {
       const total = (owned.acers * 2) * ((AppState.currentYearCost.acerCost * owned.quality) / 100)
       Swal.fire({
         title: 'Harvest',
-        text: 'Your Hay Sold for ' + (total).toLocaleString('en-US', {
+        text: 'Your ' + season + ' harvest of Hay sold for ' + (total).toLocaleString('en-US', {
           style: 'currency',
           currency: 'USD'
         })
       })
       AppState.character.currency += total
 
-      owned.harvested.spring = true
-    } else if (season === 'Summer' && owned.harvested.summer !== true) {
-      const total = (owned.acers * 2) * ((AppState.currentYearCost.acerCost * owned.quality) / 100)
-      Swal.fire({
-        title: 'Harvest',
-        text: 'Your Hay Sold for ' + (total).toLocaleString('en-US', {
-          style: 'currency',
-          currency: 'USD'
-        })
-      })
-      AppState.character.currency += total
-
-      owned.harvested.summer = true
-      saveState()
-    } else if (season === 'Fall' && owned.harvested.fall !== true) {
-      const total = (owned.acers * 2) * ((AppState.currentYearCost.acerCost * owned.quality) / 100)
-      Swal.fire({
-        title: 'Harvest',
-        text: 'Your Hay Sold for ' + (total).toLocaleString('en-US', {
-          style: 'currency',
-          currency: 'USD'
-        })
-      })
-      AppState.character.currency += total
-
-      owned.harvested.fall = true
+      if (season === 'Spring') { owned.harvested.spring = true }
+      if (season === 'Summer') { owned.harvested.summer = true }
+      if (season === 'Fall') { owned.harvested.fall = true }
     }
     AppState.ownedLands[index] = owned
     saveState()

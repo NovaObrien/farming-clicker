@@ -117,7 +117,26 @@ class FarmService {
     } else {
       fruitService.incYearlyFruitQuality()
     }
-    fruitService.resetFruitHarvest()
+  }
+
+  resetHarvests() {
+    const ownedLands = AppState.ownedLands
+    for (let i = 0; i < ownedLands.length; i++) {
+      if (ownedLands[i].type === 'Hay') {
+        ownedLands[i].harvested.spring = false
+        ownedLands[i].harvested.summer = false
+        ownedLands[i].harvested.fall = false
+      } else if (ownedLands[i].type === 'Veggies') {
+        ownedLands[i].harvested = false
+      } else if (ownedLands[i].type === 'Fruit') {
+        ownedLands[i].harvestables.cherries = false
+        ownedLands[i].harvestables.peaches = false
+        ownedLands[i].harvestables.apples = false
+      } else {
+        ownedLands[i].harvested = false
+      }
+    }
+    AppState.ownedLands = ownedLands
   }
 }
 export const farmService = new FarmService()

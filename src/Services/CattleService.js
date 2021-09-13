@@ -29,7 +29,15 @@ class CattleService {
   }
 
   resetCattleHarvest() {
-
+    const ownedLands = AppState.ownedLands
+    for (let i = 0; i < ownedLands.length; i++) {
+      if (ownedLands[i].type === 'Cattle') {
+        ownedLands[i].harvested.spring = false
+        ownedLands[i].harvested.summer = false
+        ownedLands[i].harvested.fall = false
+      }
+    }
+    AppState.ownedLands = ownedLands
   }
 }
 export const cattleService = new CattleService()

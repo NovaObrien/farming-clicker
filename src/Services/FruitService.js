@@ -153,17 +153,5 @@ class FruitService {
       }
     }
   }
-
-  resetFruitHarvest() {
-    const ownedLand = AppState.ownedLands
-    for (let i = 0; i < ownedLand.length; i++) {
-      if (ownedLand[i].type === 'Fruit') {
-        ownedLand[i].harvestables.cherries = false
-        ownedLand[i].harvestables.peaches = false
-        ownedLand[i].harvestables.apples = false
-      }
-    }
-    AppState.ownedLands = ownedLand
-  }
 }
 export const fruitService = new FruitService()

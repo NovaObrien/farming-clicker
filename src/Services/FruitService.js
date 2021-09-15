@@ -94,7 +94,6 @@ class FruitService {
   harvestFruit(owned) {
     if (owned.active.workers === false && owned.active.home === false) { return }
     if (AppState.season === 'Winter') { return }
-    const index = AppState.ownedLands.findIndex(o => o.id === owned.id)
 
     const season = AppState.time.season
     const numFruits = AppState.currentlyPlantedFruit
@@ -141,7 +140,9 @@ class FruitService {
         owned.harvestables.apples = true
       }
     }
+    const index = AppState.ownedLands.findIndex(o => o.id === owned.id)
     AppState.ownedLands[index] = owned
+
     saveState()
   }
 

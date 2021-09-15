@@ -1,6 +1,7 @@
 import { AppState } from '../AppState'
 import { saveState } from '../utils/LocalStorage'
 import { logger } from '../utils/Logger'
+import { cattleService } from './CattleService'
 import { fruitService } from './FruitService'
 import { hayService } from './HayService'
 
@@ -62,6 +63,8 @@ class FarmService {
       hayService.harvestHay(owned)
     } else if (owned.type === 'Fruit') {
       fruitService.harvestFruit(owned)
+    } else if (owned.type === 'Cattle') {
+      cattleService.harvestCattle(owned)
     } else {
       logger.log('harvest not implemented for type')
     }

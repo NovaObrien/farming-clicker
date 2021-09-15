@@ -4,18 +4,15 @@ import { saveState } from '../utils/LocalStorage'
 
 class CattleService {
   // TODO Not sure how I want to do this but cattle should work by not harvesting will reduce the quality of the cattle over the winter months, as well as increase the quantity which also reduces the quality. The higher the population the higher the chance of outbreak of disease... Anyways thoughts to consider as you build this out
-  checkTend() {
-
-  }
 
   harvestCattle(owned) {
     if (owned.active.workers === false && owned.active.home === false) { return }
     if (owned.harvested === true) { return }
 
-    const season = AppState.time.season
+    const month = AppState.time.month
 
-    if (season === 'September' || season === 'October' || season === 'November' || season === 'December') {
-      const total = owned.cattle * owned.quality
+    if (month === 'September' || month === 'October' || month === 'November' || month === 'December') {
+      const total = owned.cows * owned.quality
       Swal.fire({
         title: 'Harvest',
         text: 'Your Cattle Sold for ' + (total).toLocaleString('en-US', {
@@ -24,6 +21,9 @@ class CattleService {
         })
       })
       AppState.character.currency += total
+      const index = AppState.ownedLands.findIndex(o => o.id === owned.id)
+      owned.harvested = true
+      AppState.ownedLands[index] = owned
     }
     saveState()
   }

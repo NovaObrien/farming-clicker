@@ -28,6 +28,7 @@ class TimeService {
       AppState.currentYearCost.acerCost += 78
       AppState.currentYearCost.bedCost += 1100
       charactersService.updateMonthlyCosts()
+      AppState.time.harvestables = 'None'
 
       farmService.updateFruit()
       farmService.resetHarvests()
@@ -66,7 +67,7 @@ class TimeService {
     } else {
       AppState.time.month = 'September'
       AppState.time.season = 'Fall'
-      AppState.time.harvestables = 'Hay, Apples'
+      AppState.time.harvestables = 'Hay, Apples, Cattle'
     }
 
     saveState()
@@ -80,7 +81,7 @@ class TimeService {
     } else {
       AppState.time.month = 'December'
       AppState.time.season = 'Winter'
-      AppState.time.harvestables = 'None'
+      AppState.time.harvestables = 'Cattle'
 
       AppState.time.turn = 0
     }

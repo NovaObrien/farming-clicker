@@ -75,7 +75,7 @@ export const AppState = reactive({
     fruitPlanChanged: false
   },
 
-  cattle: {},
+  cattlePerAcer: 1,
   // farmerFate: {},
 
   // Acer Costs for the year increase by 78 per year && bed costs increase by 1,100 update happens in timeService

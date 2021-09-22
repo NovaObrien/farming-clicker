@@ -50,7 +50,7 @@ class GoodFortuneService {
         this.foundMoney()
         break
       default:
-        logger.log('case fail')
+        logger.log('Good Fourtune case fail')
         break
     }
   }

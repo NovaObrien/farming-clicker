@@ -8,18 +8,8 @@ import { farmService } from './FarmService'
 
 class TurnService {
   endTurn() {
-    // Here we are going to do some probability depending on the turn
-    // One if crops weren't harvested than they will perish
-    // Two if crops werent' sold than they can perish
-    // Three New Option to buys can enter the Market
-    // Four a farmers fate like event can happen
-    // Five or an uneventfull event may appear
-    // Six or a good fortune event may appear
-    // at the end of the year send in event showing a recolection of the past year
-    // We will also pay bills for our house/ farms
-    // this.updateOTBs()
     if (AppState.time.turn !== 3) {
-      // this.drawEvent()
+      this.drawEvent()
     }
     this.payBills()
     this.updateOTBs()

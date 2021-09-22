@@ -33,15 +33,22 @@ export const AppState = reactive({
     umbels: 0
   },
   fruits: [
-    { id: 0, title: 'Apple', selected: false, harvested: false },
-    { id: 1, title: 'Peach', selected: false, harvested: false },
-    { id: 2, title: 'Cherry', selected: false, harvested: false }
+    { id: 0, title: 'Apple', selected: false },
+    { id: 1, title: 'Peach', selected: false },
+    { id: 2, title: 'Cherry', selected: false }
   ],
-
-  // TODO create a way for each fruit farm to be harvested individually?? Testing in individual farms data
 
   // for next years settings
   plantedFruit: [
+    { id: 0, title: 'Apple' },
+    { id: 1, title: 'Apple' },
+    { id: 2, title: 'Apple' },
+    { id: 3, title: 'Apple' },
+    { id: 4, title: 'Apple' },
+    { id: 5, title: 'Apple' },
+    { id: 6, title: 'Apple' },
+    { id: 7, title: 'Apple' }],
+  oldPlantedFruit: [
     { id: 0, title: 'Apple' },
     { id: 1, title: 'Apple' },
     { id: 2, title: 'Apple' },
@@ -68,13 +75,14 @@ export const AppState = reactive({
     fruitPlanChanged: false
   },
 
-  cattle: {},
+  cattlePerAcer: 1,
   // farmerFate: {},
 
   // Acer Costs for the year increase by 78 per year && bed costs increase by 1,100 update happens in timeService
   currentYearCost: {
     acerCost: 196,
-    bedCost: 5000
+    bedCost: 5000,
+    wageCost: 2
   },
   monthlyCosts: 150,
 
@@ -86,7 +94,7 @@ export const AppState = reactive({
       name: 'River Banks Farm',
       acers: 8,
       type: 'Hay',
-      beds: 2,
+      beds: 1,
       tractorActive: false,
       tended: 0,
       quality: 50,
@@ -94,6 +102,10 @@ export const AppState = reactive({
         spring: false,
         summer: false,
         fall: false
+      },
+      active: {
+        home: false,
+        workers: false
       }
     }],
     mediumFarms: [{
@@ -109,9 +121,27 @@ export const AppState = reactive({
         cherries: false,
         peaches: false,
         apples: false
+      },
+      active: {
+        home: false,
+        workers: false
       }
     }],
-    largeFarms: [{ id: 12, name: 'Cattle Co.', acers: 900, type: 'Cattle', beds: 5, tractorActive: false, tended: 0, quality: 50 }]
+    largeFarms: [{
+      id: 12,
+      name: 'Cattle Co.',
+      acers: 900,
+      type: 'Cattle',
+      beds: 5,
+      tractorActive: false,
+      tended: 0,
+      quality: 50,
+      cows: 300,
+      active: {
+        home: false,
+        workers: false
+      }
+    }]
   },
 
   // TODO Need to update information about acres ect | Acers Updated to fit farm type | NEED to add harvestable dictionaries

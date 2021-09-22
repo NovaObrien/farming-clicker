@@ -34,9 +34,10 @@
 
 <script>
 import { computed, onMounted, reactive } from 'vue'
-import { loadState } from '../utils/LocalStorage'
+import { loadState, saveState } from '../utils/LocalStorage'
 import { AppState } from '../AppState'
 import { charactersService } from '../Services/CharactersService'
+import { eventService } from '../Services/EventService'
 
 export default
 
@@ -57,8 +58,11 @@ export default
     })
     onMounted(() => {
       loadState()
+      // Checks if player name is emphty may need to refactor the check
       if (AppState.character.name === '') {
         charactersService.genName()
+        eventService.inherEvent()
+        saveState()
       }
     })
     return {

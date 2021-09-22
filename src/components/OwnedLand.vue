@@ -24,7 +24,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col">
+          <div class="col" :class="season !== 'Winter' ? 'text-black' : 'text-gray'">
             Tended: {{ owned.tended }} / {{ owned.acers }}
           </div>
         </div>
@@ -39,8 +39,15 @@
         <button class="btn" :class="owned.tractorActive == true ? 'text-success' : 'text-danger'" @click="setTractor(owned)">
           <i class="fas fa-tractor"></i>
         </button>
-        <make-home />
-        <helping-hands />
+
+        <!-- Set Home Active -->
+        <button class="btn" :class="owned.active.home == true ? 'text-success' : 'text-danger'" @click="setHome(owned)">
+          <i class="fas fa-house-user"></i>
+        </button>
+
+        <button class="btn" :class="owned.active.workers == true ? 'text-success' : 'text-danger'" @click="hireHelpingHands(owned)">
+          <i class="fas fa-user-plus"></i>
+        </button>
       </div>
 
       <div class="col-4 mt-3">
@@ -54,7 +61,10 @@
         </button>
       </div>
       <div class="col-4 mt-3">
-        <button class="btn btn-sm btn-light" @click="tend(owned)">
+        <button class="btn btn-sm btn-light" @click="tend(owned)" v-if="season !== 'Winter'">
+          Tend
+        </button>
+        <button class="btn-sm btn-gray" v-else>
           Tend
         </button>
       </div>
@@ -68,6 +78,8 @@ import { AppState } from '../AppState'
 import Swal from 'sweetalert2'
 import { optionToBuyService } from '../Services/OptionToBuyService'
 import { farmService } from '../Services/FarmService'
+import { saveState } from '../utils/LocalStorage'
+import { charactersService } from '../Services/CharactersService'
 export default {
   name: 'OwnedLand',
   props: {
@@ -77,9 +89,10 @@ export default {
     return {
       owned: props.ownedLandProp,
       currentYearCost: computed(() => AppState.currentYearCost),
+      season: computed(() => AppState.time.season),
 
       sellProperty(owned) {
-        const cost = (owned.acers * this.currentYearCost.acerCost + owned.beds * this.currentYearCost.bedCost) * 0.8
+        const cost = (optionToBuyService.calculateMarketPrice(owned)) * 0.8
         Swal.fire({
           title: 'Sell Property?',
           text: 'Your Farm has Been Appraised at ' + cost.toLocaleString('en-US', {
@@ -100,6 +113,7 @@ export default {
             )
             farmService.returnTractor(owned)
             optionToBuyService.sellLand(owned)
+            charactersService.removeMonthlyCosts(owned)
           }
         }
         )
@@ -112,6 +126,79 @@ export default {
       },
       harvest(owned) {
         farmService.harvest(owned)
+      },
+      setHome(owned) {
+        Swal.fire({
+          title: 'Make Active Home?',
+          text: 'Are you Sure?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#39af43',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire(
+              'Thank you for confirming',
+              'Welcome to your new place',
+              'success'
+            )
+            farmService.setHome(owned)
+            saveState()
+          }
+        }
+        )
+      },
+      hireHelpingHands(owned) {
+        // TODO make helping hands hiring cost more accurate
+        if (owned.active.workers === false) {
+          Swal.fire({
+            title: 'Hire Helping Hands?',
+            text: 'Are you Sure? This will add ' + ((owned.acers * AppState.currentYearCost.wageCost) * owned.beds).toLocaleString('en-US', {
+              style: 'currency',
+              currency: 'USD'
+            }) + ' to monthly costs.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#39af43',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire(
+                'Thank you for confirming',
+                'Your workers will still need direction',
+                'success'
+              )
+              farmService.hireHelpingHands(owned)
+              charactersService.addHiringCosts(owned)
+              saveState()
+            }
+          }
+          )
+        } else {
+          Swal.fire({
+            title: 'Fire Helping Hands?',
+            text: 'Are you Sure?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#39af43',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire(
+                'Thank you for confirming',
+                'You can always hire them back!',
+                'success'
+              )
+              farmService.hireHelpingHands(owned)
+              charactersService.removeHiringCosts(owned)
+              saveState()
+            }
+          }
+          )
+        }
       }
     }
   },
@@ -123,5 +210,15 @@ export default {
 .text-font{
     font-family: 'Merriweather', serif;
   }
+  .btn-gray{
+    color: grey;
+    border: solid 1px;
+  }
 
+  .text-gray{
+    color: grey;
+  }
+  .text-black{
+    color: black;
+  }
 </style>

@@ -52,6 +52,7 @@ import { computed } from 'vue'
 import { AppState } from '../AppState'
 import { optionToBuyService } from '../Services/OptionToBuyService'
 import Swal from 'sweetalert2'
+import { charactersService } from '../Services/CharactersService'
 export default {
   name: 'OptionsToBuy',
   props: {
@@ -62,8 +63,12 @@ export default {
       option: props.optionsToBuyProp,
       currentYearCost: computed(() => AppState.currentYearCost),
       purchaseLand(option) {
+        const cost = optionToBuyService.calculateMarketPrice(option)
         Swal.fire({
-          title: 'Purchase Property?',
+          title: 'Purchase Property for ' + cost.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD'
+          }) + '?',
           text: "You won't be able to revert this!",
           icon: 'warning',
           showCancelButton: true,
@@ -72,8 +77,8 @@ export default {
           confirmButtonText: 'Yes, purchase!'
         }).then((result) => {
           if (result.isConfirmed) {
-            const cost = option.acers * AppState.currentYearCost + option.beds * 2000
-            if (AppState.character.currency < cost) {
+            const money = AppState.character.currency
+            if (money < cost) {
               Swal.fire({
 
                 title: 'Insufficient funds',
@@ -89,6 +94,7 @@ export default {
               )
             }
             optionToBuyService.purchaseLand(option)
+            charactersService.addMonthlyCosts(option)
           }
         })
       }

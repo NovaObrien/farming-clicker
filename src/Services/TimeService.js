@@ -1,8 +1,8 @@
 import { AppState } from '../AppState'
 import { saveState } from '../utils/LocalStorage'
+import { charactersService } from './CharactersService'
 import { eventService } from './EventService'
 import { farmService } from './FarmService'
-import { hayService } from './HayService'
 
 class TimeService {
   endTurn() {
@@ -27,9 +27,11 @@ class TimeService {
       AppState.time.year++
       AppState.currentYearCost.acerCost += 78
       AppState.currentYearCost.bedCost += 1100
+      charactersService.updateMonthlyCosts()
+      AppState.time.harvestables = 'None'
 
       farmService.updateFruit()
-      hayService.resetHayHarvest()
+      farmService.resetHarvests()
     } else if (turn === 2) {
       AppState.time.month = 'February'
     } else {
@@ -65,7 +67,7 @@ class TimeService {
     } else {
       AppState.time.month = 'September'
       AppState.time.season = 'Fall'
-      AppState.time.harvestables = 'Hay, Apples'
+      AppState.time.harvestables = 'Hay, Apples, Cattle'
     }
 
     saveState()
@@ -79,7 +81,7 @@ class TimeService {
     } else {
       AppState.time.month = 'December'
       AppState.time.season = 'Winter'
-      AppState.time.harvestables = 'None'
+      AppState.time.harvestables = 'Cattle'
 
       AppState.time.turn = 0
     }

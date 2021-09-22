@@ -1,10 +1,38 @@
 import { AppState } from '../AppState'
 import { saveState } from '../utils/LocalStorage'
 import { logger } from '../utils/Logger'
+import { cattleService } from './CattleService'
 import { fruitService } from './FruitService'
 import { hayService } from './HayService'
 
 class FarmService {
+  hireHelpingHands(owned) {
+    let helpingHands = owned.active.workers
+    helpingHands === false ? helpingHands = true : helpingHands = false
+    const index = AppState.ownedLands.findIndex(o => o.id === owned.id)
+    AppState.ownedLands[index].active.workers = helpingHands
+    AppState.ownedLands[index].active.home = false
+  }
+
+  setHome(owned) {
+    const familySize = AppState.character.children + 1
+    if (owned.beds > familySize) { return }
+    this.deactivateOldHome()
+    const index = AppState.ownedLands.findIndex(o => o.id === owned.id)
+    AppState.ownedLands[index].active.home = true
+    AppState.ownedLands[index].active.workers = false
+    // After setting Active Home Makes sure to deactivate any previous homes
+  }
+
+  deactivateOldHome() {
+    for (let i = 0; i < AppState.ownedLands.length; i++) {
+      if (AppState.ownedLands[i].active.home === true) {
+        AppState.ownedLands[i].active.home = false
+        return
+      }
+    }
+  }
+
   setTractor(owned) {
     const index = AppState.ownedLands.findIndex(o => o.id === owned.id)
     const bool = AppState.ownedLands[index].tractorActive
@@ -35,53 +63,83 @@ class FarmService {
       hayService.harvestHay(owned)
     } else if (owned.type === 'Fruit') {
       fruitService.harvestFruit(owned)
+    } else if (owned.type === 'Cattle') {
+      cattleService.harvestCattle(owned)
     } else {
       logger.log('harvest not implemented for type')
     }
   }
 
   tend(owned) {
-    if (owned.tended < owned.acers) {
-      const index = AppState.ownedLands.findIndex(o => o.id === owned.id)
-      let tended = AppState.ownedLands[index].tended
-      tended += AppState.character.children + 1
+    if (owned.active.home === false && owned.active.workers === false) { return }
+    const index = AppState.ownedLands.findIndex(o => o.id === owned.id)
+    if (owned.active.home !== false) {
+      if (owned.tended < owned.acers) {
+        let tended = AppState.ownedLands[index].tended
+        tended += AppState.character.children + 1
 
-      if (tended > owned.acers) {
-        AppState.ownedLands[index].tended = owned.acers
-        saveState()
-      } else {
-        AppState.ownedLands[index].tended = tended
-
-        const mod = tended % 10
-        if (mod === 0 || mod === 5) {
+        if (tended >= owned.acers) {
+          AppState.ownedLands[index].tended = owned.acers
           saveState()
+        } else {
+          AppState.ownedLands[index].tended = tended
+
+          // Makes Save happen not every click
+          const mod = tended % 10
+          if (mod === 0 || mod === 5) {
+            saveState()
+          }
         }
       }
+    } else {
+      AppState.ownedLands[index].tended = owned.acers
+      saveState()
     }
   }
 
   checkTend() {
+    if (AppState.time.season === 'Winter') { return }
+    const qualityDecrease = 1
+    const resetValue = 0
     for (let i = 0; i < AppState.ownedLands.length; i++) {
-      if (AppState.ownedLands[i].tended === AppState.ownedLands[i].acers) {
+      if (AppState.ownedLands[i].tended >= AppState.ownedLands[i].acers) {
         AppState.ownedLands[i].quality++
       } else {
-        AppState.ownedLands[i].quality -= 1
+        AppState.ownedLands[i].quality -= qualityDecrease
       }
-      AppState.ownedLands[i].tended = 0
+      AppState.ownedLands[i].tended = resetValue
     }
   }
 
   updateFruit() {
+    fruitService.checkFruitTreeLayout()
     if (AppState.fruitBonuses.fruitPlanChanged === true) {
-      fruitService.checkFruitTreeLayout()
+      fruitService.countFruitBonuses()
+      fruitService.countPlantedTrees()
+      AppState.fruitBonuses.fruitPlanChanged = false
     } else {
-      for (let i = 0; i < AppState.ownedLands.length; i++) {
-        if (AppState.ownedLands[i].type === 'Fruit') {
-          AppState.ownedLands[i].quality += 10
-        }
+      fruitService.incYearlyFruitQuality()
+    }
+  }
+
+  resetHarvests() {
+    const ownedLands = AppState.ownedLands
+    for (let i = 0; i < ownedLands.length; i++) {
+      if (ownedLands[i].type === 'Hay') {
+        ownedLands[i].harvested.spring = false
+        ownedLands[i].harvested.summer = false
+        ownedLands[i].harvested.fall = false
+      } else if (ownedLands[i].type === 'Veggies') {
+        ownedLands[i].harvested = false
+      } else if (ownedLands[i].type === 'Fruit') {
+        ownedLands[i].harvestables.cherries = false
+        ownedLands[i].harvestables.peaches = false
+        ownedLands[i].harvestables.apples = false
+      } else {
+        ownedLands[i].harvested = false
       }
     }
-    fruitService.resetFruitHarvest()
+    AppState.ownedLands = ownedLands
   }
 }
 export const farmService = new FarmService()
